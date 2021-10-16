@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Life register: Diario</string>
+    <string name="app_diary">Diario</string>
+    <string name="app_calendar">calendario</string>
+    <string name="app_drugs">Drugs</string>
+    <string name="app_economy">Economia</string>
+    <string name="app_time_inver">Insersión de tiempo</string>
+    <string name="app_feelings">Registro de sentimientos</string>
+    <string name="app_graphics">Graficas y estadisticas</string>
+    <string name="app_settings">Configuraciones</string>
+    <string name="app_help">Ayuda</string>
+</resources>

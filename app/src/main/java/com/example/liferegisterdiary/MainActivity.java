@@ -1,0 +1,103 @@
+package com.example.liferegisterdiary;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+
+public class MainActivity extends AppCompatActivity {
+
+    private ImageButton btn_diary;
+    private ImageButton btn_calendar;
+    private ImageButton btn_drug_diary;
+    private ImageButton btn_economy;
+    private ImageButton btn_time_dist;
+    private ImageButton btn_feelings;
+    private ImageButton btn_graphics;
+    private ImageButton btn_settings;
+    private ImageButton btn_help;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        setUpView();
+    }
+
+    //Configure a button click
+    private void setUpView(){
+        //Cacth buttons
+        btn_diary = findViewById(R.id.btn_diary);
+        btn_diary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent launchDiaryView = new Intent(getApplicationContext(), Diary.class);
+                startActivity(launchDiaryView);
+
+
+            }
+        });
+        btn_calendar = findViewById(R.id.btn_calendar);
+        btn_calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        btn_drug_diary = findViewById(R.id.btn_drug_diary);
+        btn_drug_diary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        btn_economy = findViewById(R.id.btn_economy);
+        btn_economy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        btn_time_dist = findViewById(R.id.btn_time_dist);
+        btn_time_dist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        btn_feelings = findViewById(R.id.btn_feelings);
+        btn_feelings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        btn_graphics = findViewById(R.id.btn_graphics);
+        btn_graphics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        btn_settings = findViewById(R.id.btn_settings);
+        btn_settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        btn_help = findViewById(R.id.btn_help);
+        btn_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+    }
+
+
+}
