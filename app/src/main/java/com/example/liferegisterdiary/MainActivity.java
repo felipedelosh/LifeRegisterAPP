@@ -9,8 +9,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+
 public class MainActivity extends AppCompatActivity {
 
+    public Controller controller;
     //Capture a main screem items
     //Buttons
     private ImageButton btn_diary;
@@ -32,9 +34,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        controller = new Controller();
+
         //Cacth screem elements
         main_output_message = findViewById(R.id.main_output_message);
-
+        showOutputMesagge(controller.health());
 
         setUpView();
     }
@@ -114,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void showOutputMesagge(String txt){
         main_output_message.setText(txt);
-
     }
 
 

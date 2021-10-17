@@ -8,7 +8,17 @@ package com.example.liferegisterdiary;
 * */
 public class Controller {
 
+    TimeController timeController;
 
+    public Controller(){
+
+        timeController = new TimeController();
+
+    }
+
+    public String health(){
+        return timeController.health();
+    }
 
 
 }
