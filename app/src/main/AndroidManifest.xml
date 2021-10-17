@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LifeRegisterDiary">
         <activity
+            android:name=".TAccounts"
+            android:exported="false" />
+        <activity
+            android:name=".Economy"
+            android:exported="false" />
+        <activity
             android:name=".Diary"
             android:exported="false" />
         <activity

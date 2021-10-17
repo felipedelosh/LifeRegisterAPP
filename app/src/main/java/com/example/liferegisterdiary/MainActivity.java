@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Capture a main screem items
+    //Buttons
     private ImageButton btn_diary;
     private ImageButton btn_calendar;
     private ImageButton btn_drug_diary;
@@ -18,11 +22,19 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton btn_graphics;
     private ImageButton btn_settings;
     private ImageButton btn_help;
+    //End to cacth buttons
+
+    //text
+    private TextView main_output_message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Cacth screem elements
+        main_output_message = findViewById(R.id.main_output_message);
+
 
         setUpView();
     }
@@ -36,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent launchDiaryView = new Intent(getApplicationContext(), Diary.class);
                 startActivity(launchDiaryView);
-
 
             }
         });
@@ -58,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
         btn_economy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent launchEconomyView = new Intent(getApplicationContext(), Economy.class);
+                startActivity(launchEconomyView);
 
             }
         });
@@ -96,6 +109,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    public void showOutputMesagge(String txt){
+        main_output_message.setText(txt);
 
     }
 
