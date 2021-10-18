@@ -3,6 +3,8 @@ package com.example.liferegisterdiary;
 
 import android.content.Context;
 
+import java.sql.Time;
+
 /*
 * This is a main controller of aplication.
 * MVC
@@ -20,17 +22,13 @@ public class Controller {
         this.context = context;
 
         timeController = new TimeController();
-        fileFolderController = new FileFolderController(context);
+        fileFolderController = new FileFolderController(context, timeController);
 
     }
 
     public String health(){
 
-        if(fileFolderController.existsDir("LifeRegisterDATA")){
-            return "Si exiete";
-        }else{
-            return "No existe";
-        }
+        return fileFolderController.health();
 
     }
 
