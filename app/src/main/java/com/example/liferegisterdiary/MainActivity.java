@@ -2,6 +2,7 @@ package com.example.liferegisterdiary;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        controller = new Controller();
+        Context context = this;
+        controller = new Controller(context);
 
         //Cacth screem elements
         main_output_message = findViewById(R.id.main_output_message);

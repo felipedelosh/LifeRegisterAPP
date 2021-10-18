@@ -1,6 +1,8 @@
 package com.example.liferegisterdiary;
 
 
+import android.content.Context;
+
 /*
 * This is a main controller of aplication.
 * MVC
@@ -8,16 +10,28 @@ package com.example.liferegisterdiary;
 * */
 public class Controller {
 
-    TimeController timeController;
+    Context context;
 
-    public Controller(){
+    TimeController timeController;
+    FileFolderController fileFolderController;
+
+    public Controller(Context context){
+
+        this.context = context;
 
         timeController = new TimeController();
+        fileFolderController = new FileFolderController(context);
 
     }
 
     public String health(){
-        return timeController.health();
+
+        if(fileFolderController.existsDir("LifeRegisterDATA")){
+            return "Si exiete";
+        }else{
+            return "No existe";
+        }
+
     }
 
 
