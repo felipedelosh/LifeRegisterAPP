@@ -4,8 +4,7 @@ package com.example.liferegisterdiary;
 import android.content.Context;
 
 import java.io.File;
-import java.sql.Time;
-import java.util.Date;
+
 
 /*
 *
@@ -19,6 +18,20 @@ public class FileFolderController {
     Context context;
     public boolean mkdirStatus;
     public TimeController timeController;
+    //Routes
+    private final String ROOTAPP = "LifeRegisterDATA";
+    private final String PROFILEROUTE = "LifeRegisterDATA/Profile";
+    private final String PERSONALDIARYROUTE = "LifeRegisterData/Diary/personal_diary";
+    private final String DREAMDIARYROUTE = "LifeRegisterData/Diary/dream_diary";
+    private final String GRATITUDEDIARYROUTE = "LifeRegisterData/Diary/gratitude_diary";
+    private final String PSICOTROPEDIARYROUTE = "LifeRegisterData/Diary/psicotrope_diary";
+    //Adiction
+    //Necesitoi listar todas alas cosas a las que un ser humano se puede hacer adicto
+    private final String TACCOUNTSROUTE = "LifeRegisterData/Economy/Taccounts";
+    private final String BOXROUTE = "LifeRegisterData/Economy/box";
+    private final String TIMEDISTRIBUTIONROUTE = "LifeRegisterData/TimeDistribution";
+    private final String FEELINGROUTE = "LifeRegisterData/Feelings";
+
 
     public FileFolderController(Context context, TimeController timeController) {
 
@@ -34,52 +47,49 @@ public class FileFolderController {
     public void createDataFolders(){
 
         //Root folder
-        if(!existsDir("LifeRegisterDATA")){
-            makeDir("LifeRegisterDATA");
+        if(!existsDir(ROOTAPP)){
+            makeDir(ROOTAPP);
         }
 
         //Profile
-        if(!existsDir("LifeRegisterDATA/Profile")){
-            makeDir("LifeRegisterDATA/Profile");
+        if(!existsDir(PROFILEROUTE)){
+            makeDir(PROFILEROUTE);
         }
 
         //Diary
-        if(!existsDir("LifeRegisterData/Diary/personal_diary/"+timeController.getCurrentYear())){
-            makeDir("LifeRegisterData/Diary/personal_diary/"+timeController.getCurrentYear());
+        if(!existsDir(PERSONALDIARYROUTE+"/"+timeController.getCurrentYear())){
+            makeDir( PERSONALDIARYROUTE+"/"+timeController.getCurrentYear());
         }
-        if(!existsDir("LifeRegisterData/Diary/dream_diary/"+timeController.getCurrentYear())){
-            makeDir("LifeRegisterData/Diary/dream_diary/"+timeController.getCurrentYear());
+        if(!existsDir(DREAMDIARYROUTE+"/"+timeController.getCurrentYear())){
+            makeDir(DREAMDIARYROUTE+"/"+timeController.getCurrentYear());
         }
-        if(!existsDir("LifeRegisterData/Diary/gratitude_diary/"+timeController.getCurrentYear())){
-            makeDir("LifeRegisterData/Diary/gratitude_diary/"+timeController.getCurrentYear());
+        if(!existsDir(GRATITUDEDIARYROUTE+"/"+timeController.getCurrentYear())){
+            makeDir(GRATITUDEDIARYROUTE+"/"+timeController.getCurrentYear());
         }
-        if(!existsDir("LifeRegisterData/Diary/psicotrope_diary/"+timeController.getCurrentYear())){
-            makeDir("LifeRegisterData/Diary/psicotrope_diary/"+timeController.getCurrentYear());
+        if(!existsDir(PSICOTROPEDIARYROUTE+"/"+timeController.getCurrentYear())){
+            makeDir(PSICOTROPEDIARYROUTE+"/"+timeController.getCurrentYear());
         }
 
         //Adiction
         //Necesitoi listar todas alas cosas a las que un ser humano se puede hacer adicto
 
         //Economy
-        if(!existsDir("LifeRegisterData/Economy/Taccounts/"+timeController.getCurrentYear())){
-            makeDir("LifeRegisterData/Economy/Taccounts/"+timeController.getCurrentYear());
+        if(!existsDir(TACCOUNTSROUTE+"/"+timeController.getCurrentYear())){
+            makeDir(TACCOUNTSROUTE+"/"+timeController.getCurrentYear());
         }
-        if(!existsDir("LifeRegisterData/Economy/box/"+timeController.getCurrentYear())){
-            makeDir("LifeRegisterData/Economy/box/"+timeController.getCurrentYear());
+        if(!existsDir(BOXROUTE+"/"+timeController.getCurrentYear())){
+            makeDir(BOXROUTE+"/"+timeController.getCurrentYear());
         }
 
         //Time invertion
-        if(!existsDir("LifeRegisterData/TimeDistribution/"+timeController.getCurrentYear())){
-            makeDir("LifeRegisterData/TimeDistribution/"+timeController.getCurrentYear());
+        if(!existsDir(TIMEDISTRIBUTIONROUTE+"/"+timeController.getCurrentYear())){
+            makeDir(TIMEDISTRIBUTIONROUTE+"/"+timeController.getCurrentYear());
         }
 
         //Feelings
-        if(!existsDir("LifeRegisterData/Feelings/"+timeController.getCurrentYear())){
-            makeDir("LifeRegisterData/Feelings/"+timeController.getCurrentYear());
+        if(!existsDir(FEELINGROUTE+"/"+timeController.getCurrentYear())){
+            makeDir(FEELINGROUTE+"/"+timeController.getCurrentYear());
         }
-
-
-
 
 
     }

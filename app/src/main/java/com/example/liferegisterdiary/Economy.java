@@ -2,6 +2,7 @@ package com.example.liferegisterdiary;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -25,7 +26,8 @@ public class Economy extends AppCompatActivity {
         btn_economy_in_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent launchTAccountsView = new Intent(getApplicationContext(), TAccounts.class);
+                startActivity(launchTAccountsView);
             }
         });
         btn_economy_box = findViewById(R.id.btn_economy_box);

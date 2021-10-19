@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent launchDiaryView = new Intent(getApplicationContext(), Diary.class);
                 startActivity(launchDiaryView);
-
             }
         });
         btn_calendar = findViewById(R.id.btn_calendar);

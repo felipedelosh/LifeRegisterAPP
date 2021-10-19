@@ -13,6 +13,18 @@ public class TimeController {
 
     }
 
+    public String[] getDaysOfWeek() {
+        return daysOfWeek;
+    }
+
+    public String[] getMonths() {
+        return months;
+    }
+
+    public int[] getNumberOfDaysMonths() {
+        return numberOfDaysMonths;
+    }
+
     public String getCurrentYear(){
         return String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
     }
@@ -21,8 +33,12 @@ public class TimeController {
         return months[Calendar.getInstance().get(Calendar.MONTH)];
     }
 
-    public String getCurrentDayNumberOfMount(){
-        return String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+    public int getNumberOfCurrentMounth(){
+        return Calendar.getInstance().get(Calendar.MONTH);
+    }
+
+    public int getCurrentDayNumberOfMount(){
+        return Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
     }
 
     //Data error
@@ -42,6 +58,14 @@ public class TimeController {
 
     public String timeStamp(){
         return getCurrentYear()+":"+getCurrentMonth()+":"+getCurrentDayNumberOfMount();
+    }
+
+    public int getDaysOfCurrentMounth(){
+        return numberOfDaysMonths[Calendar.getInstance().get(Calendar.MONTH)];
+    }
+
+    public int getDaysOfMounthX(int m){
+        return numberOfDaysMonths[m];
     }
 
 

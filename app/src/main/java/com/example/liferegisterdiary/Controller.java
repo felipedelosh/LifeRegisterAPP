@@ -28,7 +28,7 @@ public class Controller {
 
     public String health(){
 
-        return fileFolderController.health();
+        return timeController.health();
 
     }
 

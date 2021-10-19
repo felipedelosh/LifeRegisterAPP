@@ -1,4 +1,5 @@
 <resources>
+    <!-- Intercace Strings -->
     <string name="app_name">Life register: Diario</string>
     <string name="app_diary">Diario</string>
     <string name="app_calendar">calendario</string>
@@ -10,4 +11,8 @@
     <string name="app_settings">Configuraciones</string>
     <string name="app_help">Ayuda</string>
     <string name="output">This is a system message: ....</string>
+    <string name="btnLoad">Cargar</string>
+    <string name="btnSave">Guardar</string>
+    <!-- Psicotrope Strings -->
+
 </resources>
