@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
         btn_time_dist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent launchTimeDistView = new Intent(getApplicationContext(), TimeDistribution.class);
+                startActivity(launchTimeDistView);
 
             }
         });

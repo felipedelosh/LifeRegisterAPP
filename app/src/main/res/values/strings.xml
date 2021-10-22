@@ -10,6 +10,8 @@
     <string name="app_graphics">Graficas y estadisticas</string>
     <string name="app_settings">Configuraciones</string>
     <string name="app_help">Ayuda</string>
+    <string name="app_hour">Hora</string>
+    <string name="app_activity">Actividad</string>
     <string name="output">This is a system message: ....</string>
     <string name="btnLoad">Cargar</string>
     <string name="btnSave">Guardar</string>

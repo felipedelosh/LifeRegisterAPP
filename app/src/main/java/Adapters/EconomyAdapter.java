@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -22,8 +21,8 @@ public class EconomyAdapter extends BaseAdapter {
     public Context context;
 
     public EconomyAdapter(ArrayList<ItemTaccont> itemsTaccount, Context context) {
-        this.context = context;
         this.itemsTaccount = itemsTaccount;
+        this.context = context;
     }
 
     @Override

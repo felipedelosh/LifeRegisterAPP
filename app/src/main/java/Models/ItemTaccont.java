@@ -1,6 +1,5 @@
 package Models;
 
-import android.widget.TextView;
 
 public class ItemTaccont {
 
