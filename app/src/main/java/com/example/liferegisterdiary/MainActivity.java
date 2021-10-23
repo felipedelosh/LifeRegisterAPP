@@ -85,14 +85,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent launchTimeDistView = new Intent(getApplicationContext(), TimeDistribution.class);
                 startActivity(launchTimeDistView);
-
             }
         });
         btn_feelings = findViewById(R.id.btn_feelings);
         btn_feelings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent launchFeelingsiew = new Intent(getApplicationContext(), Feelings.class);
+                startActivity(launchFeelingsiew);
             }
         });
         btn_graphics = findViewById(R.id.btn_graphics);

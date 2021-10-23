@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
+            android:name=".Feelings"
+            android:exported="false" />
+        <activity
             android:name=".TimeDistribution"
             android:exported="false" />
         <activity
