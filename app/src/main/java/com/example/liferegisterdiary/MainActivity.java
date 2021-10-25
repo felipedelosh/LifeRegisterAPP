@@ -92,15 +92,16 @@ public class MainActivity extends AppCompatActivity {
         btn_feelings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent launchFeelingsiew = new Intent(getApplicationContext(), Feelings.class);
-                startActivity(launchFeelingsiew);
+                Intent launchFeelingsView = new Intent(getApplicationContext(), Feelings.class);
+                startActivity(launchFeelingsView);
             }
         });
         btn_graphics = findViewById(R.id.btn_graphics);
         btn_graphics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent launchGraphicsView = new Intent(getApplicationContext(), Graphics.class);
+                startActivity(launchGraphicsView);
             }
         });
         btn_settings = findViewById(R.id.btn_settings);

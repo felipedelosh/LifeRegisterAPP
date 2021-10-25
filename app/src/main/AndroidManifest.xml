@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
+            android:name=".Graphics"
+            android:exported="false" />
+        <activity
             android:name=".Drug_Diary"
             android:exported="false" />
         <activity
