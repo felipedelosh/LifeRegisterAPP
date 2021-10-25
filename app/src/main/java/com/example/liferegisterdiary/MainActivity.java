@@ -108,7 +108,8 @@ public class MainActivity extends AppCompatActivity {
         btn_settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent launchSettingsView = new Intent(getApplicationContext(), Settings.class);
+                startActivity(launchSettingsView);
             }
         });
         btn_help = findViewById(R.id.btn_help);

@@ -21,6 +21,11 @@
     <string name="output">This is a system message: ....</string>
     <string name="btnLoad">Cargar</string>
     <string name="btnSave">Guardar</string>
+    <string name="btnEditProfile">Perfil</string>
+    <string name="btnEditActivities">Actividades</string>
+    <string name="btnEditFeelings">Sentimientos</string>
+    <string name="btnEditDrugList">Listado de drogas</string>
+
     <!-- Psicotrope Strings -->
 
 </resources>
