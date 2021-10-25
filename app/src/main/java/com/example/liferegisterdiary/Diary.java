@@ -38,7 +38,8 @@ public class Diary extends AppCompatActivity {
         btn_dream_diary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent launchDreamDiaryView = new Intent(getApplicationContext(), Dream_diary.class);
+                startActivity(launchDreamDiaryView);
             }
         });
         btn_gratitude_diary = findViewById(R.id.btn_gratitude_diary);
