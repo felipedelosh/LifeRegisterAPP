@@ -67,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
         btn_drug_diary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent launchDrugDiaryView = new Intent(getApplicationContext(), Drug_Diary.class);
+                startActivity(launchDrugDiaryView);
             }
         });
         btn_economy = findViewById(R.id.btn_economy);

@@ -13,6 +13,11 @@
     <string name="app_hour">Hora</string>
     <string name="app_activity">Actividad</string>
     <string name="app_banner_feelings">Como te sentiste hoy?</string>
+    <string name="lbl_help_insert_title">Ingrese Nombre psicotropico</string>
+    <string name="lbl_detonant">detonante:</string>
+    <string name="lbl_help_detonant">Que situación ocurrio para detonar el consumo?</string>
+    <string name="lbl_result">resultado:</string>
+    <string name="lbl_help_result">Que te provoco emocional o fisicamente?</string>
     <string name="output">This is a system message: ....</string>
     <string name="btnLoad">Cargar</string>
     <string name="btnSave">Guardar</string>
