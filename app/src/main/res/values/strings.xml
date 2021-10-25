@@ -18,6 +18,9 @@
     <string name="lbl_help_detonant">Que situación ocurrio para detonar el consumo?</string>
     <string name="lbl_result">resultado:</string>
     <string name="lbl_help_result">Que te provoco emocional o fisicamente?</string>
+    <string name="lbl_keyword">Palabra magica:</string>
+    <string name="lbl_help_insert_keyword">Ingrese tirulo...</string>
+    <string name="lbl_help_insert_history">Ingresa tu historia...</string>
     <string name="output">This is a system message: ....</string>
     <string name="btnLoad">Cargar</string>
     <string name="btnSave">Guardar</string>
