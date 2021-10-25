@@ -1,6 +1,8 @@
 package com.example.liferegisterdiary;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -34,13 +37,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //Capture a contex
         Context context = this;
-        controller = new Controller(context);
+        //Capture a imagen background
+        ImageView imgBG = findViewById(R.id.main_menu_img_bg);
+        controller = new Controller(context, imgBG);
 
         //Cacth screem elements
         main_output_message = findViewById(R.id.main_output_message);
         showOutputMesagge(controller.health());
+
+
 
         setUpView();
     }
