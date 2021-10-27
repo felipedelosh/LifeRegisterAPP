@@ -13,6 +13,12 @@
     <string name="app_hour">Hora</string>
     <string name="app_activity">Actividad</string>
     <string name="app_banner_feelings">Como te sentiste hoy?</string>
+    <string name="app_register_mesage_1">Hola, Soy tu diario...</string>
+    <string name="app_register_mesage_2">Bienvenido nuevo usuario.\n\n- Vamos a compartir.</string>
+    <string name="app_register_mesage_3">Vamos a presentarnos</string>
+    <string name="app_register_mesage_4">Dime cual es tu nombre?</string>
+    <string name="app_register_mesage_5">Eres chico o chica?</string>
+    <string name="app_register_mesage_6">Fecha de nacimiento</string>
     <string name="lbl_help_insert_title">Ingrese Nombre psicotropico</string>
     <string name="lbl_detonant">detonante:</string>
     <string name="lbl_help_detonant">Que situación ocurrio para detonar el consumo?</string>
@@ -26,6 +32,7 @@
     <string name="output">This is a system message: ....</string>
     <string name="btnLoad">Cargar</string>
     <string name="btnSave">Guardar</string>
+    <string name="btnContinue">Continuar</string>
     <string name="btnEditProfile">Perfil</string>
     <string name="btnEditActivities">Actividades</string>
     <string name="btnEditFeelings">Sentimientos</string>

@@ -43,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
         ImageView imgBG = findViewById(R.id.main_menu_img_bg);
         controller = new Controller(context, imgBG);
 
+        //User is register?
+        if(!controller.userIsRegister()){
+            Intent launchResgisterView = new Intent(getApplicationContext(), Register.class);
+            startActivity(launchResgisterView);
+        }
+
         //Cacth screem elements
         main_output_message = findViewById(R.id.main_output_message);
         showOutputMesagge(controller.health());

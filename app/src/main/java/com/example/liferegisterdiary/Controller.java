@@ -35,6 +35,13 @@ public class Controller {
 
     }
 
+    /*
+    * return if exists user profile information
+    * */
+    public boolean userIsRegister(){
+        return false;
+    }
+
     public void paintBgImage(){
         imgBG.setImageResource(R.drawable.bg_julia);
     }
