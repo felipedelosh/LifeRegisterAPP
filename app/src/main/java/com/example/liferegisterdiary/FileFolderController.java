@@ -3,7 +3,12 @@ package com.example.liferegisterdiary;
 
 import android.content.Context;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 
 /*
@@ -122,7 +127,49 @@ public class FileFolderController {
 
 
     public String health(){
-        return "Estoy en el controlador de archivos y carpetas ... ";
+
+        String sms = "Estoy en el controlador de archivos y carpetas ... \n\n";
+
+        //Try to write
+        if(writeFile(ROOTAPP, "loco", "txt", "Estoy en el loco.txt")){
+           sms = sms + "Almacene el archivo.txt\n\n";
+           sms = sms + "El archivo dice:\n" + readFile("","loco.txt");
+
+        }else{
+            sms = sms + "Error Guardando txt";
+        }
+
+        return sms;
+    }
+
+    public boolean writeFile(String path, String filename, String extension, String text){
+        try{
+            OutputStreamWriter newFile = new OutputStreamWriter(context.openFileOutput(filename+"."+extension, Context.MODE_PRIVATE));
+            newFile.write(text);
+            newFile.flush();
+            newFile.close();
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    public String readFile(String path, String filename){
+        try{
+            InputStreamReader reader = new InputStreamReader(context.openFileInput(path+filename));
+            BufferedReader br = new BufferedReader(reader);
+            String line = br.readLine();
+            String txt = "";
+            while (line != null){
+                txt = txt + line + "\n";
+                line = br.readLine();
+            }
+            br.close();
+            reader.close();
+            return txt;
+        }catch (Exception e){
+            return "";
+        }
     }
 
 }

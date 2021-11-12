@@ -4,6 +4,7 @@ package com.example.liferegisterdiary;
 import android.content.Context;
 import android.widget.ImageView;
 
+import java.io.Serializable;
 import java.sql.Time;
 
 /*
@@ -11,7 +12,7 @@ import java.sql.Time;
 * MVC
 * All controllers invoke here
 * */
-public class Controller {
+public class Controller implements Serializable {
 
     Context context;
 
@@ -48,7 +49,7 @@ public class Controller {
 
     public String health(){
 
-        return timeController.health();
+        return fileFolderController.health();
 
     }
 

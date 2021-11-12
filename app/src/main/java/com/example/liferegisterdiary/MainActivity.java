@@ -46,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
         //User is register?
         if(!controller.userIsRegister()){
             Intent launchResgisterView = new Intent(getApplicationContext(), Register.class);
+            //Send a main controller
+
+
             startActivity(launchResgisterView);
         }
 

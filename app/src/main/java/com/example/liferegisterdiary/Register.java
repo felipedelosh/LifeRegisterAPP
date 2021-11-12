@@ -9,7 +9,9 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
-public class Register extends AppCompatActivity {
+import java.io.Serializable;
+
+public class Register extends AppCompatActivity{
 
     private Button btnRegister;
     private Button btnCreateNickName;
@@ -22,10 +24,16 @@ public class Register extends AppCompatActivity {
     private LinearLayout registerPage2;
 
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        //Get a main controller
+
 
         //Cacth display elemetns
         registerPage0 = findViewById(R.id.registerPage0);
