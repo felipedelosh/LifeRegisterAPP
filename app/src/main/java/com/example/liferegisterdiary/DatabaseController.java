@@ -18,6 +18,7 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
     public static final String TABLE_PROFILE = "t_profile";
     public static final String TABLE_PERSONAL_PAGE_DIARY = "t_personal_page_diary";
     public static final String TABLE_PERSONAL_DREAM_DIARY = "t_personal_dream_diary";
+    public static final String TABLE_PERSONAL_GRATITUDE_DIARY = "t_personal_gratitude_diary";
 
     public DatabaseController(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -25,7 +26,6 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //Create a tables
         db.execSQL("create table if not exists " + TABLE_PROFILE + "(" +
                 "username TEXT NOT NULL," +
                 "sex TEXT NOT NULL," +
@@ -48,6 +48,12 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
                 "year INTEGER NOT NULL," +
                 "timeStamp TEXT NOT NULL," +
                 "history TEXT NOT NULL" +
+                ")");
+
+        db.execSQL("create table if not exists " + TABLE_PERSONAL_GRATITUDE_DIARY + "(" +
+                "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "history TEXT NOT NULL," +
+                "timeStamp TEXT NOT NULL" +
                 ")");
 
     }
