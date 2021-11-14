@@ -54,7 +54,8 @@ public class Diary extends AppCompatActivity {
         btn_psicotrope_diary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent launchDrugDiaryView = new Intent(getApplicationContext(), Drug_Diary_Counter.class);
+                startActivity(launchDrugDiaryView);
             }
         });
     }

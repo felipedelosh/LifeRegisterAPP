@@ -69,5 +69,25 @@ public class DbDrugsDiary extends DatabaseController {
 
     }
 
+    public long insertDrugCount(String timeStampH, String drugNamne){
+        long id = 0;
+
+        try{
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            ContentValues values = new ContentValues();
+            values.put("timeStampH", timeStampH);
+            values.put("drugName", drugNamne);
+
+            id = db.insert(TABLE_PERSONAL_DRUGS_COUNTER, null, values);
+
+        }catch (Exception e){
+
+        }
+
+        return id;
+    }
+
 
 }

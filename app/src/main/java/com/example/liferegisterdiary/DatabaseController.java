@@ -20,6 +20,7 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
     public static final String TABLE_PERSONAL_PAGE_DIARY = "t_personal_page_diary";
     public static final String TABLE_PERSONAL_DREAM_DIARY = "t_personal_dream_diary";
     public static final String TABLE_PERSONAL_GRATITUDE_DIARY = "t_personal_gratitude_diary";
+    public static final String TABLE_PERSONAL_DRUGS_COUNTER = "t_personal_drugs_counter";
 
 
     public DatabaseController(@Nullable Context context) {
@@ -63,6 +64,11 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
                 "timeStamp TEXT NOT NULL" +
                 ")");
 
+        db.execSQL("create table if not exists " + TABLE_PERSONAL_DRUGS_COUNTER + "(" +
+                "timeStampH TEXT NOT NULL," +
+                "drugName TEXT NOT NULL," +
+                "PRIMARY KEY (timeStampH, drugName) " +
+                ")");
     }
 
     @Override

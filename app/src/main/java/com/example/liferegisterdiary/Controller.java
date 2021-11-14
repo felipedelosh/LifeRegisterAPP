@@ -115,7 +115,7 @@ public class Controller implements Parcelable {
     }
 
     public String health(){
-        return "Estoy en la controladora";
+        return timeController.timeStampH();
     }
 
     public void popPupMesage(Context context,String txt){

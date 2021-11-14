@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
+            android:name=".Drug_Diary_Counter"
+            android:exported="false" />
+        <activity
             android:name=".Gratirude_Diary"
             android:exported="false" />
         <activity
