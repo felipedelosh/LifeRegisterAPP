@@ -3,6 +3,7 @@ package com.example.liferegisterdiary;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -44,9 +45,6 @@ public class Register extends AppCompatActivity{
     private String sex;
 
     TimeController timeController;
-    DatabaseController databaseController;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +55,7 @@ public class Register extends AppCompatActivity{
 
         //Controllers
         timeController = new TimeController();
-        databaseController = new DatabaseController(getApplicationContext());
+
 
         sexAvatar = findViewById(R.id.sex_avatar);
         spinnerRegisterYear = findViewById(R.id.spinnerRegisterYear);
@@ -70,13 +68,8 @@ public class Register extends AppCompatActivity{
 
         //If the user update spiner months the days change
 
-
-
-
-
         //vars control
         sexSelected = false;
-
 
         //Cacth display elemetns
         registerPage0 = findViewById(R.id.registerPage0);
@@ -148,6 +141,8 @@ public class Register extends AppCompatActivity{
 
                     if(id > 0){
                         Toast.makeText(Register.this, "User save", Toast.LENGTH_LONG).show();
+                        Intent launchMainView = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(launchMainView);
                     }else{
                         Toast.makeText(Register.this, "User NOT save", Toast.LENGTH_LONG).show();
                     }

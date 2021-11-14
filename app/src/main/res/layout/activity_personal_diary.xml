@@ -23,12 +23,13 @@
             android:text="@string/lbl_keyword" />
 
         <EditText
+            android:id="@+id/txtInsertTitlePageDiary"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:hint="@string/lbl_help_insert_title_dream" />
+            android:hint="@string/lbl_help_insert_keyword" />
 
     </LinearLayout>
 
@@ -40,6 +41,7 @@
         android:layout_gravity="center_horizontal">
 
         <Button
+            android:id="@+id/saveDiaryPage"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/btnSave"
@@ -48,6 +50,7 @@
             />
 
         <Button
+            android:id="@+id/loadDiaryPage"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/btnLoad"
@@ -57,11 +60,12 @@
     </LinearLayout>
 
     <EditText
-        android:layout_marginTop="20dp"
+        android:id="@+id/txtInsertHistoryPageDiary"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
         android:gravity="top"
-        android:hint="@string/lbl_help_insert_dream"/>
+        android:hint="@string/lbl_help_insert_history" />
 
 
 

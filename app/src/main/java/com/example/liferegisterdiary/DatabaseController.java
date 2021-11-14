@@ -16,6 +16,7 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
 
     //To tables manage
     public static final String TABLE_PROFILE = "t_profile";
+    public static final String TABLE_PERSONAL_PAGE_DIARY = "t_personal_page_diary";
 
     public DatabaseController(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -30,6 +31,14 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
                 "yearBirthDate INTEGER NOT NULL," +
                 "monthBirthDate INTEGER NOT NULL,"+
                 "dayBirthDate INTEGER NOT NULL" +
+                ")");
+
+        db.execSQL("create table if not exists " + TABLE_PERSONAL_PAGE_DIARY + "(" +
+                "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "pageName TEXT NOT NULL," +
+                "year INTEGER NOT NULL," +
+                "timeStamp TEXT NOT NULL," +
+                "history TEXT NOT NULL" +
                 ")");
     }
 
