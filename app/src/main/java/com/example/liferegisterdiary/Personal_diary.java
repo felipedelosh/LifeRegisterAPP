@@ -21,6 +21,9 @@ public class Personal_diary extends AppCompatActivity {
     private EditText txtInsertTitlePageDiary;
     private EditText txtInsertHistoryPageDiary;
 
+    //Need control not repeat information
+    private String oldInformation;
+
     TimeController timeController;
 
     @Override
@@ -79,9 +82,9 @@ public class Personal_diary extends AppCompatActivity {
                     for(int i = 0; i< information.size(); i++){
                         txt = txt + information.get(i) + "\n\n";
                     }
+                    oldInformation = txt;
                     txtInsertHistoryPageDiary.setText(txt);
                 }
-
             }
         });
     }
@@ -89,5 +92,9 @@ public class Personal_diary extends AppCompatActivity {
 
     public boolean validateText(String txt){
         return txt != "" && txt.trim() != "" && txt.trim().length() > 0;
+    }
+
+    public void saveOnlyNewInformation(String txt){
+
     }
 }

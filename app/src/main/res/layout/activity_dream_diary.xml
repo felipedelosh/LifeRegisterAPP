@@ -25,6 +25,7 @@
             android:text="@string/lbl_keyword" />
 
         <EditText
+            android:id="@+id/txtInsertTitleDreamDiary"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -42,6 +43,7 @@
         android:layout_gravity="center_horizontal">
 
         <Button
+            android:id="@+id/btnSaveDream"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/btnSave"
@@ -50,6 +52,7 @@
             />
 
         <Button
+            android:id="@+id/btnLoadDream"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/btnLoad"
@@ -59,6 +62,7 @@
     </LinearLayout>
 
     <EditText
+        android:id="@+id/txtInsertHistoryDreamDiary"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
