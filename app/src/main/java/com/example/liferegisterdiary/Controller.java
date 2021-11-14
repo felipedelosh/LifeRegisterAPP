@@ -8,6 +8,10 @@ import android.os.Parcelable;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.List;
+
+import db.DbDreamDiaryPage;
+import db.DbDrugsDiary;
 import db.DbUser;
 
 /*
@@ -44,6 +48,8 @@ public class Controller implements Parcelable {
 
         //Generate a backgroung image
         paintBgImage();
+        //Charge a list of drugs
+        insertDrugsList();
     }
 
     protected Controller(Parcel in) {
@@ -85,8 +91,31 @@ public class Controller implements Parcelable {
         imgBG.setImageResource(R.drawable.bg_julia);
     }
 
+    public void insertDrugsList(){
+        DbDrugsDiary dbDrugsDiary = new DbDrugsDiary(context);
+
+        if (dbDrugsDiary.getDrugsList().size() == 0){
+
+            String [] drugsList = {"Alcohol",
+                    "Cannabis",
+                    "Cocaína",
+                    "Éxtasis",
+                    "Juego",
+                    "Nicotina",
+                    "Pornografia"
+            };
+
+
+            for(int i = 0; i < drugsList.length; i++){
+                Long id = dbDrugsDiary.insertDrug(drugsList[i]);
+            }
+
+        }
+
+    }
+
     public String health(){
-        return user.getUserInformation();
+        return "Estoy en la controladora";
     }
 
     public void popPupMesage(Context context,String txt){
