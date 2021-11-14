@@ -1,8 +1,9 @@
 package com.example.liferegisterdiary;
 
+
 import java.util.Calendar;
 
-public class TimeController {
+public class TimeController{
 
 
     public String [] daysOfWeek = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"};
@@ -11,6 +12,32 @@ public class TimeController {
 
     public TimeController(){
 
+    }
+
+    /*
+    * Enter a mounth name and retrun the number of days of these mounth
+    *
+    * */
+    public int getNumberDaysOfMounthX(String monthname){
+        int k = 0;
+        while(monthname != months[k]){
+            k = k + 1;
+        }
+
+        return numberOfDaysMonths[k];
+    }
+
+    /*
+    * Enter a name of mount and return a number
+    * En = 0
+    * Feb = 1
+    * */
+    public int getNomberOfMountX(String monthname){
+        int k = 0;
+        while(monthname != months[k]){
+            k = k + 1;
+        }
+        return k;
     }
 
     public String[] getDaysOfWeek() {
@@ -62,6 +89,20 @@ public class TimeController {
 
     public int getDaysOfCurrentMounth(){
         return numberOfDaysMonths[Calendar.getInstance().get(Calendar.MONTH)];
+    }
+
+    /*
+    * return a list int to most commond years to birddate
+    * */
+    public int [] getCommonYears(){
+
+        int [] list = new int[100];
+
+        for(int i=0; i < 100; i++){
+            list[i] = Calendar.getInstance().get(Calendar.YEAR) - i;
+        }
+
+        return list;
     }
 
     public int getDaysOfMounthX(int m){

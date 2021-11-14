@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.Serializable;
 
 
 /*
@@ -18,7 +19,7 @@ import java.io.OutputStreamWriter;
 * Here you create and read files and folders.
 *
 * */
-public class FileFolderController {
+public class FileFolderController{
 
     Context context;
     public boolean mkdirStatus;

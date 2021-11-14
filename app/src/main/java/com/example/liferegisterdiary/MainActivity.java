@@ -1,18 +1,13 @@
 package com.example.liferegisterdiary;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,17 +41,12 @@ public class MainActivity extends AppCompatActivity {
         //User is register?
         if(!controller.userIsRegister()){
             Intent launchResgisterView = new Intent(getApplicationContext(), Register.class);
-            //Send a main controller
-
-
             startActivity(launchResgisterView);
         }
 
         //Cacth screem elements
         main_output_message = findViewById(R.id.main_output_message);
         showOutputMesagge(controller.health());
-
-
 
         setUpView();
     }
