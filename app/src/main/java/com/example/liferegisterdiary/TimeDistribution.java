@@ -37,7 +37,7 @@ public class TimeDistribution extends AppCompatActivity {
         timeDistributionAdapter = new TimeDistributionAdapter(arrayListItemTimeInversions, context, getSpinerActivities());
         listViewTimeInversion.setAdapter(timeDistributionAdapter);
 
-        for(int i=0;i<=24;i++){
+        for(int i=0;i<24;i++){
             createNewItemTimeInversionAdapter();
         }
     }
