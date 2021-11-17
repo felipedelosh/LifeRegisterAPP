@@ -12,6 +12,7 @@ import java.util.List;
 
 import db.DbDreamDiaryPage;
 import db.DbDrugsDiary;
+import db.DbTimeDistribution;
 import db.DbUser;
 
 /*
@@ -50,6 +51,8 @@ public class Controller implements Parcelable {
         paintBgImage();
         //Charge a list of drugs
         insertDrugsList();
+        //Charge a list of activities
+        insertActivitiesList();
     }
 
     protected Controller(Parcel in) {
@@ -109,10 +112,47 @@ public class Controller implements Parcelable {
             for(int i = 0; i < drugsList.length; i++){
                 Long id = dbDrugsDiary.insertDrug(drugsList[i]);
             }
-
         }
-
     }
+
+    public void insertActivitiesList(){
+        DbTimeDistribution dbTimeDistribution = new DbTimeDistribution(context);
+
+        if (dbTimeDistribution.getActivitiesList().size() == 0){
+
+            String [] ActitivitiesList = {
+                    "alimentación",
+                    "bicicleta",
+                    "compras",
+                    "construir",
+                    "dormir",
+                    "deporte",
+                    "estudiar",
+                    "FAPTIME",
+                    "higiene personal",
+                    "internet",
+                    "ocio",
+                    "leer",
+                    "que haceres domesticos",
+                    "peliculas",
+                    "programar",
+                    "redes sociales",
+                    "sexo",
+                    "trabajar",
+                    "viajar",
+                    "video juegos",
+                    "vida social"
+            };
+
+
+            for(int i = 0; i < ActitivitiesList.length; i++){
+                Long id = dbTimeDistribution.insertActivity(ActitivitiesList[i]);
+            }
+        }
+    }
+
+
+
 
     public String health(){
         return timeController.timeStampH();

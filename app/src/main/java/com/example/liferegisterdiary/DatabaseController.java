@@ -17,6 +17,7 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
     //To tables manage
     public static final String TABLE_PROFILE = "t_profile";
     public static final String TABLE_DRUGS = "t_drugs";
+    public static final String TABLE_ACTIVITIES = "t_activities";
     public static final String TABLE_PERSONAL_PAGE_DIARY = "t_personal_page_diary";
     public static final String TABLE_PERSONAL_DREAM_DIARY = "t_personal_dream_diary";
     public static final String TABLE_PERSONAL_GRATITUDE_DIARY = "t_personal_gratitude_diary";
@@ -41,6 +42,11 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
         db.execSQL("create table if not exists " + TABLE_DRUGS+ "(" +
                 "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "drugName TEXT NOT NULL" +
+                ")");
+
+        db.execSQL("create table if not exists " + TABLE_ACTIVITIES+ "(" +
+                "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "activityName TEXT NOT NULL" +
                 ")");
 
         db.execSQL("create table if not exists " + TABLE_PERSONAL_PAGE_DIARY + "(" +

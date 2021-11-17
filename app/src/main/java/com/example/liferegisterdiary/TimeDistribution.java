@@ -9,9 +9,11 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import Adapters.TimeDistributionAdapter;
 import Models.ItemTimeInversion;
+import db.DbTimeDistribution;
 
 public class TimeDistribution extends AppCompatActivity {
 
@@ -48,14 +50,16 @@ public class TimeDistribution extends AppCompatActivity {
     }
 
     public ArrayList<String> getSpinerActivities(){
-        String [] dataControllerActivities = {"Actividad a", "Actividad b", "Actividad c", "Actividad d"};
+
+        DbTimeDistribution dbTimeDistribution = new DbTimeDistribution(TimeDistribution.this);
+        List<String> dataControllerActivities = dbTimeDistribution.getActivitiesList();
+
 
         ArrayList<String> spinerOptions = new ArrayList<>();
 
-        for(int i=0;i<dataControllerActivities.length;i++){
-            spinerOptions.add(dataControllerActivities[i]);
+        for(int i=0;i<dataControllerActivities.size();i++){
+            spinerOptions.add(dataControllerActivities.get(i));
         }
-
         return spinerOptions;
     }
 }
