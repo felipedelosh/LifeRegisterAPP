@@ -44,20 +44,44 @@ public class DbTimeDistribution extends DatabaseController {
         return id;
     }
 
-
-    public List<String> getActivitiesList(){
-
-        List<String> information = new ArrayList<String>();
+    /*
+     * Insert activity in the day
+     * */
+    public long insertDiaryActivity(String timeStamp, String hour, String activity){
+        long id = 0;
 
         try{
             DatabaseController databaseController = new DatabaseController(context);
             SQLiteDatabase db = databaseController.getWritableDatabase();
 
+            ContentValues values = new ContentValues();
+            values.put("timeStamp", timeStamp);
+            values.put("hour", hour);
+            values.put("activity", activity);
+
+            id = db.insert(TABLE_DAY_TIME_DISTRIBUTION, null, values);
+
+        }catch (Exception e){
+
+        }
+
+        return id;
+    }
+
+
+    public List<String> getActivitiesList() {
+
+        List<String> information = new ArrayList<String>();
+
+        try {
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
             String sql = "SELECT * FROM " + TABLE_ACTIVITIES;
             //information.add(sql);
-            Cursor getActivities = db.rawQuery( sql, null);
+            Cursor getActivities = db.rawQuery(sql, null);
 
-            while(getActivities.moveToNext()){
+            while (getActivities.moveToNext()) {
                 String nameActivities = "";
                 nameActivities = getActivities.getString(1);
                 information.add(nameActivities);
@@ -65,7 +89,7 @@ public class DbTimeDistribution extends DatabaseController {
 
             getActivities.close();
             return information;
-        }catch (Exception e){
+        } catch (Exception e) {
             return information;
         }
 

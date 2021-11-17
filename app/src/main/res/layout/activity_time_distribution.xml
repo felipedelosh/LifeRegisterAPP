@@ -27,6 +27,7 @@
             android:text="@string/app_activity" />
 
         <Button
+            android:id="@+id/saveDiaryActivities"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:shadowColor="@color/blue"

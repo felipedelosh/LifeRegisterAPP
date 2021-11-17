@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -23,35 +24,17 @@ public class TimeDistributionAdapter extends BaseAdapter {
     //Vars to generate a text in Spiner and hour
     public ArrayList<String> spinnerValues;
 
+
     public TimeDistributionAdapter(ArrayList<ItemTimeInversion> arrayListItemTimeInversion, Context context, ArrayList<String> spinnerValues) {
         this.arrayListItemTimeInversion = arrayListItemTimeInversion;
         this.context = context;
         this.spinnerValues = spinnerValues;
+
     }
 
-    /**
-     * Enter a integer (0, 23)
-     * And convert this a 6 am  ... 12 pm... 5 am hour
-     * return a String with 12h
-     * */
-    private String getHour(int iterator){
 
-        String formatAMPM = "am";
-        int hour12h = 6;
-
-        if((hour12h + iterator) < 13){
-            hour12h = hour12h + iterator;
-        }else{
-            hour12h = iterator - 6;
-            formatAMPM = "pm";
-
-            if ((iterator - 6)>12){
-                hour12h = iterator - 18;
-                formatAMPM = "am";
-            }
-        }
-
-        return String.valueOf(hour12h)+formatAMPM;
+    public ItemTimeInversion getItemX(int i){
+        return (ItemTimeInversion) getItem(i);
     }
 
     @Override
@@ -78,7 +61,7 @@ public class TimeDistributionAdapter extends BaseAdapter {
 
         TextView listViewTimeInversionHourItem = convertView.findViewById(R.id.listViewTimeInversionHourItem);
         //Put hour
-        String hour = getHour(position);
+        String hour = getItemX(position).getHour();
         if (hour.length() == 3){
             listViewTimeInversionHourItem.setText(hour+"   >>");
         }else {
@@ -88,7 +71,7 @@ public class TimeDistributionAdapter extends BaseAdapter {
         Spinner listViewTimeInversionSpinnerActivity = convertView.findViewById(R.id.listViewTimeInversionSpinnerActivity);
         ArrayAdapter<String> sprAdapter = new ArrayAdapter<>(context, R.layout.support_simple_spinner_dropdown_item, spinnerValues);
         listViewTimeInversionSpinnerActivity.setAdapter(sprAdapter);
-
+        getItemX(position).setSpinner(listViewTimeInversionSpinnerActivity);
 
         return convertView;
     }

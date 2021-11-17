@@ -55,7 +55,6 @@ public class EconomyAdapter extends BaseAdapter {
         listViewEconomyNumberItem.setText((position+1)+": ");
 
 
-
         return convertView;
     }
 }
