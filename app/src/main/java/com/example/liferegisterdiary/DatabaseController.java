@@ -17,6 +17,7 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
     //To tables manage
     public static final String TABLE_PROFILE = "t_profile";
     public static final String TABLE_DRUGS = "t_drugs";
+    public static final String TABLE_FEELINGS = "t_feelings";
     public static final String TABLE_ACTIVITIES = "t_activities";
     public static final String TABLE_PERSONAL_PAGE_DIARY = "t_personal_page_diary";
     public static final String TABLE_PERSONAL_DREAM_DIARY = "t_personal_dream_diary";
@@ -24,6 +25,7 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
     public static final String TABLE_PERSONAL_DRUGS_COUNTER = "t_personal_drugs_counter";
     public static final String TABLE_DRUGS_DIARY = "t_drugs_diary";
     public static final String TABLE_DAY_TIME_DISTRIBUTION = "t_day_time_distribution";
+    public static final String TABLE_PERSONAL_FEELING_COUNTER = "t_personal_drug_counter";
 
 
     public DatabaseController(@Nullable Context context) {
@@ -48,6 +50,11 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
         db.execSQL("create table if not exists " + TABLE_ACTIVITIES+ "(" +
                 "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "activityName TEXT NOT NULL" +
+                ")");
+
+        db.execSQL("create table if not exists " + TABLE_FEELINGS+ "(" +
+                "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "feelingName TEXT NOT NULL" +
                 ")");
 
         db.execSQL("create table if not exists " + TABLE_PERSONAL_PAGE_DIARY + "(" +
@@ -92,6 +99,12 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
                 "hour TEXT NOT NULL," +
                 "activity TEXT NOT NULL," +
                 "PRIMARY KEY (timeStamp, hour) " +
+                ")");
+
+        db.execSQL("create table if not exists " + TABLE_PERSONAL_FEELING_COUNTER + "(" +
+                "timeStamp TEXT NOT NULL," +
+                "feelingName TEXT NOT NULL," +
+                "PRIMARY KEY (timeStamp) " +
                 ")");
 
     }

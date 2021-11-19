@@ -12,6 +12,7 @@ import java.util.List;
 
 import db.DbDreamDiaryPage;
 import db.DbDrugsDiary;
+import db.DbFeeling;
 import db.DbTimeDistribution;
 import db.DbUser;
 
@@ -53,6 +54,8 @@ public class Controller implements Parcelable {
         insertDrugsList();
         //Charge a list of activities
         insertActivitiesList();
+        //Charge a list of feelings
+        insertFeelingsList();
     }
 
     protected Controller(Parcel in) {
@@ -149,9 +152,51 @@ public class Controller implements Parcelable {
                 Long id = dbTimeDistribution.insertActivity(ActitivitiesList[i]);
             }
         }
+
+
     }
 
 
+    public void insertFeelingsList(){
+        DbFeeling dbFeeling = new DbFeeling(context);
+
+        if(dbFeeling.getFeelingsList().size() == 0) {
+
+            String[] ActitivitiesList = {
+                    "alegría",
+                    "amor",
+                    "tristeza",
+                    "tranquilidad",
+                    "ira",
+                    "miedo",
+                    "hostilidad",
+                    "frustración",
+                    "odio",
+                    "culpa",
+                    "celos",
+                    "felicidad",
+                    "esperanza",
+                    "asco",
+                    "motivado",
+                    "suicida",
+                    "orgullozo",
+                    "vergüenza",
+                    "drogado",
+                    "trabado",
+                    "alcoholizado",
+                    "satisfecho"
+            };
+
+            for(int i = 0; i < ActitivitiesList.length; i++){
+                Long id = dbFeeling.insertFeeling(ActitivitiesList[i]);
+            }
+
+        }
+
+
+
+
+    }
 
 
     public String health(){
