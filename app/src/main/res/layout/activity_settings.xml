@@ -26,22 +26,26 @@
         android:layout_marginTop="50dp">
 
         <Button
+            android:id="@+id/btnSettingsProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btnEditProfile"/>
 
         <Button
+            android:id="@+id/btnSettingsActivities"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btnEditActivities"/>
 
         <Button
+            android:id="@+id/btnSettingsFeelings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btnEditFeelings"/>
 
 
         <Button
+            android:id="@+id/btnSettingsDrugs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btnEditDrugList"/>

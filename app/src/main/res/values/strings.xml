@@ -1,5 +1,4 @@
 <resources>
-    <!-- Intercace Strings -->
     <string name="app_name">Life register: Diario</string>
     <string name="app_diary">Diario</string>
     <string name="app_calendar">calendario</string>
@@ -11,7 +10,17 @@
     <string name="app_settings">Configuraciones</string>
     <string name="app_help">Ayuda</string>
     <string name="app_hour">Hora</string>
+    <string name="app_day">día</string>
+    <string name="app_month">mes</string>
+    <string name="app_year">año</string>
+    <string name="app_gender_male">masculino</string>
+    <string name="app_gender_female">femenino</string>
     <string name="app_activity">Actividad</string>
+    <string name="app_user_description">Descripción del usuario: </string>
+    <string name="app_username">Nombre de usuario: </string>
+    <string name="app_sex">Genero: </string>
+    <string name="app_age">Edad: </string>
+    <string name="app_birth_date">Fecha de nacimiento: </string>
     <string name="app_banner_feelings">Como te sentiste hoy?</string>
     <string name="app_register_mesage_1">Hola, Soy tu diario...</string>
     <string name="app_register_mesage_2">Bienvenido nuevo usuario.\n\n- Vamos a compartir.</string>
@@ -34,12 +43,14 @@
     <string name="output">This is a system message: ....</string>
     <string name="btnLoad">Cargar</string>
     <string name="btnSave">Guardar</string>
+    <string name="btnCancel">Cancelar</string>
     <string name="btnContinue">Continuar</string>
     <string name="btnEditProfile">Perfil</string>
     <string name="btnEditActivities">Actividades</string>
     <string name="btnEditFeelings">Sentimientos</string>
     <string name="btnEditDrugList">Listado de drogas</string>
+    <string name="loremIpsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
 
-    <!-- Psicotrope Strings -->
+
 
 </resources>

@@ -79,6 +79,26 @@ public class TimeController{
         return String.valueOf(hour)+":"+String.valueOf(minut);
     }
 
+    public int howManyYearsHavPassed(int day, int mounth, int year){
+
+        int k = Calendar.getInstance().get(Calendar.YEAR) - year;
+
+
+
+        if(mounth > Calendar.getInstance().get(Calendar.MONTH) ){
+            k = k + 1;
+        }
+
+        if(mounth == Calendar.getInstance().get(Calendar.MONTH) ) {
+
+            if(day > Calendar.getInstance().get(Calendar.DAY_OF_MONTH)){
+                k = k + 1;
+            }
+        }
+
+        return k;
+    }
+
     /*
     * Return a hour 10 min rounded
     * example 1:36 = 1:30; 1:00 = 1:00, 1:12 = 1:10

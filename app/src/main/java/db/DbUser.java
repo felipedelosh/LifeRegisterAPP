@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 
 import com.example.liferegisterdiary.DatabaseController;
 
+import Models.User;
+
 /*
 * This is create top inser a user information
 * */
@@ -60,6 +62,63 @@ public class DbUser extends DatabaseController {
         }catch (Exception e){
             return "";
         }
+    }
+
+    /*
+     * model User()
+     * */
+    public User getUser(){
+        User user = null;
+        try{
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            Cursor getUser = db.rawQuery("SELECT * FROM " + TABLE_PROFILE + " LIMIT 1 ", null);
+            getUser.moveToFirst();
+
+            user = new User(getUser.getString(0),
+                    getUser.getString(1),
+                    getUser.getInt(2),
+                    getUser.getInt(3),
+                    getUser.getInt(4));
+
+            getUser.close();
+            return user;
+        }catch (Exception e){
+            return user;
+        }
+    }
+
+    public long editUser(String username, String sex, int yearBirthDate, int monthBirthDate, int dayBirthDate){
+
+        long id = 0;
+
+        try{
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+
+            //Drop all table user
+            String sql = "DELETE FROM " + TABLE_PROFILE;
+            db.execSQL(sql);
+
+            ContentValues values = new ContentValues();
+            values.put("username", username);
+            values.put("sex", sex);
+            values.put("yearBirthDate", yearBirthDate);
+            values.put("monthBirthDate", monthBirthDate);
+            values.put("dayBirthDate", dayBirthDate);
+
+
+
+            id = db.insert(TABLE_PROFILE, null, values);
+
+        }catch (Exception e){
+
+        }
+
+        return id;
+
     }
 
 
