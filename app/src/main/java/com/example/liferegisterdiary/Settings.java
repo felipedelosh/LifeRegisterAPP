@@ -15,7 +15,6 @@ public class Settings extends AppCompatActivity {
     private Button btnSettingsDrugs;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,21 +37,24 @@ public class Settings extends AppCompatActivity {
         btnSettingsActivities.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent launchActivitiesConfigView = new Intent(getApplicationContext(), ActivitiesConfigure.class);
+                startActivity(launchActivitiesConfigView);
             }
         });
         btnSettingsFeelings = findViewById(R.id.btnSettingsFeelings);
         btnSettingsFeelings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent launchFeelingsConfigView = new Intent(getApplicationContext(), FeelingsConfigure.class);
+                startActivity(launchFeelingsConfigView);
             }
         });
         btnSettingsDrugs = findViewById(R.id.btnSettingsDrugs);
         btnSettingsDrugs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent launchDrugsConfigView = new Intent(getApplicationContext(), DrugsConfigure.class);
+                startActivity(launchDrugsConfigView);
             }
         });
     }

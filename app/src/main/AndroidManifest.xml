@@ -15,6 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
+            android:name=".DrugsConfigure"
+            android:exported="false" />
+        <activity
+            android:name=".FeelingsConfigure"
+            android:exported="false" />
+        <activity
+            android:name=".ActivitiesConfigure"
+            android:exported="false" />
+        <activity
             android:name=".ProfileConfigure"
             android:exported="false" />
         <activity

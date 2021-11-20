@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -92,32 +90,6 @@ public class TimeDistribution extends AppCompatActivity {
                 }
 
                 Toast.makeText(TimeDistribution.this, "Save: "+count, Toast.LENGTH_LONG).show();
-
-
-                //The day always have 24hours
-                //for(int i=0;i<13;i++) {
-                    //String hour = timeDistributionAdapter.getItemX(i).getHour();
-                    //tempH = tempH + hour + "/";
-                    //String activity = timeDistributionAdapter.getItemX(i).getSpinner().getSelectedItem().toString().trim();
-
-                    //Long id = dbTimeDistribution.insertDiaryActivity(timeStamp, hour, activity);
-
-                    //if (id > 0) {
-                    //    allRegistedInserted = allRegistedInserted && true;
-                    //} else {
-                    //    allRegistedInserted = allRegistedInserted && true;
-                    //}
-
-                    //if(allRegistedInserted){
-                    //    Toast.makeText(TimeDistribution.this, "Save all", Toast.LENGTH_LONG).show();
-                    //}else{
-                    //    Toast.makeText(TimeDistribution.this, "Dont´save", Toast.LENGTH_LONG).show();
-                    //}
-
-
-                //}
-
-                //Toast.makeText(TimeDistribution.this, tempH, Toast.LENGTH_LONG).show();
 
             }
         });

@@ -83,7 +83,6 @@ public class ProfileConfigure extends AppCompatActivity {
                         sex = "female";
                     }
 
-
                     int yearBirthDate = Integer.parseInt(spinnerYearToBirthDate.getSelectedItem().toString().trim());
                     int monthBirthDate = spinnerMonthToBirthDate.getSelectedItemPosition();
                     int dayBirthDate = Integer.parseInt(spinnerDayToBirthDate.getSelectedItem().toString().trim());
