@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
+            android:name=".Calendary"
+            android:exported="false" />
+        <activity
             android:name=".DrugsConfigure"
             android:exported="false" />
         <activity

@@ -28,6 +28,7 @@
     <string name="app_register_mesage_4">Dime cual es tu nombre?</string>
     <string name="app_register_mesage_5">Eres chico o chica?</string>
     <string name="app_register_mesage_6">Fecha de nacimiento</string>
+    <string name="app_mounth_name">Mes actual</string>
     <string name="lbl_activities_list">Lista de actividades: </string>
     <string name="lbl_feelings_list">Lista de sentimientos: </string>
     <string name="lbl_drugs_list">Lista de drogas: </string>

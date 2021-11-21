@@ -9,6 +9,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity {
 
     public Controller controller;
@@ -66,7 +68,8 @@ public class MainActivity extends AppCompatActivity {
         btn_calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent launchCalendaryView = new Intent(getApplicationContext(), Calendary.class);
+                startActivity(launchCalendaryView);
             }
         });
         btn_drug_diary = findViewById(R.id.btn_drug_diary);

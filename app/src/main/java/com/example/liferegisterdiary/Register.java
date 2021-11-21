@@ -242,7 +242,11 @@ public class Register extends AppCompatActivity{
         spinnerRegisterDays.setSelection(12);
         spinnerRegisterMouhtns.setSelection(1);
         int k = Integer.valueOf(timeController.getCurrentYear());
-        spinnerRegisterYear.setSelection(k - 1991);
+        if(k>99){
+            spinnerRegisterYear.setSelection(k - 1991);
+        }
+        spinnerRegisterYear.setSelection(0);
     }
+
 
 }

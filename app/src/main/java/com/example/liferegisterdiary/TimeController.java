@@ -146,6 +146,17 @@ public class TimeController{
         return numberOfDaysMonths[m];
     }
 
+    public void setDaysOfWeek(String[] daysOfWeek) {
+        this.daysOfWeek = daysOfWeek;
+    }
+
+    public void setMonths(String[] months) {
+        this.months = months;
+    }
+
+    public void setNumberOfDaysMonths(int[] numberOfDaysMonths) {
+        this.numberOfDaysMonths = numberOfDaysMonths;
+    }
 
     public String health(){
         return "Estoy en el time controller..."+timeStamp();

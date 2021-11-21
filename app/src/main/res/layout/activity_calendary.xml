@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    tools:context=".Calendary">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_height="wrap_content">
+
+    <Spinner
+        android:id="@+id/spinnerMount"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/btn_mounth_01"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="#"/>
+
+        <Button
+            android:id="@+id/btn_mounth_02"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="#"/>
+
+
+        <Button
+            android:id="@+id/btn_mounth_03"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="#"/>
+
+        <Button
+            android:id="@+id/btn_mounth_04"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="#"/>
+
+
+        <Button
+            android:id="@+id/btn_mounth_05"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="#"/>
+
+        <Button
+            android:id="@+id/btn_mounth_06"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="#"/>
+
+
+        <Button
+            android:id="@+id/btn_mounth_07"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="#"/>
+
+        <Button
+            android:id="@+id/btn_mounth_08"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="#"/>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btn_mounth_09"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+            <Button
+                android:id="@+id/btn_mounth_10"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+
+            <Button
+                android:id="@+id/btn_mounth_11"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+            <Button
+                android:id="@+id/btn_mounth_12"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+
+            <Button
+                android:id="@+id/btn_mounth_13"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+            <Button
+                android:id="@+id/btn_mounth_14"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+
+            <Button
+                android:id="@+id/btn_mounth_15"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+            <Button
+                android:id="@+id/btn_mounth_16"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btn_mounth_17"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+            <Button
+                android:id="@+id/btn_mounth_18"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+
+            <Button
+                android:id="@+id/btn_mounth_19"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+            <Button
+                android:id="@+id/btn_mounth_20"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+
+            <Button
+                android:id="@+id/btn_mounth_21"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+            <Button
+                android:id="@+id/btn_mounth_22"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+
+            <Button
+                android:id="@+id/btn_mounth_23"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+            <Button
+                android:id="@+id/btn_mounth_24"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btn_mounth_25"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+            <Button
+                android:id="@+id/btn_mounth_26"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+
+            <Button
+                android:id="@+id/btn_mounth_27"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+            <Button
+                android:id="@+id/btn_mounth_28"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+
+            <Button
+                android:id="@+id/btn_mounth_29"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+            <Button
+                android:id="@+id/btn_mounth_30"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+
+            <Button
+                android:id="@+id/btn_mounth_31"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</LinearLayout>
