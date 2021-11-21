@@ -51,8 +51,6 @@ public class Calendary extends AppCompatActivity {
     private Button btn_mounth_31;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
