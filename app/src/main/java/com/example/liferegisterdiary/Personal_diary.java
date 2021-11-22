@@ -59,6 +59,7 @@ public class Personal_diary extends AppCompatActivity {
                     if(id>0){
                         Toast.makeText(Personal_diary.this, "Save page", Toast.LENGTH_LONG).show();
                         txtInsertTitlePageDiary.setText("");
+                        txtInsertHistoryPageDiary.setText("");
                     }else{
                         Toast.makeText(Personal_diary.this, "NOT save", Toast.LENGTH_LONG).show();
                     }

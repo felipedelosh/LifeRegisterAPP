@@ -34,7 +34,8 @@ public class Economy extends AppCompatActivity {
         btn_economy_box.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent launchBoxView = new Intent(getApplicationContext(), BoxEconomy.class);
+                startActivity(launchBoxView);
             }
         });
     }
