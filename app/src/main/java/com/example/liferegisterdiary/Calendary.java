@@ -10,6 +10,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Calendary extends AppCompatActivity {
 
@@ -69,13 +70,8 @@ public class Calendary extends AppCompatActivity {
 
     public void setSpinnerMonthsOptions(){
 
-        String options = "";
-
-        for(int i=0;i<timeController.getMonths().length;i++){
-            options = options + " " + timeController.getMonths()[i];
-        }
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, timeController.getMonths());
+        List<String> months = timeController.getCurrentMonths();
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, months);
         spinnerMount.setAdapter(adapter);
 
     }

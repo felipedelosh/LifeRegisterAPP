@@ -1,7 +1,10 @@
 package com.example.liferegisterdiary;
 
 
+import java.time.Month;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class TimeController{
 
@@ -50,6 +53,27 @@ public class TimeController{
 
     public int[] getNumberOfDaysMonths() {
         return numberOfDaysMonths;
+    }
+
+    /***
+     * Return a months to past + current month
+     * @return [monthx, MonthX, ... Currently monthX]
+     */
+    public List<String> getCurrentMonths(){
+
+        List<String> currentM = new ArrayList<String>();
+
+        int nroCurrentM = Calendar.getInstance().get(Calendar.MONTH);
+
+        if(nroCurrentM>0){
+            for(int i=0;i<=nroCurrentM;i++){
+                currentM.add(months[i]);
+            }
+        }else{
+            currentM.add(months[0]);
+        }
+
+        return  currentM;
     }
 
     public String getCurrentYear(){
