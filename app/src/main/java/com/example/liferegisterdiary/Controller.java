@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import db.DbBox;
 import db.DbDreamDiaryPage;
 import db.DbDrugsDiary;
 import db.DbFeeling;
@@ -200,7 +201,7 @@ public class Controller implements Parcelable {
 
 
     public String health(){
-        return timeController.timeStampH();
+        return timeController.timeStampH()+"\n"+timeController.timeStamp();
     }
 
     public void popPupMesage(Context context,String txt){

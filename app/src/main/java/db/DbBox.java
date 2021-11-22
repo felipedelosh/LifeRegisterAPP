@@ -2,11 +2,15 @@ package db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
 import com.example.liferegisterdiary.DatabaseController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DbBox extends DatabaseController {
 
@@ -58,6 +62,61 @@ public class DbBox extends DatabaseController {
         }
 
         return id;
+    }
+
+
+    /*
+    *
+    * */
+    public List<Integer> getAllCurrentValuesOfLitleBox(String timeStamp){
+
+        List<Integer> information = new ArrayList<Integer>();
+
+        try{
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            String sql = "SELECT * FROM " + TABLE_PERSONAL_BOX_LITLE + " WHERE timeStampH LIKE \'" + timeStamp + "%\'";
+            //information.add(sql);
+            Cursor getValues = db.rawQuery( sql, null);
+
+            while(getValues.moveToNext()){
+
+                int value = getValues.getInt(1);
+                information.add(value);
+            }
+
+            getValues.close();
+            return information;
+        }catch (Exception e){
+            return information;
+        }
+
+    }
+
+
+    public List<Integer> getAllCurrentValuesOfBigBox(String timeStamp){
+        List<Integer> information = new ArrayList<Integer>();
+
+        try{
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            String sql = "SELECT * FROM " + TABLE_PERSONAL_BOX_BIG + " WHERE timeStampH LIKE \'" + timeStamp + "%\'";
+            //information.add(sql);
+            Cursor getValues = db.rawQuery( sql, null);
+
+            while(getValues.moveToNext()){
+
+                int value = getValues.getInt(1);
+                information.add(value);
+            }
+
+            getValues.close();
+            return information;
+        }catch (Exception e){
+            return information;
+        }
     }
 
 

@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import db.DbBox;
 
 public class BoxEconomy extends AppCompatActivity {
@@ -18,6 +17,7 @@ public class BoxEconomy extends AppCompatActivity {
     private Button btnUpdateLitleBox;
     private Button btnUpdateBigBox;
     private EditText txtInsertBigBoxValue;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class BoxEconomy extends AppCompatActivity {
                if(validatevalue(value)){
 
                    String timeStampH = timeController.timeStampH();
-                   Long id = dbBox.insertBoxLitleCount(timeStampH, 100);
+                   Long id = dbBox.insertBoxLitleCount(timeStampH, Integer.parseInt(value));
                    if(id>0){
                        txtInsertLitleBoxValue.setText("");
                        Toast.makeText(BoxEconomy.this, "accaaaa", Toast.LENGTH_LONG).show();
@@ -68,7 +68,7 @@ public class BoxEconomy extends AppCompatActivity {
                 if(validatevalue(value)){
 
                     String timeStampH = timeController.timeStampH();
-                    Long id = dbBox.insertBoxBigCount(timeStampH, 100);
+                    Long id = dbBox.insertBoxBigCount(timeStampH, Integer.parseInt(value));
                     if(id>0){
                         txtInsertBigBoxValue.setText("");
                         Toast.makeText(BoxEconomy.this, "accaaaa", Toast.LENGTH_LONG).show();

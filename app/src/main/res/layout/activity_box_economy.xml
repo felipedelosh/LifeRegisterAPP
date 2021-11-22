@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="@string/app_litle_box_status"/>
+            android:text="@string/app_big_box_status"/>
 
         <EditText
             android:id="@+id/txtInsertBigBoxValue"
@@ -58,8 +58,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btnSave"/>
-
     </LinearLayout>
+
+    <GraphicsProcessors.graphicsProccesorBox
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    </GraphicsProcessors.graphicsProccesorBox>
 
 
 
