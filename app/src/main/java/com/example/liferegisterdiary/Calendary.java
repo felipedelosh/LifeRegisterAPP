@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,14 +68,23 @@ public class Calendary extends AppCompatActivity {
         loadAllButtons();
 
 
+        spinnerMount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+               refeshDays();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     public void setSpinnerMonthsOptions(){
-
         List<String> months = timeController.getCurrentMonths();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, months);
         spinnerMount.setAdapter(adapter);
-
     }
 
 
@@ -148,28 +159,27 @@ public class Calendary extends AppCompatActivity {
     }
 
     public void refeshDays(){
-        String days = spinnerMount.getSelectedItem().toString().toString();
-
-        int daysNumber = timeController.getNumberDaysOfMounthX(days);
+        String monthName = spinnerMount.getSelectedItem().toString().trim();
+        int daysNumber = timeController.getNumberDaysOfMounthX(monthName);
 
         if(daysNumber == 31){
+            btnsDays.get(28).setVisibility(View.VISIBLE);
             btnsDays.get(29).setVisibility(View.VISIBLE);
             btnsDays.get(30).setVisibility(View.VISIBLE);
-            btnsDays.get(31).setVisibility(View.VISIBLE);
         }
 
 
         if(daysNumber == 30){
+            btnsDays.get(28).setVisibility(View.VISIBLE);
             btnsDays.get(29).setVisibility(View.VISIBLE);
-            btnsDays.get(30).setVisibility(View.VISIBLE);
-            btnsDays.get(31).setVisibility(View.INVISIBLE);
+            btnsDays.get(30).setVisibility(View.INVISIBLE);
         }
 
 
         if(daysNumber == 28){
-            btnsDays.get(29).setVisibility(View.VISIBLE);
+            btnsDays.get(28).setVisibility(View.INVISIBLE);
+            btnsDays.get(29).setVisibility(View.INVISIBLE);
             btnsDays.get(30).setVisibility(View.INVISIBLE);
-            btnsDays.get(31).setVisibility(View.INVISIBLE);
         }
     }
 
