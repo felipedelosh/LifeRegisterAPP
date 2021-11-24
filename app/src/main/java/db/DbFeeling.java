@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import com.example.liferegisterdiary.DatabaseController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DbFeeling extends DatabaseController {
@@ -87,6 +88,46 @@ public class DbFeeling extends DatabaseController {
         }catch (Exception e){
             return information;
         }
+
+    }
+
+    /***
+     *
+     */
+    public HashMap<String, Integer> getFeelingReport(String timeStamp){
+
+
+
+        HashMap<String, Integer> data = new HashMap<>();
+
+        try{
+
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            String sql = "SELECT feelingName, COUNT(*) FROM " + TABLE_PERSONAL_FEELING_COUNTER + " WHERE timeStamp LIKE \'" + timeStamp + "%\' GROUP BY feelingName";
+            //information.add(sql);
+            Cursor getValues = db.rawQuery( sql, null);
+            while(getValues.moveToNext()){
+                String key = getValues.getString(0);
+                int value = getValues.getInt(1);
+                //data.put(key, value);
+            }
+
+            data.put("amor", 10);
+            data.put("ira", 2);
+            data.put("felicidad", 24);
+            data.put("ansiedad", 3);
+            data.put("motivación", 11);
+            data.put("satisfecho", 9);
+
+            getValues.close();
+
+            return data;
+        }catch (Exception e){
+            return data;
+        }
+
 
     }
 

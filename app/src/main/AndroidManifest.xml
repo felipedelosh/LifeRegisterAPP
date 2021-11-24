@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
+            android:name=".FeelingsGraphics"
+            android:exported="false" />
+        <activity
             android:name=".BoxEconomy"
             android:exported="false" />
         <activity
