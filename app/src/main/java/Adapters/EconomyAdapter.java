@@ -48,9 +48,9 @@ public class EconomyAdapter extends BaseAdapter {
             }
 
         TextView listViewEconomyNumberItem = convertView.findViewById(R.id.listViewEconomyNumberItem);
-        EditText listViewEconomyConcept = convertView.findViewById(R.id.listViewEconomyConcept);
-        EditText listViewEconomyDebit = convertView.findViewById(R.id.listViewEconomyDebit);
-        EditText listViewEconomyCredit = convertView.findViewById(R.id.listViewEconomyCredit);
+        //EditText listViewEconomyConcept = convertView.findViewById(R.id.listViewEconomyConcept);
+        //EditText listViewEconomyDebit = convertView.findViewById(R.id.listViewEconomyDebit);
+        //EditText listViewEconomyCredit = convertView.findViewById(R.id.listViewEconomyCredit);
 
         listViewEconomyNumberItem.setText((position+1)+": ");
 

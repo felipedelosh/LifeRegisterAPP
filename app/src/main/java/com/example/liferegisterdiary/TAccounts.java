@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import Adapters.EconomyAdapter;
 import Models.ItemTaccont;
@@ -39,21 +42,12 @@ public class TAccounts extends AppCompatActivity {
         spinner_mounth = findViewById(R.id.spinner_mounth);
         listViewEconomy = findViewById(R.id.listViewEconomy);
 
+        putAMonthsInSpinner();
         //Put all days of current mounth
-        setSpinnerDaysOfMount(timeController.getNumberOfCurrentMounth());
-        //Put a day in spinner
-        spinner_days.setSelection(timeController.getCurrentDayNumberOfMount()-1);
-
-
-        spinner_mounth = findViewById(R.id.spinner_mounth);
-        String [] spnerMon = new String[12];
-        for(int i=0;i<12;i++){
-            spnerMon[i] = timeController.getMonths()[i];
-        }
-        ArrayAdapter <String> adapterSpinnerMounth = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, spnerMon);
-        spinner_mounth.setAdapter(adapterSpinnerMounth);
-        //Put a Mounth in spinner
+        refreshDaysOfSpinner();
+        //Put currently mont in spinner
         spinner_mounth.setSelection(timeController.getNumberOfCurrentMounth());
+
 
         //Generate Taccount items
         arrayTaccounts = new ArrayList<>();
@@ -62,6 +56,20 @@ public class TAccounts extends AppCompatActivity {
         for(int i=0;i<10;i++){
             createNewTAccountsItem();
         }
+
+        spinner_mounth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+               refreshDaysOfSpinner();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
     }
 
 
@@ -70,20 +78,35 @@ public class TAccounts extends AppCompatActivity {
         arrayTaccounts.add(itemTaccont);
     }
 
-    /*
-    * Enter a number of mounth enuary 0, february = 1 ...  december = 12
-    * And the Spriner spr set a days of mount enuary = 31 february = 28 · Always Novenver = 30
-    * */
-    public void setSpinnerDaysOfMount(int mounth){
-        spinner_days = findViewById(R.id.spinner_days);
-        int allDayOfMounth = timeController.getDaysOfMounthX(mounth);
-        String [] spnerDays = new String[allDayOfMounth];
 
-        for(int i=0;i<allDayOfMounth;i++){
+    public void putAMonthsInSpinner(){
+        spinner_mounth = findViewById(R.id.spinner_mounth);
+        List<String> months = timeController.getCurrentMonths();
+        ArrayAdapter <String> adapterSpinnerMounth = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, months);
+        spinner_mounth.setAdapter(adapterSpinnerMounth);
+        //Put a Mounth in spinner
+        spinner_mounth.setSelection(timeController.getNumberOfCurrentMounth());
+    }
+
+    public void refreshDaysOfSpinner(){
+
+        String nameMonth = spinner_mounth.getSelectedItem().toString().trim();
+        int days = timeController.getNumberDaysOfMounthX(nameMonth);
+
+        String [] spnerDays = new String[days];
+        for(int i=0;i<days;i++){
             spnerDays[i] = String.valueOf(i+1);
         }
 
         ArrayAdapter <String> adapterSpinnerDays = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, spnerDays);
         spinner_days.setAdapter(adapterSpinnerDays);
+
+        //If currentle month put currentle day
+        if(nameMonth == timeController.getCurrentMonth()){
+            spinner_days.setSelection(timeController.getCurrentDayNumberOfMount()-1);
+        }
+
     }
+
+
 }

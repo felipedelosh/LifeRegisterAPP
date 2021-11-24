@@ -96,8 +96,6 @@ public class DbFeeling extends DatabaseController {
      */
     public HashMap<String, Integer> getFeelingReport(String timeStamp){
 
-
-
         HashMap<String, Integer> data = new HashMap<>();
 
         try{
@@ -111,18 +109,10 @@ public class DbFeeling extends DatabaseController {
             while(getValues.moveToNext()){
                 String key = getValues.getString(0);
                 int value = getValues.getInt(1);
-                //data.put(key, value);
+                data.put(key, value);
             }
 
-            data.put("amor", 10);
-            data.put("ira", 2);
-            data.put("felicidad", 24);
-            data.put("ansiedad", 3);
-            data.put("motivación", 11);
-            data.put("satisfecho", 9);
-
             getValues.close();
-
             return data;
         }catch (Exception e){
             return data;
