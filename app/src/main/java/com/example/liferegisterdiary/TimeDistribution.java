@@ -50,7 +50,6 @@ public class TimeDistribution extends AppCompatActivity {
             createNewItemTimeInversionAdapter(i);
         }
 
-
         setUpView();
     }
 

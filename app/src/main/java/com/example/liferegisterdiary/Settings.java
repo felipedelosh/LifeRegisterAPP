@@ -13,6 +13,7 @@ public class Settings extends AppCompatActivity {
     private Button btnSettingsActivities;
     private Button btnSettingsFeelings;
     private Button btnSettingsDrugs;
+    private Button btnSettingsPassword;
 
 
     @Override
@@ -57,5 +58,18 @@ public class Settings extends AppCompatActivity {
                 startActivity(launchDrugsConfigView);
             }
         });
+
+        btnSettingsPassword = findViewById(R.id.btnSettingsPassword);
+        btnSettingsPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent launchPasswordView = new Intent(getApplicationContext(), Password.class);
+                startActivity(launchPasswordView);
+            }
+        });
+
+
+
+
     }
 }

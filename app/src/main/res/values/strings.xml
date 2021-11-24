@@ -20,6 +20,7 @@
     <string name="app_username">Nombre de usuario: </string>
     <string name="app_sex">Genero: </string>
     <string name="app_age">Edad: </string>
+    <string name="app_enter_password">Ingrese password: </string>
     <string name="app_birth_date">Fecha de nacimiento: </string>
     <string name="app_banner_feelings">Como te sentiste hoy?</string>
     <string name="app_register_mesage_1">Hola, Soy tu diario...</string>
