@@ -80,7 +80,7 @@ public class TimeDistribution extends AppCompatActivity {
                             allRegistedInserted = allRegistedInserted && true;
                             count = count + 1;
                         } else {
-                            allRegistedInserted = allRegistedInserted && true;
+                            allRegistedInserted = allRegistedInserted && false;
                         }
 
                     }catch (Exception e){

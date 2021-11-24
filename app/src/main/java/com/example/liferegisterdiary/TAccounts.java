@@ -69,12 +69,11 @@ public class TAccounts extends AppCompatActivity {
             }
         });
 
-
     }
 
 
     public void createNewTAccountsItem(){
-        ItemTaccont itemTaccont = new ItemTaccont("", "", 0, 0);
+        ItemTaccont itemTaccont = new ItemTaccont(0, "", 0, 0);
         arrayTaccounts.add(itemTaccont);
     }
 
@@ -105,7 +104,6 @@ public class TAccounts extends AppCompatActivity {
         if(nameMonth == timeController.getCurrentMonth()){
             spinner_days.setSelection(timeController.getCurrentDayNumberOfMount()-1);
         }
-
     }
 
 

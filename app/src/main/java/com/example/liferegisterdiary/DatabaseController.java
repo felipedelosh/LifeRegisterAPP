@@ -133,6 +133,11 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
         onCreate(db);
     }
 
+    public void insertDataDemo(){
+
+
+    }
+
     public String healt(){
         return "Estoy en el controlador de base de datos";
     }

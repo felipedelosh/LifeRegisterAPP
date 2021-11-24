@@ -25,6 +25,10 @@ public class EconomyAdapter extends BaseAdapter {
         this.context = context;
     }
 
+    public ItemTaccont getItemX(int position){
+        return (ItemTaccont) getItem(position);
+    }
+
     @Override
     public int getCount() {
         return itemsTaccount.size();
@@ -48,9 +52,13 @@ public class EconomyAdapter extends BaseAdapter {
             }
 
         TextView listViewEconomyNumberItem = convertView.findViewById(R.id.listViewEconomyNumberItem);
-        //EditText listViewEconomyConcept = convertView.findViewById(R.id.listViewEconomyConcept);
-        //EditText listViewEconomyDebit = convertView.findViewById(R.id.listViewEconomyDebit);
-        //EditText listViewEconomyCredit = convertView.findViewById(R.id.listViewEconomyCredit);
+        getItemX(position).setIdTaccount(position);
+        EditText listViewEconomyConcept = convertView.findViewById(R.id.listViewEconomyConcept);
+        getItemX(position).setListViewEconomyConcept(listViewEconomyConcept);
+        EditText listViewEconomyDebit = convertView.findViewById(R.id.listViewEconomyDebit);
+        getItemX(position).setListViewEconomyDebit(listViewEconomyDebit);
+        EditText listViewEconomyCredit = convertView.findViewById(R.id.listViewEconomyCredit);
+        getItemX(position).setListViewEconomyCredit(listViewEconomyCredit);
 
         listViewEconomyNumberItem.setText((position+1)+": ");
 
