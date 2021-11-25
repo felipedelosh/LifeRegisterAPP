@@ -23,8 +23,8 @@ public class TAccounts extends AppCompatActivity {
     private ListView listViewEconomy;
 
 
-    private EconomyAdapter economyAdapter;
-    private ArrayList <ItemTaccont> arrayTaccounts;
+    //private EconomyAdapter economyAdapter;
+    //private ArrayList <ItemTaccont> arrayTaccounts;
     private Context context;
 
     private TimeController timeController;
@@ -40,7 +40,7 @@ public class TAccounts extends AppCompatActivity {
 
         spinner_days = findViewById(R.id.spinner_days);
         spinner_mounth = findViewById(R.id.spinner_mounth);
-        listViewEconomy = findViewById(R.id.listViewEconomy);
+        //listViewEconomy = findViewById(R.id.listViewEconomy);
 
         putAMonthsInSpinner();
         //Put all days of current mounth
@@ -50,12 +50,12 @@ public class TAccounts extends AppCompatActivity {
 
 
         //Generate Taccount items
-        arrayTaccounts = new ArrayList<>();
-        economyAdapter = new EconomyAdapter(arrayTaccounts, context);
-        listViewEconomy.setAdapter(economyAdapter);
-        for(int i=0;i<10;i++){
-            createNewTAccountsItem();
-        }
+        //arrayTaccounts = new ArrayList<>();
+        //economyAdapter = new EconomyAdapter(arrayTaccounts, context);
+        //listViewEconomy.setAdapter(economyAdapter);
+        //for(int i=0;i<10;i++){
+        //    createNewTAccountsItem();
+        //}
 
         spinner_mounth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -73,10 +73,10 @@ public class TAccounts extends AppCompatActivity {
     }
 
 
-    public void createNewTAccountsItem(){
-        ItemTaccont itemTaccont = new ItemTaccont(0, "", 0, 0);
-        arrayTaccounts.add(itemTaccont);
-    }
+    //public void createNewTAccountsItem(){
+    //    ItemTaccont itemTaccont = new ItemTaccont(0, "", 0, 0);
+    //    arrayTaccounts.add(itemTaccont);
+    //}
 
 
     public void putAMonthsInSpinner(){
