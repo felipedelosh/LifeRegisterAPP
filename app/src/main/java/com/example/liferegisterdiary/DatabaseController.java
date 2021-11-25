@@ -25,7 +25,7 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
     public static final String TABLE_PERSONAL_DRUGS_COUNTER = "t_personal_drugs_counter";
     public static final String TABLE_DRUGS_DIARY = "t_drugs_diary";
     public static final String TABLE_DAY_TIME_DISTRIBUTION = "t_day_time_distribution";
-    public static final String TABLE_PERSONAL_FEELING_COUNTER = "t_personal_drug_counter";
+    public static final String TABLE_PERSONAL_FEELING_COUNTER = "t_personal_feeling_counter";
     public static final String TABLE_PERSONAL_BOX_LITLE = "t_box_litle";
     public static final String TABLE_PERSONAL_BOX_BIG = "t_box_big";
     public static final String TABLE_PERSONAL_ECONOMY_TACCOUNTS = "t_economy_t_account";
