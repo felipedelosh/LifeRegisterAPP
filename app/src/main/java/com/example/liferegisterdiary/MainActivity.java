@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Cacth screem elements
         main_output_message = findViewById(R.id.main_output_message);
-        showOutputMesagge(controller.health());
+        showOutputMesagge("");
 
         setUpView();
     }

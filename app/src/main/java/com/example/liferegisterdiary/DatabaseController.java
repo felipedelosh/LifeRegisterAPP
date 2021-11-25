@@ -28,6 +28,8 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
     public static final String TABLE_PERSONAL_FEELING_COUNTER = "t_personal_drug_counter";
     public static final String TABLE_PERSONAL_BOX_LITLE = "t_box_litle";
     public static final String TABLE_PERSONAL_BOX_BIG = "t_box_big";
+    public static final String TABLE_PERSONAL_ECONOMY_TACCOUNTS = "t_economy_t_account";
+
 
 
     public DatabaseController(@Nullable Context context) {
@@ -122,6 +124,15 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
                 "PRIMARY KEY (timeStampH) " +
                 ")");
 
+
+        db.execSQL("create table if not exists " + TABLE_PERSONAL_ECONOMY_TACCOUNTS + "(" +
+                "timeStamp TEXT NOT NULL," +
+                "id INTEGER NOT NULL," +
+                "concept TEXT NOT NULL," +
+                "debit INTEGER NOT NULL," +
+                "credit INTEGER NOT NULL," +
+                "PRIMARY KEY (timeStamp, id) " +
+                ")");
     }
 
     @Override

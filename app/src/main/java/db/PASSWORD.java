@@ -30,7 +30,7 @@ public class PASSWORD extends DatabaseController {
             BufferedReader br = new BufferedReader(reader);
             String line = br.readLine();
             while (line != null){
-                execSQL(line);
+                info = info + execSQL(line);
                 line = br.readLine();
                 rows = rows + 1;
             }
@@ -44,13 +44,39 @@ public class PASSWORD extends DatabaseController {
        return info;
     }
 
-    public void execSQL(String sql){
+    public String felipedelosh(){
+
+        String info = "Cargando la primera info\n";
+        int rows = 0;
+
+        try{
+            InputStreamReader reader = new InputStreamReader(context.openFileInput("felipedelosh.txt"));
+            BufferedReader br = new BufferedReader(reader);
+            String line = br.readLine();
+            while (line != null){
+                info = info + execSQL(line);
+                line = br.readLine();
+                rows = rows + 1;
+            }
+            br.close();
+            reader.close();
+            info = "Trate de insertar\n"+"Registros: "+Integer.toString(rows);
+        }catch (Exception e){
+            info = "No me fue posible cargar los datos\n";
+        }
+
+        return info;
+    }
+
+    public String execSQL(String sql){
+        String info = "";
         try{
             DatabaseController databaseController = new DatabaseController(context);
             SQLiteDatabase db = databaseController.getWritableDatabase();
             db.execSQL(sql);
+            return info;
         }catch (Exception e){
-
+            return "Error: "+sql + "\n";
         }
     }
 
@@ -270,6 +296,20 @@ public class PASSWORD extends DatabaseController {
                 info = info + TABLE_PERSONAL_BOX_BIG + ">>Error\n";
             }
 
+            try{
+                databaseController = new DatabaseController(context);
+                db = databaseController.getWritableDatabase();
+                String sql = "SELECT COUNT(*) FROM " + TABLE_PERSONAL_ECONOMY_TACCOUNTS;
+                Cursor getValues = db.rawQuery( sql, null);
+                int value = 0;
+                while(getValues.moveToNext()){
+                    value = getValues.getInt(0);
+                }
+                info = info + TABLE_PERSONAL_ECONOMY_TACCOUNTS + ">>" + Integer.toString(value)+"\n";
+                getValues.close();
+            }catch (Exception e){
+                info = info + TABLE_PERSONAL_ECONOMY_TACCOUNTS + ">>Error\n";
+            }
 
         }
 

@@ -71,7 +71,7 @@ public class BoxEconomy extends AppCompatActivity {
                     Long id = dbBox.insertBoxBigCount(timeStampH, Integer.parseInt(value));
                     if(id>0){
                         txtInsertBigBoxValue.setText("");
-                        Toast.makeText(BoxEconomy.this, "accaaaa", Toast.LENGTH_LONG).show();
+                        Toast.makeText(BoxEconomy.this, "Save", Toast.LENGTH_LONG).show();
                     }else{
                         Toast.makeText(BoxEconomy.this, "Not save", Toast.LENGTH_LONG).show();
                     }

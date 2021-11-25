@@ -95,7 +95,7 @@ public class Controller implements Parcelable {
     }
 
     public void paintBgImage(){
-        imgBG.setImageResource(R.drawable.bg_julia);
+        imgBG.setImageResource(R.drawable.bg_random_01);
     }
 
     public void insertDrugsList(){
@@ -193,9 +193,6 @@ public class Controller implements Parcelable {
             }
 
         }
-
-
-
 
     }
 
