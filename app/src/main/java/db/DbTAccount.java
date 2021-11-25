@@ -9,7 +9,9 @@ import androidx.annotation.Nullable;
 
 import com.example.liferegisterdiary.DatabaseController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class DbTAccount extends DatabaseController {
 
@@ -43,6 +45,34 @@ public class DbTAccount extends DatabaseController {
         }
 
         return idT;
+    }
+
+
+    public List<String> getTAccountByTimeStamp(String timeStamp){
+
+        List<String> information = new ArrayList<>();
+
+        try{
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            String sql = "SELECT * FROM " + TABLE_PERSONAL_ECONOMY_TACCOUNTS + " WHERE timeStamp = \'" + timeStamp+"\'";
+            Cursor getValues = db.rawQuery( sql, null);
+
+            while(getValues.moveToNext()){
+
+                String concept = getValues.getString(2);
+                int debit = getValues.getInt(3);
+                int credit = getValues.getInt(4);
+
+                information.add(concept+";"+debit+";"+credit+";");
+
+            }
+
+            return information;
+        }catch (Exception e){
+            return information;
+        }
     }
 
     /**

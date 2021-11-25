@@ -32,6 +32,9 @@
     <string name="app_litle_box_status">Caja menor:</string>
     <string name="app_big_box_status">Caja mayor:</string>
     <string name="app_mounth_name">Mes actual</string>
+    <string name="lbl_economy_concep">Concepto: </string>
+    <string name="lbl_economy_debit">Debe: </string>
+    <string name="lbl_economy_credit">Haber: </string>
     <string name="lbl_activities_list">Lista de actividades: </string>
     <string name="lbl_feelings_list">Lista de sentimientos: </string>
     <string name="lbl_feelinfs_report">Reporte de sentimientos: </string>
