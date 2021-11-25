@@ -103,7 +103,7 @@ public class DbFeeling extends DatabaseController {
             DatabaseController databaseController = new DatabaseController(context);
             SQLiteDatabase db = databaseController.getWritableDatabase();
 
-            String sql = "SELECT feelingName, COUNT(*) FROM " + TABLE_PERSONAL_FEELING_COUNTER + " WHERE timeStamp LIKE \'" + timeStamp + "%\' GROUP BY feelingName";
+            String sql = "SELECT feelingName, COUNT(*) FROM " + TABLE_PERSONAL_FEELING_COUNTER + " WHERE timeStamp LIKE \'" + timeStamp + "%\' GROUP BY feelingName" + " LIMIT 10";
             //information.add(sql);
             Cursor getValues = db.rawQuery( sql, null);
             while(getValues.moveToNext()){

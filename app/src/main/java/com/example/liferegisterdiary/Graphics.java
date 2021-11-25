@@ -30,7 +30,8 @@ public class Graphics extends AppCompatActivity {
         btn_graphic_taccoutns.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent launchEconomyGraphicsView = new Intent(getApplicationContext(), EconomyGraphics.class);
+                startActivity(launchEconomyGraphicsView);
             }
         });
         btn_graphic_box = findViewById(R.id.btn_graphic_box);

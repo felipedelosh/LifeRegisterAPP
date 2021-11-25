@@ -2,11 +2,14 @@ package db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
 import com.example.liferegisterdiary.DatabaseController;
+
+import java.util.HashMap;
 
 public class DbTAccount extends DatabaseController {
 
@@ -40,6 +43,50 @@ public class DbTAccount extends DatabaseController {
         }
 
         return idT;
+    }
+
+    /**
+     * Casify all information into debit or credit an return
+     *
+     * debit
+     * {"concep", +#}
+     * credit
+     * {"concep", -#}
+     * */
+    public HashMap<String, Integer> getTAccountsInfo(String timeStamp){
+
+        HashMap<String, Integer> information = new HashMap<>();
+
+        try{
+
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            String sql = "SELECT concept, SUM(debit), SUM(credit) FROM " + TABLE_PERSONAL_ECONOMY_TACCOUNTS + " WHERE timeStamp LIKE \'" + timeStamp + "%\' GROUP BY concept";
+
+            Cursor getValues = db.rawQuery( sql, null);
+            String concept = "";
+            int money = 0;
+            while(getValues.moveToNext()){
+
+                concept = getValues.getString(0);
+
+                int temp = getValues.getInt(1);
+
+                if(temp == 0){
+                    money = - getValues.getInt(2);
+                }else{
+                    money = getValues.getInt(1);
+                }
+
+                information.put(concept, money);
+            }
+
+            return information;
+        }catch (Exception e){
+            return information;
+        }
+
     }
 
 
