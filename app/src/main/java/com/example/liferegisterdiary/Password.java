@@ -62,6 +62,13 @@ public class Password extends AppCompatActivity {
 
         }
 
+        if(command.equals("database")){
+            String status = "";
+            status = password.databaseCountRouts();
+            txtInfoPassword.setText(status);
+
+        }
+
 
     }
 
