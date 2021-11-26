@@ -1,0 +1,24 @@
+6am:dormir
+7am:dormir
+8am:dormir
+9am:dormir
+10am:moto
+11am:moto
+12am:moto
+1pm:moto
+2pm:alimentación
+3pm:moto
+4pm:moto
+5pm:moto
+6pm:teatro
+7pm:teatro
+8pm:teatro
+9pm:vida social
+10pm:vida social
+11pm:video juegos
+12pm:video juegos
+1am:dormir
+2am:dormir
+3am:dormir
+4am:dormir
+5am:dormir

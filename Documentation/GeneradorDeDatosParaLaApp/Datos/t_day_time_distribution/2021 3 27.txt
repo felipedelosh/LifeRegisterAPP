@@ -1,0 +1,24 @@
+6am:dormir
+7am:dormir
+8am:redes sociales
+9am:redes sociales
+10am:alimentación
+11am:bicicleta
+12am:alimentación
+1pm:construir
+2pm:construir
+3pm:construir
+4pm:construir
+5pm:construir
+6pm:construir
+7pm:alimentación
+8pm:redes sociales
+9pm:dormir
+10pm:dormir
+11pm:dormir
+12pm:dormir
+1am:dormir
+2am:dormir
+3am:dormir
+4am:dormir
+5am:dormir

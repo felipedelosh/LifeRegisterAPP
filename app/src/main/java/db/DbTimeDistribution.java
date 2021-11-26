@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import com.example.liferegisterdiary.DatabaseController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DbTimeDistribution extends DatabaseController {
@@ -96,5 +97,36 @@ public class DbTimeDistribution extends DatabaseController {
     }
 
 
+    /***
+     * return <activity, #total, activity, #total, activity, #total...>
+     *
+     * */
+    public HashMap<String, Integer> getDataInfo(String timeStamp){
+
+        HashMap<String, Integer> information = new HashMap<>();
+
+        try{
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            String sql = "SELECT activity, COUNT(*)  FROM " + TABLE_DAY_TIME_DISTRIBUTION + " WHERE timeStamp LIKE \'" + timeStamp + "%\' GROUP BY activity";
+
+            Cursor getValues = db.rawQuery( sql, null);
+
+            while(getValues.moveToNext()){
+                String activity = getValues.getString(0);
+                int value = getValues.getInt(1);
+                information.put(activity, value);
+            }
+
+            return information;
+        }catch (Exception e){
+            return information;
+        }
+
+
+
+
+    }
 
 }

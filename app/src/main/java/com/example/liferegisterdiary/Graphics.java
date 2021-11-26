@@ -53,7 +53,8 @@ public class Graphics extends AppCompatActivity {
         btn_graphic_time_inversion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent launchTimeDistributionView = new Intent(getApplicationContext(), TimeDistributionGraphics.class);
+                startActivity(launchTimeDistributionView);
             }
         });
         btn_graphic_timeline = findViewById(R.id.btn_graphic_timeline);

@@ -1,0 +1,24 @@
+6am:dormir
+7am:dormir
+8am:dormir
+9am:dormir
+10am:dormir
+11am:dormir
+12am:que haceres domesticos
+1pm:alimentación
+2pm:higiene personal
+3pm:peliculas
+4pm:peliculas
+5pm:peliculas
+6pm:peliculas
+7pm:ocio
+8pm:vida social
+9pm:vida social
+10pm:vida social
+11pm:dormir
+12pm:dormir
+1am:dormir
+2am:dormir
+3am:dormir
+4am:dormir
+5am:dormir

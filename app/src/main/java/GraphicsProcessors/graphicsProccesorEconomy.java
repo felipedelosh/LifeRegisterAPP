@@ -111,7 +111,7 @@ public class graphicsProccesorEconomy extends View {
             float cy1 = cy0 +60;
             canvas.drawRect(cx0, cy0, cx1, cy1, brush);
             //Put label credit
-            brush.setARGB(255,100,100,100);
+            brush.setARGB(255,255,255,255);
             canvas.drawText("$:"+maxCredit, (w*(float) 0.1), (cy1*(float) 0.975), brush);
 
             //put 9 concepts
@@ -119,6 +119,7 @@ public class graphicsProccesorEconomy extends View {
             float ylblCredit = 0;
             float separationYCredit = ((float) h/ (float) 2)/(float) 12;
 
+            brush.setARGB(255,100,100,100);
             for(int i=0;i<listOfEconomyValuesCredit.size();i++){
 
                 if(i < 10) {

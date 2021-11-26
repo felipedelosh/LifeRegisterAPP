@@ -39,6 +39,7 @@
     <string name="lbl_feelings_list">Lista de sentimientos: </string>
     <string name="lbl_feelinfs_report">Reporte de sentimientos: </string>
     <string name="lbl_economy_report">Reporte economico: </string>
+    <string name="lbl_time_distribution_report">Reporte inversión de tiempo: </string>
     <string name="lbl_drugs_list">Lista de drogas: </string>
     <string name="lbl_help_insert_title">Ingrese Nombre psicoactivo</string>
     <string name="lbl_help_insert_psichoactive">Psicoactivo:</string>

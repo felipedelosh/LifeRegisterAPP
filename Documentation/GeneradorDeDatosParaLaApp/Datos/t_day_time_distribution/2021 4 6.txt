@@ -1,0 +1,24 @@
+6am:dormir
+7am:clase
+8am:clase
+9am:clase
+10am:clase
+11am:dormir
+12am:dormir
+1pm:alimentación
+2pm:clase
+3pm:clase
+4pm:clase
+5pm:moto
+6pm:vida social
+7pm:trabajar
+8pm:trabajar
+9pm:trabajar
+10pm:trabajar
+11pm:trabajar
+12pm:trabajar
+1am:internet
+2am:dormir
+3am:dormir
+4am:dormir
+5am:dormir
