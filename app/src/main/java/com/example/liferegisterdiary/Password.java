@@ -74,7 +74,12 @@ public class Password extends AppCompatActivity {
             String status = "";
             status = password.databaseCountRouts();
             txtInfoPassword.setText(status);
+        }
 
+        if(command.equals("formatWXP")){
+            String status = "";
+            status = password.eraseDatabase();
+            txtInfoPassword.setText(status);
         }
 
 

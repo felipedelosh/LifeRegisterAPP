@@ -25,8 +25,6 @@ public class graphicsProccesorTimeDistribution extends View {
         super(context);
         timeController = new TimeController();
         dbTimeDistribution = new DbTimeDistribution(context);
-
-
     }
 
     public graphicsProccesorTimeDistribution(Context context, @Nullable AttributeSet attrs) {

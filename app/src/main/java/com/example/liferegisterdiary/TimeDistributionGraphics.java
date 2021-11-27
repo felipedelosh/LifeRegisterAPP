@@ -10,8 +10,6 @@ public class TimeDistributionGraphics extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_distribution_graphics);
-
-
-
+            //All the logic in graphicsProccesorTimeDistribution
     }
 }
