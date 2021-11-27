@@ -124,14 +124,14 @@ public class TimeController{
     }
 
     /*
-    * Return a hour 10 min rounded
-    * example 1:36 = 1:30; 1:00 = 1:00, 1:12 = 1:10
+    * Return a hour 5 min rounded
+    * example 1:36 = 1:35; 1:00 = 1:00, 1:12 = 1:10
     * */
-    public String getCurrentHour24ROUNDED15(){
+    public String getCurrentHour24ROUNDED5(){
         int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
         int minut = Calendar.getInstance().get(Calendar.MINUTE);
 
-        minut = 10*(minut/10);
+        minut = 5*(minut/5);
 
         return String.valueOf(hour)+":"+String.valueOf(minut);
     }
@@ -145,7 +145,7 @@ public class TimeController{
     }
 
     public String timeStampH(){
-        return getCurrentYear()+":"+getCurrentMonth()+":"+getCurrentDayNumberOfMount()+":"+getCurrentHour24ROUNDED15();
+        return getCurrentYear()+":"+getCurrentMonth()+":"+getCurrentDayNumberOfMount()+":"+getCurrentHour24ROUNDED5();
     }
 
     public int getDaysOfCurrentMounth(){

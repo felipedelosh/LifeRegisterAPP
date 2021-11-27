@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="lblHelpPosibilities">
+        \n
+        * Diario personal.\n
+        * Diario de sueños.\n
+        * Diario de agradecimiento.\n
+        * Conteo de consumo de sustancias psicoactivas.\n
+        * Calendario con vista reflejada a consumo.\n
+        * Descripción general de cada sustancia.\n
+        * Control financiero de ingresos y egresos.\n
+        * Control financiero de ahorros.\n
+        * Registro de como distribuyes tus 24 horas.\n
+        * Conteo de como te sientes cada día.\n
+        * Gráficas de ingresos y egresos.\n
+        * Gráficas de ahorros.\n
+        * Graficas de estados emocionales.\n
+        * Gráficas de Distribución de tu tiempo.\n
+        * Graficas de resumen anual.\n
+        * Configurar tu perfil.\n
+        * Editar la lista de actividades.\n
+        * Editar la lista de sentimientos. \n
+        * Editar la lista de drogas.\n
+        * Acceder al manual.\n
+
+    </string>
+</resources>

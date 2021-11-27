@@ -11,13 +11,15 @@ todos los registros reales
 
 option 1 : generate ramdon data of time inversion
 option 2 : generate ramdon data of time inversion
+....
 
 
 """
 from tkinter import * # para graficar
 import os # Libreria para acceder al disco duro y carpetas
-from os import scandir # Para listar archivos de carpetas
-import time # Para ver el tiempo de creacion de los archivos
+from os import putenv, scandir # Para listar archivos de carpetas
+import time
+from types import prepare_class # Para ver el tiempo de creacion de los archivos
 from tiempo import *  # Para el manejo de fechas
 
 import random # Para datos aleatoreos
@@ -29,7 +31,7 @@ class Software:
         self.tiempo = Tiempo()
         self.pantalla = Tk()
         self.tela = Canvas(self.pantalla, height=480, width=720, bg="snow")
-        self.lblPrograma = Label(self.tela, text="Generador de datos para la base de datos de la APP")
+        self.lblPrograma = Label(self.tela, text="Generador de datos para la base de datos de la APP... Pincha cualquier boton para generar .SQL")
         self.lblGenerarDatosDeInversionTiempo = Label(self.tela, text="Generar Datos inversión de tiempo")
         self.btnGenerateDatosInversionTiempoRandom = Button(self.tela, text="Random", command= lambda : self.generateRandomData(1))
         self.btnGenerateDatosInversionTiempoReal = Button(self.tela, text="Real", command= lambda : self.generateRandomData(2))
@@ -39,7 +41,9 @@ class Software:
         self.lblGenerarDatosDeSentimientos = Label(self.tela, text="Generar Datos De Sentimientos")
         self.btnGenerarDatosDeSentimientosRandon =  Button(self.tela, text="Random", command= lambda : self.generateRandomData(5))
         self.btnGenerarDatosDeSentimientoscaReal =  Button(self.tela, text="Real", command= lambda : self.generateRandomData(6))
-
+        self.lblGenerarDatosEconomiaDeCaja = Label(self.tela, text="Generar Datos De Caja")
+        self.btnGenerarDatosEconomiaDeCajaRandom =  Button(self.tela, text="Random", command= lambda : self.generateRandomData(7))
+        self.btnGenerarDatosEconomiaDeCajaReal =  Button(self.tela, text="Real", command= lambda : self.generateRandomData(8))
 
         #Mostrar vista
         self.renderizar()
@@ -63,6 +67,10 @@ class Software:
         self.btnGenerarDatosDeSentimientosRandon.place(x=520, y=110)
         self.btnGenerarDatosDeSentimientoscaReal.place(x=530, y=140)
 
+        self.lblGenerarDatosEconomiaDeCaja.place(x=60, y=200)
+        self.btnGenerarDatosEconomiaDeCajaRandom.place(x=80, y=230)
+        self.btnGenerarDatosEconomiaDeCajaReal.place(x=90, y=260)
+
 
         self.pantalla.mainloop()
 
@@ -80,6 +88,9 @@ class Software:
             pass
         if option == 6:
             self.saveInTXT(self.generarDatosRealDeSentimientos())
+        if option == 7:
+            self.saveInTXT(self.generarDatosRandomDeCaja())
+
             
 
         
@@ -283,6 +294,41 @@ class Software:
             self.poppup("Error no se puede generar los datos")
             return ""
     
+
+
+    def generarDatosRandomDeCaja(self):
+        
+        try:
+            SQLHeadLITLE = "INSERT INTO t_box_litle (timeStampH, money) VALUES ("
+            SQLHeadBIG = "INSERT INTO t_box_big (timeStampH, money) VALUES ("
+
+            # Genera 10 años de informacion * 20 registros
+            añoActual = self.tiempo.año()
+
+            SQL = ""
+            
+            for i in range(añoActual-10, añoActual+1):
+                diasDespues = 0
+                for _ in range(0, 20):
+                    diasDespues = diasDespues + random.randint(1, 8)
+                    timeStamp = self.tiempo.incrementarFechaXDias(i, 1, 1, diasDespues) + ":11:11"
+
+                    moneyLITLE = random.randint(1, 10) * (10 ** random.randint(2, 4))
+                    newSQLLITLE = SQLHeadLITLE + "\'"+timeStamp+ "\', " + str(moneyLITLE) + ");\n"
+                    moneyBIG = random.randint(1, 10) * (10 ** random.randint(3, 5))
+                    newSQLBIG = SQLHeadBIG + "\'"+timeStamp+ "\', " + str(moneyBIG) + ");\n"
+
+
+                    newSQL =  newSQLLITLE + newSQLBIG
+
+                    SQL = SQL + newSQL
+
+                    
+
+            
+            return SQL
+        except:
+            return ""
         
 
 s = Software()

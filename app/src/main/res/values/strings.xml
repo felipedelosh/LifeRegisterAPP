@@ -62,6 +62,9 @@
     <string name="btnEditActivities">Actividades</string>
     <string name="btnEditFeelings">Sentimientos</string>
     <string name="btnEditDrugList">Listado de drogas</string>
+    <string name="btnHelpUserManual">Manual del usuario</string>
+    <string name="btnHelpPosibilities">Listado de posibilidades</string>
+    <string name="btnHelpPrograming">Como estoy programado</string>
     <string name="loremIpsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
 
 

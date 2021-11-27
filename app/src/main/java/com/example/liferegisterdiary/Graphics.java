@@ -38,7 +38,8 @@ public class Graphics extends AppCompatActivity {
         btn_graphic_box.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent launchEconomyGraphicsBoxEconomyView = new Intent(getApplicationContext(), BoxEconomyGraphics.class);
+                startActivity(launchEconomyGraphicsBoxEconomyView);
             }
         });
         btn_graphic_feelings = findViewById(R.id.btn_graphic_feelings);

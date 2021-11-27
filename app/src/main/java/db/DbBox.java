@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import com.example.liferegisterdiary.DatabaseController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DbBox extends DatabaseController {
@@ -22,11 +23,11 @@ public class DbBox extends DatabaseController {
     }
 
 
-    public long insertBoxLitleCount(String timeStampH, int money){
+    public long insertBoxLitleCount(String timeStampH, int money) {
 
         long id = 0;
 
-        try{
+        try {
             DatabaseController databaseController = new DatabaseController(context);
             SQLiteDatabase db = databaseController.getWritableDatabase();
 
@@ -36,18 +37,18 @@ public class DbBox extends DatabaseController {
 
             id = db.insert(TABLE_PERSONAL_BOX_LITLE, null, values);
 
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
         return id;
     }
 
-    public long insertBoxBigCount(String timeStampH, int money){
+    public long insertBoxBigCount(String timeStampH, int money) {
 
         long id = 0;
 
-        try{
+        try {
             DatabaseController databaseController = new DatabaseController(context);
             SQLiteDatabase db = databaseController.getWritableDatabase();
 
@@ -57,7 +58,7 @@ public class DbBox extends DatabaseController {
 
             id = db.insert(TABLE_PERSONAL_BOX_BIG, null, values);
 
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
@@ -66,21 +67,21 @@ public class DbBox extends DatabaseController {
 
 
     /*
-    *
-    * */
-    public List<Integer> getAllCurrentValuesOfLitleBox(String timeStamp){
+     *
+     * */
+    public List<Integer> getAllCurrentValuesOfLitleBox(String timeStamp) {
 
         List<Integer> information = new ArrayList<Integer>();
 
-        try{
+        try {
             DatabaseController databaseController = new DatabaseController(context);
             SQLiteDatabase db = databaseController.getWritableDatabase();
 
             String sql = "SELECT * FROM " + TABLE_PERSONAL_BOX_LITLE + " WHERE timeStampH LIKE \'" + timeStamp + "%\'";
             //information.add(sql);
-            Cursor getValues = db.rawQuery( sql, null);
+            Cursor getValues = db.rawQuery(sql, null);
 
-            while(getValues.moveToNext()){
+            while (getValues.moveToNext()) {
 
                 int value = getValues.getInt(1);
                 information.add(value);
@@ -88,25 +89,25 @@ public class DbBox extends DatabaseController {
 
             getValues.close();
             return information;
-        }catch (Exception e){
+        } catch (Exception e) {
             return information;
         }
 
     }
 
 
-    public List<Integer> getAllCurrentValuesOfBigBox(String timeStamp){
+    public List<Integer> getAllCurrentValuesOfBigBox(String timeStamp) {
         List<Integer> information = new ArrayList<Integer>();
 
-        try{
+        try {
             DatabaseController databaseController = new DatabaseController(context);
             SQLiteDatabase db = databaseController.getWritableDatabase();
 
             String sql = "SELECT * FROM " + TABLE_PERSONAL_BOX_BIG + " WHERE timeStampH LIKE \'" + timeStamp + "%\'";
             //information.add(sql);
-            Cursor getValues = db.rawQuery( sql, null);
+            Cursor getValues = db.rawQuery(sql, null);
 
-            while(getValues.moveToNext()){
+            while (getValues.moveToNext()) {
 
                 int value = getValues.getInt(1);
                 information.add(value);
@@ -114,9 +115,56 @@ public class DbBox extends DatabaseController {
 
             getValues.close();
             return information;
+        } catch (Exception e) {
+            return information;
+        }
+    }
+
+
+    public HashMap<String, Integer> getALLInfoBoxes(){
+
+        HashMap<String, Integer> information = new HashMap<>();
+
+        try{
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            String sql = "SELECT * FROM " + TABLE_PERSONAL_BOX_LITLE;
+            //information.add(sql);
+            Cursor getValuesLitle = db.rawQuery(sql, null);
+
+            while (getValuesLitle.moveToNext()) {
+
+                String key = "LITLE:" + getValuesLitle.getString(0);
+                int value = getValuesLitle.getInt(1);
+
+                information.put(key, value);
+
+            }
+
+            getValuesLitle.close();
+
+            sql = "SELECT * FROM " + TABLE_PERSONAL_BOX_BIG;
+
+            Cursor getValuesBig = db.rawQuery(sql, null);
+
+            while (getValuesBig.moveToNext()) {
+
+                String key = "BIG:" + getValuesBig.getString(0);
+                int value = getValuesBig.getInt(1);
+
+                information.put(key, value);
+
+            }
+
+            getValuesBig.close();
+
+
+            return information;
         }catch (Exception e){
             return information;
         }
+
     }
 
 

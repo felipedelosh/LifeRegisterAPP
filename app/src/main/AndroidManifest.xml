@@ -15,6 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
+            android:name=".HelpListOfPosibilities"
+            android:exported="false" />
+        <activity
+            android:name=".Help"
+            android:exported="false" />
+        <activity
+            android:name=".BoxEconomyGraphics"
+            android:exported="false" />
+        <activity
             android:name=".TimeDistributionGraphics"
             android:exported="false" />
         <activity
