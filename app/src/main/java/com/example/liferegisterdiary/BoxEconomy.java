@@ -49,7 +49,7 @@ public class BoxEconomy extends AppCompatActivity {
                    Long id = dbBox.insertBoxLitleCount(timeStampH, Integer.parseInt(value));
                    if(id>0){
                        txtInsertLitleBoxValue.setText("");
-                       Toast.makeText(BoxEconomy.this, "accaaaa", Toast.LENGTH_LONG).show();
+                       Toast.makeText(BoxEconomy.this, "save", Toast.LENGTH_LONG).show();
                    }else{
                        Toast.makeText(BoxEconomy.this, "Not save", Toast.LENGTH_LONG).show();
                    }
