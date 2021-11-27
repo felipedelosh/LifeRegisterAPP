@@ -357,7 +357,8 @@ public class TAccounts extends AppCompatActivity {
     //Save economy registers in DataBase
     public void saveEconomyRegisterInDatabase(){
 
-        int inserted = 0;
+        int inserted = 0; //The ID register
+        int rowsProceced = 0; // Counter a rows inserted
         String timeStampYYYY = timeController.getCurrentYear();
         String timeStampMM = spinner_mounth.getSelectedItem().toString().trim();
         String timeStampDD = spinner_days.getSelectedItem().toString().trim();
@@ -387,10 +388,11 @@ public class TAccounts extends AppCompatActivity {
 
                 if(id>0){
                     clearDataInScreem(i);
-                    inserted = inserted + 1;
+                    rowsProceced = rowsProceced + 1;
                 }
+                inserted = inserted + 1;
             }
-            Toast.makeText(TAccounts.this, "Inserted: "+inserted, Toast.LENGTH_LONG).show();
+            Toast.makeText(TAccounts.this, "Inserted: "+rowsProceced, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -412,11 +414,10 @@ public class TAccounts extends AppCompatActivity {
             for(int i=0;i<information.size();i++){
                 String [] values = information.get(i).toString().split(";");
                 allConcepts.get(i).setText(values[0]);
-
-                if(values[1].equals("0")){
-                    allDebit.get(i).setText(values[2]);
+                if(values[2].equals("0")){
+                    allDebit.get(i).setText(values[1]);
                 }else{
-                    allCredit.get(i).setText(values[1]);
+                    allCredit.get(i).setText(values[2]);
                 }
             }
 
