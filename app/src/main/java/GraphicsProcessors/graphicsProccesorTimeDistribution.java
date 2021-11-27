@@ -99,23 +99,26 @@ public class graphicsProccesorTimeDistribution extends View {
                 //  x  = iValue
 
                 //Percent of count
-                float percent = ((float)information.get(key)/(float) maxValue);
+                float percent = ((float)information.get(key)/(float) total);
 
                 //Percent of circle
                 float percentS = ((float) 360)* (float) percent;
 
                 endAngle = startAngle + percentS;
-                if(counter<12){
-                    int [] color = colors(counter);
-                    brush.setARGB(255,color[0],color[1],color[2]);
-                    canvas.drawArc(my0val, startAngle, percentS,true, brush);
 
+
+                int [] color = colors(counter);
+                brush.setARGB(255,color[0],color[1],color[2]);
+                canvas.drawArc(my0val, startAngle, percentS,true, brush);
+
+
+                if(counter<12) {
                     //Put some labels
-                    canvas.drawText(key, w*(float) 0.1, yLabels+((float) counter * yIterator), brush);
-                    canvas.drawText("% "+percent, w*(float) 0.6, yLabels+((float) counter * yIterator), brush);
-
-
+                    canvas.drawText(key, w * (float) 0.1, yLabels + ((float) counter * yIterator), brush);
+                    canvas.drawText("% " + percent, w * (float) 0.6, yLabels + ((float) counter * yIterator), brush);
                 }
+
+
                 startAngle = endAngle;
 
 
@@ -165,6 +168,8 @@ public class graphicsProccesorTimeDistribution extends View {
 
 
     public int [] colors(int i) {
+
+        i = i % 10;
 
         int[] color = new int[3];
 
