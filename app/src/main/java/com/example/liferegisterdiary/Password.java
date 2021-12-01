@@ -76,6 +76,22 @@ public class Password extends AppCompatActivity {
             txtInfoPassword.setText(status);
         }
 
+        if(command.equals("backup")){
+            String status = "";
+            status = "Building BACKUP.sql\n";
+            status = status + password.backupDatabase();
+            txtInfoPassword.setText(status);
+
+        }
+
+        if(command.equals("restore")){
+            String status = "";
+            status = "restoring Database via BACKUP.sql\n";
+            status = status + password.restore();
+            txtInfoPassword.setText(status);
+
+        }
+
         if(command.equals("formatWXP")){
             String status = "";
             status = password.eraseDatabase();

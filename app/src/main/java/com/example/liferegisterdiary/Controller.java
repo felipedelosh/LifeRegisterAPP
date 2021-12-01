@@ -127,6 +127,7 @@ public class Controller implements Parcelable {
             String [] ActitivitiesList = {
                     "alimentación",
                     "bicicleta",
+                    "cansado",
                     "compras",
                     "construir",
                     "dormir",

@@ -90,10 +90,6 @@ public class graphicsProccesorTimeDistribution extends View {
             float endAngle = 0;
             int counter = 0;
             for(String key: information.keySet()){
-
-
-                //The next oval start in the before oval
-
                 //The end angle is based in percent
                 // 360 = MaxValue
                 //  x  = iValue
@@ -106,11 +102,9 @@ public class graphicsProccesorTimeDistribution extends View {
 
                 endAngle = startAngle + percentS;
 
-
                 int [] color = colors(counter);
                 brush.setARGB(255,color[0],color[1],color[2]);
                 canvas.drawArc(my0val, startAngle, percentS,true, brush);
-
 
                 if(counter<12) {
                     //Put some labels
@@ -118,11 +112,7 @@ public class graphicsProccesorTimeDistribution extends View {
                     canvas.drawText("% " + percent, w * (float) 0.6, yLabels + ((float) counter * yIterator), brush);
                 }
 
-
                 startAngle = endAngle;
-
-
-
 
                 counter = counter + 1;
             }

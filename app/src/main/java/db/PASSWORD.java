@@ -3,6 +3,7 @@ package db;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
@@ -10,6 +11,10 @@ import com.example.liferegisterdiary.DatabaseController;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class PASSWORD extends DatabaseController {
 
@@ -80,6 +85,182 @@ public class PASSWORD extends DatabaseController {
         }
     }
 
+    public String restore(){
+
+        String info = "restore DBB\n";
+
+        try {
+
+            InputStreamReader reader = new InputStreamReader(context.openFileInput("BACKUP.sql"));
+            BufferedReader br = new BufferedReader(reader);
+            String line = br.readLine();
+            int rows = 0;
+            int erros = 0;
+            while (line != null){
+                rows = rows + 1;
+                if(!execSQL(line).equals("")){
+                    erros = erros + 1;
+                }
+                line = br.readLine();
+            }
+            br.close();
+            reader.close();
+
+
+
+            if(erros>0){
+                info = info + "Databse read and restore.\nErrors: "+erros;
+            }else{
+                info = info + "Databse read and restore.\nInserted rows: "+rows;
+            }
+        }catch (Exception e){
+            info = "Error 404";
+        }
+
+
+
+        return info;
+    }
+
+    public String backupDatabase(){
+        String info = "Building DB\n";
+        List<String> listOfTables = new ArrayList<>();
+        String BACKUP = "";
+        int counterTables = 0;
+        int counterRows = 0;
+
+        try{
+            //create a .sql to backup
+            OutputStreamWriter newFile = new OutputStreamWriter(context.openFileOutput("BACKUP.sql", Context.MODE_PRIVATE));
+
+            //Create a consult to extract table names
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            Cursor c = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
+
+            if(c.moveToFirst()){
+                while (!c.isAfterLast()){
+                    counterTables = counterTables + 1;
+                    String tableName = c.getString(0);
+
+                    //Save only database tables
+                    if(tableName.split("_")[0].equals("t")){
+                        listOfTables.add(tableName);
+                    }
+
+                    c.moveToNext();
+                }
+
+            }
+
+
+            int NroTables = listOfTables.size();
+
+            if(NroTables>0){
+                //Extract info of all tables
+
+
+                for(int i=0;i<NroTables;i++){
+
+                    //Only a tables with information
+
+                    List<String> information = getTableTYPEandData(listOfTables.get(i));
+                    if(information.size()>0){
+
+                        String BACKUPHEAD = "INSERT INTO " + listOfTables.get(i) + " (";
+
+                        //Get table column names
+                        c = db.rawQuery("SELECT name FROM PRAGMA_TABLE_INFO("+"\'"+listOfTables.get(i)+"\')", null);
+                        List<String> columnNames = new ArrayList<>();
+                        if(c.moveToFirst()){
+                            while (!c.isAfterLast()){
+                                columnNames.add(c.getString(0));
+                                c.moveToNext();
+                            }
+                        }
+                        String BACKUPVALUES = BACKUPHEAD + columnNames.toString().replace("[", "").replace("]", "") + ") VALUES (";
+
+                        //Put Values
+                        String values = "";
+                        for(int j=0;j<information.size();j++){
+                            counterRows = counterRows + 1;
+                            values = information.get(j);
+                            BACKUP = BACKUP + BACKUPVALUES + values + ");\n";
+                        }
+                    }
+
+
+                }
+
+                c.close();
+
+                newFile.write(BACKUP);
+                newFile.flush();
+                newFile.close();
+                info = info + "create BACKUP.sql\n";
+                info = info + "tables:"+counterTables+"\n";
+                info = info + "rows:"+counterRows+"\n";
+
+            }else{
+                info = "Error 404";
+            }
+
+
+        }catch (Exception e){
+            info = "Error creating backup.sql";
+        }
+
+
+        return info;
+    }
+
+    public List<String> getTableTYPEandData(String tableName){
+
+        List<String> info = new ArrayList<>();
+
+        try{
+
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            String sql = "SELECT * FROM " + tableName;
+            //information.add(sql);
+            Cursor getValues = db.rawQuery(sql, null);
+
+
+
+            while (getValues.moveToNext()) {
+                String data = "";
+                List<String> temp = new ArrayList<>();
+                for(int i=0;i<getValues.getColumnCount();i++){
+
+
+                    switch (getValues.getType(i))  {
+                        case Cursor.FIELD_TYPE_INTEGER:
+                            temp.add(String.valueOf(getValues.getInt(i)));
+                            break;
+                        case Cursor.FIELD_TYPE_STRING:
+                            temp.add("\'"+getValues.getString(i)+"\'");
+                            break;
+                    }
+                }
+
+                info.add(temp.toString().replace("[", "").replace("]", ""));
+            }
+
+            getValues.close();
+
+
+        }catch (Exception e){
+
+        }
+
+
+        return info;
+    }
+
+
     public String eraseDatabase(){
         String info = "Erase database... \n";
 
@@ -133,8 +314,6 @@ public class PASSWORD extends DatabaseController {
             }catch (Exception e){
                 info = info + "Error 404: " + TABLE_FEELINGS + "\n";
             }
-
-
 
             try {
                 databaseController = new DatabaseController(context);
@@ -266,12 +445,7 @@ public class PASSWORD extends DatabaseController {
                 info = info + "Error 404: " + TABLE_PERSONAL_ECONOMY_TACCOUNTS + "\n";
             }
 
-
-
         }
-
-
-
 
         return info;
     }

@@ -12,6 +12,4 @@ public class FeelingsGraphics extends AppCompatActivity {
         setContentView(R.layout.activity_feelings_graphics);
     }
 
-
-
 }
