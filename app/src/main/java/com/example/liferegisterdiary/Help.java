@@ -9,10 +9,6 @@ import android.widget.Button;
 
 public class Help extends AppCompatActivity {
 
-    private Button btnHelpUserManual;
-    private Button btnHelpPosibilities;
-    private Button btnHelpPrograming;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,27 +20,18 @@ public class Help extends AppCompatActivity {
 
     private void setupView() {
 
-        btnHelpUserManual = findViewById(R.id.btnHelpUserManual);
-        btnHelpUserManual.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        Button btnHelpUserManual = findViewById(R.id.btnHelpUserManual);
+        btnHelpUserManual.setOnClickListener(v -> {
 
-            }
         });
-        btnHelpPosibilities = findViewById(R.id.btnHelpPosibilities);
-        btnHelpPosibilities.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent launchHelpPosibilitiesView = new Intent(getApplicationContext(), HelpListOfPosibilities.class);
-                startActivity(launchHelpPosibilitiesView);
-            }
+        Button btnHelpPosibilities = findViewById(R.id.btnHelpPosibilities);
+        btnHelpPosibilities.setOnClickListener(v -> {
+            Intent launchHelpPosibilitiesView = new Intent(getApplicationContext(), HelpListOfPosibilities.class);
+            startActivity(launchHelpPosibilitiesView);
         });
-        btnHelpPrograming = findViewById(R.id.btnHelpPrograming);
-        btnHelpPrograming.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        Button btnHelpPrograming = findViewById(R.id.btnHelpPrograming);
+        btnHelpPrograming.setOnClickListener(v -> {
 
-            }
         });
     }
 }

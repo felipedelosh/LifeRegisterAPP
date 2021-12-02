@@ -8,7 +8,7 @@
     android:id="@+id/main_menu">
 
     <ImageView
-        android:id="@+id/main_menu_img_bg"
+        android:id="@+id/mainMenuImgBG"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:foregroundGravity="center"
@@ -33,7 +33,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/main_output_message"
+                android:id="@+id/mainOutputMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
@@ -41,7 +41,7 @@
                 android:text="@string/output" />
 
             <ImageButton
-                android:id="@+id/btn_diary"
+                android:id="@+id/btnDiary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -51,7 +51,7 @@
 
             <ImageButton
                 android:background="@null"
-                android:id="@+id/btn_calendar"
+                android:id="@+id/btnCalendar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -60,7 +60,7 @@
 
             <ImageButton
                 android:background="@null"
-                android:id="@+id/btn_drug_diary"
+                android:id="@+id/btnDrugDiary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -70,7 +70,7 @@
 
             <ImageButton
                 android:background="@null"
-                android:id="@+id/btn_economy"
+                android:id="@+id/btnEconomy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -80,7 +80,7 @@
 
             <ImageButton
                 android:background="@null"
-                android:id="@+id/btn_time_dist"
+                android:id="@+id/btnTimeDist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -90,7 +90,7 @@
 
             <ImageButton
                 android:background="@null"
-                android:id="@+id/btn_feelings"
+                android:id="@+id/btnFeelings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -100,7 +100,7 @@
 
             <ImageButton
                 android:background="@null"
-                android:id="@+id/btn_graphics"
+                android:id="@+id/btnGraphics"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -110,7 +110,7 @@
 
             <ImageButton
                 android:background="@null"
-                android:id="@+id/btn_settings"
+                android:id="@+id/btnSettings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -120,7 +120,7 @@
 
             <ImageButton
                 android:background="@null"
-                android:id="@+id/btn_help"
+                android:id="@+id/btnHelp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"

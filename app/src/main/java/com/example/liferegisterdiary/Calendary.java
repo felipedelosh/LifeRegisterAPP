@@ -21,38 +21,6 @@ public class Calendary extends AppCompatActivity {
     private TimeController timeController;
     private ArrayList<Button> btnsDays;
 
-    private Button btn_mounth_01;
-    private Button btn_mounth_02;
-    private Button btn_mounth_03;
-    private Button btn_mounth_04;
-    private Button btn_mounth_05;
-    private Button btn_mounth_06;
-    private Button btn_mounth_07;
-    private Button btn_mounth_08;
-    private Button btn_mounth_09;
-    private Button btn_mounth_10;
-    private Button btn_mounth_11;
-    private Button btn_mounth_12;
-    private Button btn_mounth_13;
-    private Button btn_mounth_14;
-    private Button btn_mounth_15;
-    private Button btn_mounth_16;
-    private Button btn_mounth_17;
-    private Button btn_mounth_18;
-    private Button btn_mounth_19;
-    private Button btn_mounth_20;
-    private Button btn_mounth_21;
-    private Button btn_mounth_22;
-    private Button btn_mounth_23;
-    private Button btn_mounth_24;
-    private Button btn_mounth_25;
-    private Button btn_mounth_26;
-    private Button btn_mounth_27;
-    private Button btn_mounth_28;
-    private Button btn_mounth_29;
-    private Button btn_mounth_30;
-    private Button btn_mounth_31;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,81 +44,81 @@ public class Calendary extends AppCompatActivity {
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                //Nothing
             }
         });
     }
 
     public void setSpinnerMonthsOptions(){
         List<String> months = timeController.getCurrentMonths();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, months);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, months);
         spinnerMount.setAdapter(adapter);
     }
 
 
     public void loadAllButtons(){
-        btn_mounth_01 = findViewById(R.id.btn_mounth_01);
-        btnsDays.add(btn_mounth_01);
-        btn_mounth_02 = findViewById(R.id.btn_mounth_02);
-        btnsDays.add(btn_mounth_02);
-        btn_mounth_03 = findViewById(R.id.btn_mounth_03);
-        btnsDays.add(btn_mounth_03);
-        btn_mounth_04 = findViewById(R.id.btn_mounth_04);
-        btnsDays.add(btn_mounth_04);
-        btn_mounth_05 = findViewById(R.id.btn_mounth_05);
-        btnsDays.add(btn_mounth_05);
-        btn_mounth_06 = findViewById(R.id.btn_mounth_06);
-        btnsDays.add(btn_mounth_06);
-        btn_mounth_07 = findViewById(R.id.btn_mounth_07);
-        btnsDays.add(btn_mounth_07);
-        btn_mounth_08 = findViewById(R.id.btn_mounth_08);
-        btnsDays.add(btn_mounth_08);
-        btn_mounth_09 = findViewById(R.id.btn_mounth_09);
-        btnsDays.add(btn_mounth_09);
-        btn_mounth_10 = findViewById(R.id.btn_mounth_10);
-        btnsDays.add(btn_mounth_10);
-        btn_mounth_11 = findViewById(R.id.btn_mounth_11);
-        btnsDays.add(btn_mounth_11);
-        btn_mounth_12 = findViewById(R.id.btn_mounth_12);
-        btnsDays.add(btn_mounth_12);
-        btn_mounth_13 = findViewById(R.id.btn_mounth_13);
-        btnsDays.add(btn_mounth_13);
-        btn_mounth_14 = findViewById(R.id.btn_mounth_14);
-        btnsDays.add(btn_mounth_14);
-        btn_mounth_15 = findViewById(R.id.btn_mounth_15);
-        btnsDays.add(btn_mounth_15);
-        btn_mounth_16 = findViewById(R.id.btn_mounth_16);
-        btnsDays.add(btn_mounth_16);
-        btn_mounth_17 = findViewById(R.id.btn_mounth_17);
-        btnsDays.add(btn_mounth_17);
-        btn_mounth_18 = findViewById(R.id.btn_mounth_18);
-        btnsDays.add(btn_mounth_18);
-        btn_mounth_19 = findViewById(R.id.btn_mounth_19);
-        btnsDays.add(btn_mounth_19);
-        btn_mounth_20 = findViewById(R.id.btn_mounth_20);
-        btnsDays.add(btn_mounth_20);
-        btn_mounth_21 = findViewById(R.id.btn_mounth_21);
-        btnsDays.add(btn_mounth_21);
-        btn_mounth_22 = findViewById(R.id.btn_mounth_22);
-        btnsDays.add(btn_mounth_22);
-        btn_mounth_23 = findViewById(R.id.btn_mounth_23);
-        btnsDays.add(btn_mounth_23);
-        btn_mounth_24 = findViewById(R.id.btn_mounth_24);
-        btnsDays.add(btn_mounth_24);
-        btn_mounth_25 = findViewById(R.id.btn_mounth_25);
-        btnsDays.add(btn_mounth_25);
-        btn_mounth_26 = findViewById(R.id.btn_mounth_26);
-        btnsDays.add(btn_mounth_26);
-        btn_mounth_27 = findViewById(R.id.btn_mounth_27);
-        btnsDays.add(btn_mounth_27);
-        btn_mounth_28 = findViewById(R.id.btn_mounth_28);
-        btnsDays.add(btn_mounth_28);
-        btn_mounth_29 = findViewById(R.id.btn_mounth_29);
-        btnsDays.add(btn_mounth_29);
-        btn_mounth_30 = findViewById(R.id.btn_mounth_30);
-        btnsDays.add(btn_mounth_30);
-        btn_mounth_31 = findViewById(R.id.btn_mounth_31);
-        btnsDays.add(btn_mounth_31);
+        Button btnMonth01 = findViewById(R.id.btnMonth01);
+        btnsDays.add(btnMonth01);
+        Button btnMonth02 = findViewById(R.id.btnMonth02);
+        btnsDays.add(btnMonth02);
+        Button btnMonth03 = findViewById(R.id.btnMonth03);
+        btnsDays.add(btnMonth03);
+        Button btnMonth04 = findViewById(R.id.btnMonth04);
+        btnsDays.add(btnMonth04);
+        Button btnMonth05 = findViewById(R.id.btnMonth05);
+        btnsDays.add(btnMonth05);
+        Button btnMonth06 = findViewById(R.id.btnMonth06);
+        btnsDays.add(btnMonth06);
+        Button btnMonth07 = findViewById(R.id.btnMonth07);
+        btnsDays.add(btnMonth07);
+        Button btnMonth08 = findViewById(R.id.btnMonth08);
+        btnsDays.add(btnMonth08);
+        Button btnMonth09 = findViewById(R.id.btnMonth09);
+        btnsDays.add(btnMonth09);
+        Button btnMonth10 = findViewById(R.id.btnMonth10);
+        btnsDays.add(btnMonth10);
+        Button btnMonth11 = findViewById(R.id.btnMonth11);
+        btnsDays.add(btnMonth11);
+        Button btnMonth12 = findViewById(R.id.btnMonth12);
+        btnsDays.add(btnMonth12);
+        Button btnMonth13 = findViewById(R.id.btnMonth13);
+        btnsDays.add(btnMonth13);
+        Button btnMonth14 = findViewById(R.id.btnMonth14);
+        btnsDays.add(btnMonth14);
+        Button btnMonth15 = findViewById(R.id.btnMonth15);
+        btnsDays.add(btnMonth15);
+        Button btnMonth16 = findViewById(R.id.btnMonth16);
+        btnsDays.add(btnMonth16);
+        Button btnMonth17 = findViewById(R.id.btnMonth17);
+        btnsDays.add(btnMonth17);
+        Button btnMonth18 = findViewById(R.id.btnMonth18);
+        btnsDays.add(btnMonth18);
+        Button btnMonth19 = findViewById(R.id.btnMonth19);
+        btnsDays.add(btnMonth19);
+        Button btnMonth20 = findViewById(R.id.btnMonth20);
+        btnsDays.add(btnMonth20);
+        Button btnMonth21 = findViewById(R.id.btnMonth21);
+        btnsDays.add(btnMonth21);
+        Button btnMonth22 = findViewById(R.id.btnMonth22);
+        btnsDays.add(btnMonth22);
+        Button btnMonth23 = findViewById(R.id.btnMonth23);
+        btnsDays.add(btnMonth23);
+        Button btnMonth24 = findViewById(R.id.btnMonth24);
+        btnsDays.add(btnMonth24);
+        Button btnMonth25 = findViewById(R.id.btnMonth25);
+        btnsDays.add(btnMonth25);
+        Button btnMonth26 = findViewById(R.id.btnMonth26);
+        btnsDays.add(btnMonth26);
+        Button btnMonth27 = findViewById(R.id.btnMonth27);
+        btnsDays.add(btnMonth27);
+        Button btnMonth28 = findViewById(R.id.btnMonth28);
+        btnsDays.add(btnMonth28);
+        Button btnMonth29 = findViewById(R.id.btnMonth29);
+        btnsDays.add(btnMonth29);
+        Button btnMonth30 = findViewById(R.id.btnMonth30);
+        btnsDays.add(btnMonth30);
+        Button btnMonth31 = findViewById(R.id.btnMonth31);
+        btnsDays.add(btnMonth31);
 
         for(int i=0;i<btnsDays.size();i++){
             btnsDays.get(i).setText(String.valueOf(i+1));

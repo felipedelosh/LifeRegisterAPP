@@ -16,7 +16,7 @@ import java.util.List;
 public class DbTAccount extends DatabaseController {
 
 
-    Context context;
+    private transient Context context;
 
     public DbTAccount(@Nullable Context context) {
         super(context);
@@ -41,7 +41,7 @@ public class DbTAccount extends DatabaseController {
             idT = db.insert(TABLE_PERSONAL_ECONOMY_TACCOUNTS, null, values);
 
         }catch (Exception e){
-
+            //Do nothing
         }
 
         return idT;

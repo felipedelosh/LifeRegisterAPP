@@ -5,11 +5,8 @@ import android.content.Context;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.Serializable;
 
 
 /*
@@ -22,28 +19,26 @@ import java.io.Serializable;
 public class FileFolderController{
 
     Context context;
-    public boolean mkdirStatus;
-    public TimeController timeController;
+    public static TimeController timeController;
     //Routes
-    private final String ROOTAPP = "LifeRegisterDATA";
-    private final String PROFILEROUTE = "LifeRegisterDATA/Profile";
-    private final String PERSONALDIARYROUTE = "LifeRegisterData/Diary/personal_diary";
-    private final String DREAMDIARYROUTE = "LifeRegisterData/Diary/dream_diary";
-    private final String GRATITUDEDIARYROUTE = "LifeRegisterData/Diary/gratitude_diary";
-    private final String PSICOTROPEDIARYROUTE = "LifeRegisterData/Diary/psicotrope_diary";
+    private static final String ROOTAPP = "LifeRegisterDATA";
+    private static final String PROFILEROUTE = "LifeRegisterDATA/Profile";
+    private static final String PERSONALDIARYROUTE = "LifeRegisterData/Diary/personal_diary";
+    private static final String DREAMDIARYROUTE = "LifeRegisterData/Diary/dream_diary";
+    private static final String GRATITUDEDIARYROUTE = "LifeRegisterData/Diary/gratitude_diary";
+    private static final String PSICOTROPEDIARYROUTE = "LifeRegisterData/Diary/psicotrope_diary";
     //Adiction
     //Necesitoi listar todas alas cosas a las que un ser humano se puede hacer adicto
-    private final String TACCOUNTSROUTE = "LifeRegisterData/Economy/Taccounts";
-    private final String BOXROUTE = "LifeRegisterData/Economy/box";
-    private final String TIMEDISTRIBUTIONROUTE = "LifeRegisterData/TimeDistribution";
-    private final String FEELINGROUTE = "LifeRegisterData/Feelings";
+    private static final String TACCOUNTSROUTE = "LifeRegisterData/Economy/Taccounts";
+    private static final String BOXROUTE = "LifeRegisterData/Economy/box";
+    private static final String TIMEDISTRIBUTIONROUTE = "LifeRegisterData/TimeDistribution";
+    private static final String FEELINGROUTE = "LifeRegisterData/Feelings";
 
 
     public FileFolderController(Context context, TimeController timeController) {
 
         this.context = context;
         this.timeController = timeController;
-        mkdirStatus = true;
 
 
         //Create a folders to APP work
@@ -143,7 +138,7 @@ public class FileFolderController{
         return sms;
     }
 
-    public boolean writeFile(String path, String filename, String extension, String text){
+    public boolean writeFile(String rootapp, String filename, String extension, String text){
         try{
             OutputStreamWriter newFile = new OutputStreamWriter(context.openFileOutput(filename+"."+extension, Context.MODE_PRIVATE));
             newFile.write(text);

@@ -9,41 +9,45 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import Adapters.ActivitiesConfigureAdapter;
-import Models.ItemActivity;
+import adapters.ActivitiesConfigureAdapter;
+import models.ItemActivity;
 import db.DbTimeDistribution;
 
 public class ActivitiesConfigure extends AppCompatActivity {
 
-    private ActivitiesConfigureAdapter activitiesConfigureAdapter;
     private ArrayList<ItemActivity> arrayListItemActivities;
-    private Context context;
-    private DbTimeDistribution dbTimeDistribution;
-
-    private ListView listView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activities_configure);
 
+        Context context = this;
+        boolean posibleConnect = false;
+        DbTimeDistribution dbTimeDistribution = null;
 
-        context = this;
-        dbTimeDistribution = new DbTimeDistribution(this);
 
-        //Generate a list of activities
-        listView = findViewById(R.id.listViewActivities);
-        arrayListItemActivities = new ArrayList<>();
-        activitiesConfigureAdapter = new ActivitiesConfigureAdapter(arrayListItemActivities, context);
-        listView.setAdapter(activitiesConfigureAdapter);
 
-        List<String> allActivities = dbTimeDistribution.getActivitiesList();
-
-        for(int i=0;i<allActivities.size();i++){
-            createNewItemActivityadapter(allActivities.get(i));
+        try {
+            dbTimeDistribution = new DbTimeDistribution(this);
+            posibleConnect = true;
+        }catch (Exception e){
+            posibleConnect = false;
         }
 
+        if(posibleConnect){
+            //Generate a list of activities
+            ListView listView = findViewById(R.id.listViewActivities);
+            arrayListItemActivities = new ArrayList<>();
+            ActivitiesConfigureAdapter activitiesConfigureAdapter = new ActivitiesConfigureAdapter(arrayListItemActivities, context);
+            listView.setAdapter(activitiesConfigureAdapter);
+
+            List<String> allActivities = dbTimeDistribution.getActivitiesList();
+
+            for(int i=0;i<allActivities.size();i++){
+                createNewItemActivityadapter(allActivities.get(i));
+            }
+        }
 
     }
 

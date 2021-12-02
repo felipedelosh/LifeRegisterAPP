@@ -7,11 +7,11 @@
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
     android:orientation="vertical"
-    tools:context=".Drug_Diary">
+    tools:context=".DrugDiary">
 
 
     <EditText
-        android:id="@+id/txt_Title_drug_diary"
+        android:id="@+id/txtTitledrugdiary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/lbl_help_insert_title"
@@ -25,7 +25,7 @@
         android:layout_marginBottom="10dp"/>
 
     <EditText
-        android:id="@+id/txt_Detonating_drug_diary"
+        android:id="@+id/txtDetonatingDrugDiary"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:inputType="textImeMultiLine"
@@ -40,7 +40,7 @@
         android:layout_marginBottom="10dp"/>
 
     <EditText
-        android:id="@+id/txt_Result_drug_diary"
+        android:id="@+id/txtResultDrugDiary"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:inputType="textImeMultiLine"

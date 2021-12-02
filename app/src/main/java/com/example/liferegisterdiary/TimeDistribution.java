@@ -12,8 +12,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import Adapters.TimeDistributionAdapter;
-import Models.ItemTimeInversion;
+import adapters.TimeDistributionAdapter;
+import models.ItemTimeInversion;
 import db.DbTimeDistribution;
 
 public class TimeDistribution extends AppCompatActivity {
@@ -21,10 +21,6 @@ public class TimeDistribution extends AppCompatActivity {
 
     private TimeDistributionAdapter timeDistributionAdapter;
     private ArrayList<ItemTimeInversion> arrayListItemTimeInversions;
-    private Context context;
-    private ListView listViewTimeInversion;
-
-    private Button saveDiaryActivities;
 
     private TimeController timeController;
 
@@ -35,15 +31,15 @@ public class TimeDistribution extends AppCompatActivity {
 
         timeController = new TimeController();
 
-        context = this;
+        Context context = this;
 
         //Get all Activities
         ArrayList<String> spinerOptions = getSpinerActivities();
 
         //Generate a time distribution items
-        listViewTimeInversion = findViewById(R.id.listViewTimeInversion);
+        ListView listViewTimeInversion = findViewById(R.id.listViewTimeInversion);
         arrayListItemTimeInversions = new ArrayList<>();
-        timeDistributionAdapter = new TimeDistributionAdapter(arrayListItemTimeInversions, context, getSpinerActivities());
+        timeDistributionAdapter = new TimeDistributionAdapter(arrayListItemTimeInversions, context, spinerOptions);
         listViewTimeInversion.setAdapter(timeDistributionAdapter);
 
         for(int i=0;i<24;i++){
@@ -56,16 +52,15 @@ public class TimeDistribution extends AppCompatActivity {
 
     private void setUpView(){
 
-        saveDiaryActivities = findViewById(R.id.saveDiaryActivities);
-        saveDiaryActivities.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Try to save
+        Button saveDiaryActivities = findViewById(R.id.saveDiaryActivities);
+        saveDiaryActivities.setOnClickListener(v -> {
+
+
+            try {
+
                 String timeStamp = timeController.timeStamp();
                 DbTimeDistribution dbTimeDistribution = new DbTimeDistribution(TimeDistribution.this);
                 int count = 1;
-                boolean allRegistedInserted = true;
-
 
                 //Only save the renderized
                 for(int i=0;i<arrayListItemTimeInversions.size();i++){
@@ -76,21 +71,22 @@ public class TimeDistribution extends AppCompatActivity {
                         Long id = dbTimeDistribution.insertDiaryActivity(timeStamp, hour, activity);
 
                         if (id > 0) {
-                            allRegistedInserted = allRegistedInserted && true;
                             count = count + 1;
-                        } else {
-                            allRegistedInserted = allRegistedInserted && false;
                         }
 
                     }catch (Exception e){
-
+                        //Do nothing
                     }
 
                 }
 
                 Toast.makeText(TimeDistribution.this, "Save: "+count, Toast.LENGTH_LONG).show();
 
+
+            }catch (Exception e){
+                //Do nothing
             }
+
         });
 
 
@@ -104,15 +100,21 @@ public class TimeDistribution extends AppCompatActivity {
 
     public ArrayList<String> getSpinerActivities(){
 
-        DbTimeDistribution dbTimeDistribution = new DbTimeDistribution(TimeDistribution.this);
-        List<String> dataControllerActivities = dbTimeDistribution.getActivitiesList();
-
-
         ArrayList<String> spinerOptions = new ArrayList<>();
 
-        for(int i=0;i<dataControllerActivities.size();i++){
-            spinerOptions.add(dataControllerActivities.get(i));
+        try {
+
+            DbTimeDistribution dbTimeDistribution = new DbTimeDistribution(TimeDistribution.this);
+            List<String> dataControllerActivities = dbTimeDistribution.getActivitiesList();
+
+            for(int i=0;i<dataControllerActivities.size();i++){
+                spinerOptions.add(dataControllerActivities.get(i));
+            }
+
+        }catch (Exception e){
+            //Do nothing
         }
+
         return spinerOptions;
     }
 
@@ -139,6 +141,6 @@ public class TimeDistribution extends AppCompatActivity {
             }
         }
 
-        return String.valueOf(hour12h)+formatAMPM;
+        return hour12h+formatAMPM;
     }
 }

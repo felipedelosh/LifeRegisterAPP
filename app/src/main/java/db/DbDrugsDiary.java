@@ -15,7 +15,7 @@ import java.util.List;
 public class DbDrugsDiary extends DatabaseController {
 
 
-    Context context;
+    private transient Context context;
 
 
     public DbDrugsDiary(@Nullable Context context) {
@@ -39,7 +39,7 @@ public class DbDrugsDiary extends DatabaseController {
             id = db.insert(TABLE_DRUGS, null, values);
 
         }catch (Exception e){
-
+            //Do nothing
         }
 
         return id;
@@ -61,7 +61,7 @@ public class DbDrugsDiary extends DatabaseController {
             id = db.insert(TABLE_DRUGS_DIARY, null, values);
 
         }catch (Exception e){
-
+            //Do nothing
         }
 
         return id;
@@ -71,14 +71,13 @@ public class DbDrugsDiary extends DatabaseController {
 
     public List<String> getDrugsList(){
 
-        List<String> information = new ArrayList<String>();
+        List<String> information = new ArrayList<>();
 
         try{
             DatabaseController databaseController = new DatabaseController(context);
             SQLiteDatabase db = databaseController.getWritableDatabase();
 
             String sql = "SELECT * FROM " + TABLE_DRUGS;
-            //information.add(sql);
             Cursor getDrugs = db.rawQuery( sql, null);
 
             while(getDrugs.moveToNext()){
@@ -109,7 +108,7 @@ public class DbDrugsDiary extends DatabaseController {
             id = db.insert(TABLE_PERSONAL_DRUGS_COUNTER, null, values);
 
         }catch (Exception e){
-
+            //Do nothing
         }
 
         return id;

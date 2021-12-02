@@ -22,20 +22,15 @@ import db.DbUser;
 
 public class Register extends AppCompatActivity{
 
-    private Button btnRegister;
-    private Button btnCreateNickName;
-    private Button btnSuccesfullRegister;
     private ScrollView scrollViewregister;
     private ImageView sexAvatar;
-    private ImageButton sexMale;
-    private ImageButton sexFemale;
     private LinearLayout registerPage0;
     private LinearLayout registerPage1;
     private LinearLayout registerPage2;
     private Spinner spinnerRegisterDays;
     private Spinner spinnerRegisterMouhtns;
     private Spinner spinnerRegisterYear;
-    private TextView lblYeartToBirth;
+
 
     private EditText txtUsername;
     private boolean sexSelected;
@@ -51,7 +46,7 @@ public class Register extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        lblYeartToBirth = findViewById(R.id.lblYeartToBirth);
+
 
         //Controllers
         timeController = new TimeController();
@@ -85,54 +80,43 @@ public class Register extends AppCompatActivity{
     }
 
     private void setUpView(){
-        btnRegister = findViewById(R.id.btnRegister);
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Continue with register interface
-                showViewRegisterInterface(1);
+        Button btnRegister = findViewById(R.id.btnRegister);
+        btnRegister.setOnClickListener(v -> {
+            //Continue with register interface
+            showViewRegisterInterface(1);
+        });
+        Button btnCreateNickName = findViewById(R.id.btnCreateNickName);
+        btnCreateNickName.setOnClickListener(v -> {
+            if(validateText(txtUsername.getText().toString())){
+                txtUsername.setBackgroundColor(Color.GREEN);
+                username = txtUsername.getText().toString().trim();
+                showViewRegisterInterface(2);
+            }else{
+                txtUsername.setBackgroundColor(Color.RED);
             }
         });
-        btnCreateNickName = findViewById(R.id.btnCreateNickName);
-        btnCreateNickName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(validateText(txtUsername.getText().toString())){
-                    txtUsername.setBackgroundColor(Color.GREEN);
-                    username = txtUsername.getText().toString().trim();
-                    showViewRegisterInterface(2);
-                }else{
-                    txtUsername.setBackgroundColor(Color.RED);
-                }
-            }
-        });
-        sexMale = findViewById(R.id.sexMale);
-        sexMale.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sexSelected = true;
-                sex = "male";
-                sexAvatar.setImageResource(R.drawable.avatar_man);
+        ImageButton sexMale = findViewById(R.id.sexMale);
+        sexMale.setOnClickListener(v -> {
+            sexSelected = true;
+            sex = "male";
+            sexAvatar.setImageResource(R.drawable.avatar_man);
 
-            }
         });
 
-        sexFemale = findViewById(R.id.sexFemale);
-        sexFemale.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sexSelected = true;
-                sex = "female";
-                sexAvatar.setImageResource(R.drawable.avatar_woman);
-            }
+        ImageButton sexFemale = findViewById(R.id.sexFemale);
+        sexFemale.setOnClickListener(v -> {
+            sexSelected = true;
+            sex = "female";
+            sexAvatar.setImageResource(R.drawable.avatar_woman);
         });
 
-        btnSuccesfullRegister = findViewById(R.id.btnSuccesfullRegister);
-        btnSuccesfullRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        Button btnSuccesfullRegister = findViewById(R.id.btnSuccesfullRegister);
+        btnSuccesfullRegister.setOnClickListener(v -> {
 
-                if (sexSelected){
+            if (sexSelected){
+
+                try{
+
                     DbUser user = new DbUser(Register.this);
                     int yearBirthDate = Integer.parseInt(spinnerRegisterYear.getSelectedItem().toString().trim());
                     int mountBirthDate = timeController.getNomberOfMountX(spinnerRegisterMouhtns.getSelectedItem().toString().trim());
@@ -146,7 +130,11 @@ public class Register extends AppCompatActivity{
                     }else{
                         Toast.makeText(Register.this, "User NOT save", Toast.LENGTH_LONG).show();
                     }
+
+                }catch (Exception e){
+                    //Do nothing
                 }
+
             }
         });
     }
@@ -161,29 +149,19 @@ public class Register extends AppCompatActivity{
             registerPage0.setVisibility(View.INVISIBLE);
             registerPage1.setVisibility(View.VISIBLE);
             registerPage2.setVisibility(View.INVISIBLE);
-            scrollViewregister.post(new Runnable() {
-                @Override
-                public void run() {
-                    scrollViewregister.scrollTo(0, registerPage0.getBottom());
-                }
-            });
+            scrollViewregister.post(() -> scrollViewregister.scrollTo(0, registerPage0.getBottom()));
         }
         if(numberRegisterInterface == 2){
             registerPage0.setVisibility(View.INVISIBLE);
             registerPage1.setVisibility(View.VISIBLE);
             registerPage2.setVisibility(View.VISIBLE);
-            scrollViewregister.post(new Runnable() {
-                @Override
-                public void run() {
-                    scrollViewregister.scrollTo(0, registerPage1.getBottom());
-                }
-            });
+            scrollViewregister.post(() -> scrollViewregister.scrollTo(0, registerPage1.getBottom()));
         }
     }
 
     //Valitate if the text is rigth
     public boolean validateText(String txt){
-        return txt != "" && txt.trim() != "" && txt.trim().length() > 0;
+    return !txt.equals("") && !txt.trim().equals("") && txt.trim().length() > 0;
     }
 
     public void putDaysInSpinner(Spinner spinnerRegisterDays) {
@@ -214,14 +192,14 @@ public class Register extends AppCompatActivity{
             }
         }
 
-        ArrayAdapter <String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, spinerOptions);
+        ArrayAdapter <String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, spinerOptions);
         spinnerRegisterDays.setAdapter(adapter);
 
     }
 
     public void putMounthsInSpinner(Spinner spinnerRegisterMouhtns){
         String [] spinerOptions = timeController.getMonths();
-        ArrayAdapter <String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, spinerOptions);
+        ArrayAdapter <String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, spinerOptions);
         spinnerRegisterMouhtns.setAdapter(adapter);
     }
 
@@ -234,14 +212,15 @@ public class Register extends AppCompatActivity{
             spinerOptions[i] = String.valueOf(k[i]);
         }
 
-        ArrayAdapter <String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, spinerOptions);
+        ArrayAdapter <String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, spinerOptions);
         spinnerRegisterYear.setAdapter(adapter);
     }
 
     public void spinnerInDefaultDate(Spinner spinnerRegisterYear, Spinner spinnerRegisterMouhtns, Spinner spinnerRegisterDays){
         spinnerRegisterDays.setSelection(12);
         spinnerRegisterMouhtns.setSelection(1);
-        int k = Integer.valueOf(timeController.getCurrentYear());
+
+        int k = Integer.parseInt(timeController.getCurrentYear());
         if(k>99){
             spinnerRegisterYear.setSelection(k - 1991);
         }else{

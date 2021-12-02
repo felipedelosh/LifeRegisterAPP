@@ -10,7 +10,7 @@ import com.example.liferegisterdiary.DatabaseController;
 
 public class DbGratitudeHistory extends DatabaseController {
 
-    Context context;
+    private transient Context context;
 
 
     public DbGratitudeHistory(@Nullable Context context) {
@@ -32,7 +32,7 @@ public class DbGratitudeHistory extends DatabaseController {
             id = db.insert(TABLE_PERSONAL_GRATITUDE_DIARY, null, values);
 
         }catch (Exception e){
-
+            //Do nothing
         }
         return id;
     }

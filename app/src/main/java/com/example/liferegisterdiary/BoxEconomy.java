@@ -14,8 +14,6 @@ public class BoxEconomy extends AppCompatActivity {
     private DbBox dbBox;
     private TimeController timeController;
     private EditText txtInsertLitleBoxValue;
-    private Button btnUpdateLitleBox;
-    private Button btnUpdateBigBox;
     private EditText txtInsertBigBoxValue;
 
 
@@ -36,48 +34,42 @@ public class BoxEconomy extends AppCompatActivity {
 
     private void setup() {
 
-        btnUpdateLitleBox = findViewById(R.id.btnUpdateLitleBox);
-        btnUpdateLitleBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        Button btnUpdateLitleBox = findViewById(R.id.btnUpdateLitleBox);
+        btnUpdateLitleBox.setOnClickListener(v -> {
 
-               String value = txtInsertLitleBoxValue.getText().toString();
+           String value = txtInsertLitleBoxValue.getText().toString();
 
-               if(validatevalue(value)){
+           if(validatevalue(value)){
 
-                   String timeStampH = timeController.timeStampH();
-                   Long id = dbBox.insertBoxLitleCount(timeStampH, Integer.parseInt(value));
-                   if(id>0){
-                       txtInsertLitleBoxValue.setText("");
-                       Toast.makeText(BoxEconomy.this, "save", Toast.LENGTH_LONG).show();
-                   }else{
-                       Toast.makeText(BoxEconomy.this, "Not save", Toast.LENGTH_LONG).show();
-                   }
-
-
+               String timeStampH = timeController.timeStampH();
+               Long id = dbBox.insertBoxLitleCount(timeStampH, Integer.parseInt(value));
+               if(id>0){
+                   txtInsertLitleBoxValue.setText("");
+                   Toast.makeText(BoxEconomy.this, "save", Toast.LENGTH_LONG).show();
+               }else{
+                   Toast.makeText(BoxEconomy.this, "Not save", Toast.LENGTH_LONG).show();
                }
 
-            }
+
+           }
+
         });
-        btnUpdateBigBox = findViewById(R.id.btnUpdateBigBox);
-        btnUpdateBigBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String value = txtInsertBigBoxValue.getText().toString();
+        Button btnUpdateBigBox = findViewById(R.id.btnUpdateBigBox);
+        btnUpdateBigBox.setOnClickListener(v -> {
+            String value = txtInsertBigBoxValue.getText().toString();
 
-                if(validatevalue(value)){
+            if(validatevalue(value)){
 
-                    String timeStampH = timeController.timeStampH();
-                    Long id = dbBox.insertBoxBigCount(timeStampH, Integer.parseInt(value));
-                    if(id>0){
-                        txtInsertBigBoxValue.setText("");
-                        Toast.makeText(BoxEconomy.this, "Save", Toast.LENGTH_LONG).show();
-                    }else{
-                        Toast.makeText(BoxEconomy.this, "Not save", Toast.LENGTH_LONG).show();
-                    }
-
-
+                String timeStampH = timeController.timeStampH();
+                Long id = dbBox.insertBoxBigCount(timeStampH, Integer.parseInt(value));
+                if(id>0){
+                    txtInsertBigBoxValue.setText("");
+                    Toast.makeText(BoxEconomy.this, "Save", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(BoxEconomy.this, "Not save", Toast.LENGTH_LONG).show();
                 }
+
+
             }
         });
 
@@ -87,7 +79,7 @@ public class BoxEconomy extends AppCompatActivity {
 
 
     public boolean validatevalue(String value){
-        if(value != "" && value.trim() != "" && value.trim().length() > 0){
+        if(!value.equals("") && !value.trim().equals("") && value.trim().length() > 0){
             try{
                 int v = Integer.parseInt(value);
                 return v >= 0;

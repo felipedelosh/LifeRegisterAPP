@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DbPersonalDiaryPage extends DatabaseController {
 
-    Context context;
+    private transient Context context;
 
     public DbPersonalDiaryPage(@Nullable Context context) {
         super(context);
@@ -36,21 +36,20 @@ public class DbPersonalDiaryPage extends DatabaseController {
             id = db.insert(TABLE_PERSONAL_PAGE_DIARY, null, values);
 
         }catch (Exception e){
-
+            //Do nothing
         }
         return id;
     }
 
     public List<String> getPagesDiary(String keyword){
 
-        List<String> information = new ArrayList<String>();
+        List<String> information = new ArrayList<>();
 
         try{
             DatabaseController databaseController = new DatabaseController(context);
             SQLiteDatabase db = databaseController.getWritableDatabase();
 
             String sql = "SELECT * FROM " + TABLE_PERSONAL_PAGE_DIARY + " WHERE pageName = '" + keyword + "'";
-            //information.add(sql);
             Cursor getPageDiary = db.rawQuery( sql, null);
 
             while(getPageDiary.moveToNext()){

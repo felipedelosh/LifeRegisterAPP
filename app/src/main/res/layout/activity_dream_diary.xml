@@ -8,7 +8,7 @@
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
     android:orientation="vertical"
-    tools:context=".Dream_diary">
+    tools:context=".DreamDiary">
 
 
     <LinearLayout

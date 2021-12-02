@@ -17,7 +17,6 @@ import db.DbFeeling;
 public class Feelings extends AppCompatActivity {
 
     private Spinner spinnerFeelings;
-    private Button btn_save_feeling;
 
     private TimeController timeController;
 
@@ -28,7 +27,7 @@ public class Feelings extends AppCompatActivity {
 
         //Catch spinner and set options
         spinnerFeelings = findViewById(R.id.spinnerFeelings);
-        ArrayList<String> spinerOptions = getSpinerFeeelings();
+        List<String> spinerOptions = getSpinerFeeelings();
         ArrayAdapter<String> sprAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, spinerOptions);
         spinnerFeelings.setAdapter(sprAdapter);
 
@@ -40,10 +39,10 @@ public class Feelings extends AppCompatActivity {
 
     private void setUpView(){
 
-        btn_save_feeling = findViewById(R.id.btn_save_feeling);
-        btn_save_feeling.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        Button btnSaveFeeling = findViewById(R.id.btnSaveFeeling);
+        btnSaveFeeling.setOnClickListener(v -> {
+
+            try {
                 String timeStamp = timeController.timeStamp();
                 String feelingName = spinnerFeelings.getSelectedItem().toString().trim();
                 DbFeeling dbFeeling = new DbFeeling(Feelings.this);
@@ -54,24 +53,27 @@ public class Feelings extends AppCompatActivity {
                 }else{
                     Toast.makeText(Feelings.this, "Dont'save", Toast.LENGTH_LONG).show();
                 }
+            }catch (Exception e){
+                //Do nothing
             }
         });
 
     }
 
-    public ArrayList<String> getSpinerFeeelings(){
-        DbFeeling dbFeeling = new DbFeeling(Feelings.this);
-
-        List<String> allFeelings = dbFeeling.getFeelingsList();
-
-
-
+    public List<String> getSpinerFeeelings(){
         ArrayList<String> spinerOptions = new ArrayList<>();
 
-        for(int i=0;i<allFeelings.size();i++){
-            spinerOptions.add(allFeelings.get(i));
+        try {
+            DbFeeling dbFeeling = new DbFeeling(Feelings.this);
+            List<String> allFeelings = dbFeeling.getFeelingsList();
+            for(int i=0;i<allFeelings.size();i++){
+                spinerOptions.add(allFeelings.get(i));
+            }
+
+        }catch (Exception e){
+            //Do nothing
         }
 
-        return spinerOptions;
+        return spinerOptions; 
     }
 }

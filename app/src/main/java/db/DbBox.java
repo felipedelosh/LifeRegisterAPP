@@ -15,7 +15,8 @@ import java.util.List;
 
 public class DbBox extends DatabaseController {
 
-    Context context;
+    private transient Context context;
+    private static final String SELECT_ALL = "SELECT * FROM ";
 
     public DbBox(@Nullable Context context) {
         super(context);
@@ -37,8 +38,8 @@ public class DbBox extends DatabaseController {
 
             id = db.insert(TABLE_PERSONAL_BOX_LITLE, null, values);
 
-        } catch (Exception e) {
-
+        } catch (Exception e){
+            //Do nothing
         }
 
         return id;
@@ -58,8 +59,8 @@ public class DbBox extends DatabaseController {
 
             id = db.insert(TABLE_PERSONAL_BOX_BIG, null, values);
 
-        } catch (Exception e) {
-
+        } catch (Exception e){
+            //Do nothing
         }
 
         return id;
@@ -71,14 +72,14 @@ public class DbBox extends DatabaseController {
      * */
     public List<Integer> getAllCurrentValuesOfLitleBox(String timeStamp) {
 
-        List<Integer> information = new ArrayList<Integer>();
+        List<Integer> information = new ArrayList<>();
 
         try {
             DatabaseController databaseController = new DatabaseController(context);
             SQLiteDatabase db = databaseController.getWritableDatabase();
 
-            String sql = "SELECT * FROM " + TABLE_PERSONAL_BOX_LITLE + " WHERE timeStampH LIKE \'" + timeStamp + "%\'";
-            //information.add(sql);
+            String sql = SELECT_ALL + TABLE_PERSONAL_BOX_LITLE + " WHERE timeStampH LIKE \'" + timeStamp + "%\'";
+
             Cursor getValues = db.rawQuery(sql, null);
 
             while (getValues.moveToNext()) {
@@ -97,14 +98,14 @@ public class DbBox extends DatabaseController {
 
 
     public List<Integer> getAllCurrentValuesOfBigBox(String timeStamp) {
-        List<Integer> information = new ArrayList<Integer>();
+        List<Integer> information = new ArrayList<>();
 
         try {
             DatabaseController databaseController = new DatabaseController(context);
             SQLiteDatabase db = databaseController.getWritableDatabase();
 
-            String sql = "SELECT * FROM " + TABLE_PERSONAL_BOX_BIG + " WHERE timeStampH LIKE \'" + timeStamp + "%\'";
-            //information.add(sql);
+            String sql = SELECT_ALL + TABLE_PERSONAL_BOX_BIG + " WHERE timeStampH LIKE \'" + timeStamp + "%\'";
+
             Cursor getValues = db.rawQuery(sql, null);
 
             while (getValues.moveToNext()) {
@@ -129,8 +130,8 @@ public class DbBox extends DatabaseController {
             DatabaseController databaseController = new DatabaseController(context);
             SQLiteDatabase db = databaseController.getWritableDatabase();
 
-            String sql = "SELECT * FROM " + TABLE_PERSONAL_BOX_LITLE;
-            //information.add(sql);
+            String sql = SELECT_ALL + TABLE_PERSONAL_BOX_LITLE;
+
             Cursor getValuesLitle = db.rawQuery(sql, null);
 
             while (getValuesLitle.moveToNext()) {
@@ -144,7 +145,7 @@ public class DbBox extends DatabaseController {
 
             getValuesLitle.close();
 
-            sql = "SELECT * FROM " + TABLE_PERSONAL_BOX_BIG;
+            sql = SELECT_ALL + TABLE_PERSONAL_BOX_BIG;
 
             Cursor getValuesBig = db.rawQuery(sql, null);
 

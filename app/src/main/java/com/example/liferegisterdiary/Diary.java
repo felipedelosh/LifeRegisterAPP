@@ -9,11 +9,6 @@ import android.widget.ImageButton;
 
 public class Diary extends AppCompatActivity {
 
-    private ImageButton btn_personal_diary;
-    private ImageButton btn_dream_diary;
-    private ImageButton btn_gratitude_diary;
-    private ImageButton btn_psicotrope_diary;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,37 +21,25 @@ public class Diary extends AppCompatActivity {
 
     private void setUpView(){
 
-        btn_personal_diary = findViewById(R.id.btn_personal_diary);
-        btn_personal_diary.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent launchPersonalDiaryView = new Intent(getApplicationContext(), Personal_diary.class);
-                startActivity(launchPersonalDiaryView);
-            }
+        ImageButton btnPersonalDiary = findViewById(R.id.btnPersonalDiary);
+        btnPersonalDiary.setOnClickListener(v -> {
+            Intent launchPersonalDiaryView = new Intent(getApplicationContext(), Personaldiary.class);
+            startActivity(launchPersonalDiaryView);
         });
-        btn_dream_diary = findViewById(R.id.btn_dream_diary);
-        btn_dream_diary.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent launchDreamDiaryView = new Intent(getApplicationContext(), Dream_diary.class);
-                startActivity(launchDreamDiaryView);
-            }
+        ImageButton btnDreamDiary = findViewById(R.id.btnDreamDiary);
+        btnDreamDiary.setOnClickListener(v -> {
+            Intent launchDreamDiaryView = new Intent(getApplicationContext(), DreamDiary.class);
+            startActivity(launchDreamDiaryView);
         });
-        btn_gratitude_diary = findViewById(R.id.btn_gratitude_diary);
-        btn_gratitude_diary.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent launchGratitudeDiaryView = new Intent(getApplicationContext(), Gratirude_Diary.class);
-                startActivity(launchGratitudeDiaryView);
-            }
+        ImageButton btnGratirudeDiary = findViewById(R.id.btnGratitudeDiary);
+        btnGratirudeDiary.setOnClickListener(v -> {
+            Intent launchGratitudeDiaryView = new Intent(getApplicationContext(), GratirudeDiary.class);
+            startActivity(launchGratitudeDiaryView);
         });
-        btn_psicotrope_diary = findViewById(R.id.btn_psicotrope_diary);
-        btn_psicotrope_diary.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent launchDrugDiaryView = new Intent(getApplicationContext(), Drug_Diary_Counter.class);
-                startActivity(launchDrugDiaryView);
-            }
+        ImageButton btnPsicotropeDiary = findViewById(R.id.btnPsicotropeDiary);
+        btnPsicotropeDiary.setOnClickListener(v -> {
+            Intent launchDrugDiaryView = new Intent(getApplicationContext(), DrugDiaryCounter.class);
+            startActivity(launchDrugDiaryView);
         });
     }
 }

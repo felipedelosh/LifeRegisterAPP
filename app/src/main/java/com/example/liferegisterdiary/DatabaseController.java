@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 public class DatabaseController extends SQLiteOpenHelper implements Serializable {
 
+
     //To manage database
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "lifeRegisterDiary.db";
@@ -148,6 +149,7 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
 
 
     public String healt(){
-        return "Estoy en el controlador de base de datos";
+        String txt = "Estoy en el controlador de base de datos";
+        return txt + "";
     }
 }

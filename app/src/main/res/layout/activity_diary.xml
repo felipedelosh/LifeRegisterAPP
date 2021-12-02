@@ -26,7 +26,7 @@
 
             <ImageButton
                 android:background="@null"
-                android:id="@+id/btn_personal_diary"
+                android:id="@+id/btnPersonalDiary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -35,7 +35,7 @@
 
             <ImageButton
                 android:background="@null"
-                android:id="@+id/btn_dream_diary"
+                android:id="@+id/btnDreamDiary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -44,7 +44,7 @@
 
             <ImageButton
                 android:background="@null"
-                android:id="@+id/btn_gratitude_diary"
+                android:id="@+id/btnGratitudeDiary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -53,7 +53,7 @@
 
             <ImageButton
                 android:background="@null"
-                android:id="@+id/btn_psicotrope_diary"
+                android:id="@+id/btnPsicotropeDiary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"

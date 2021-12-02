@@ -12,7 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import Models.User;
+import models.User;
 import db.DbUser;
 
 public class ProfileConfigure extends AppCompatActivity {
@@ -24,8 +24,6 @@ public class ProfileConfigure extends AppCompatActivity {
     private Spinner spinnerSex;
     private TextView lblAge;
     private TextView txtUserDescription;
-    private Button btnNotSaveProfileSettings;
-    private Button btnSaveProfileSettings;
     private DbUser dbUser;
     private TimeController timeController;
 
@@ -58,48 +56,42 @@ public class ProfileConfigure extends AppCompatActivity {
     }
 
     private void setUpView() {
-        btnNotSaveProfileSettings = findViewById(R.id.btnNotSaveProfileSettings);
-        btnNotSaveProfileSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent launchSettingsView = new Intent(getApplicationContext(), Settings.class);
-                startActivity(launchSettingsView);
-            }
+        Button btnNotSaveProfileSettings = findViewById(R.id.btnNotSaveProfileSettings);
+        btnNotSaveProfileSettings.setOnClickListener(v -> {
+            Intent launchSettingsView = new Intent(getApplicationContext(), Settings.class);
+            startActivity(launchSettingsView);
         });
-        btnSaveProfileSettings = findViewById(R.id.btnSaveProfileSettings);
-        btnSaveProfileSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        Button btnSaveProfileSettings = findViewById(R.id.btnSaveProfileSettings);
+        btnSaveProfileSettings.setOnClickListener(v -> {
 
-                String usrnm = txtUsername.getText().toString();
+            String usrnm = txtUsername.getText().toString();
 
-                if(validateText(usrnm)){
+            if(validateText(usrnm)){
 
-                    String sex  = "";
+                String sex  = "";
 
-                    if(spinnerSex.getSelectedItemPosition() == 0){
-                        sex = "male";
-                    }else{
-                        sex = "female";
-                    }
+                if(spinnerSex.getSelectedItemPosition() == 0){
+                    sex = "male";
+                }else{
+                    sex = "female";
+                }
 
-                    int yearBirthDate = Integer.parseInt(spinnerYearToBirthDate.getSelectedItem().toString().trim());
-                    int monthBirthDate = spinnerMonthToBirthDate.getSelectedItemPosition();
-                    int dayBirthDate = Integer.parseInt(spinnerDayToBirthDate.getSelectedItem().toString().trim());
+                int yearBirthDate = Integer.parseInt(spinnerYearToBirthDate.getSelectedItem().toString().trim());
+                int monthBirthDate = spinnerMonthToBirthDate.getSelectedItemPosition();
+                int dayBirthDate = Integer.parseInt(spinnerDayToBirthDate.getSelectedItem().toString().trim());
 
-                    Long id = dbUser.editUser(usrnm, sex, yearBirthDate, monthBirthDate, dayBirthDate);
+                Long id = dbUser.editUser(usrnm, sex, yearBirthDate, monthBirthDate, dayBirthDate);
 
-                    if(id > 0){
-                        chargeDataInDisplay();
-                        Toast.makeText(ProfileConfigure.this, "Update User" , Toast.LENGTH_LONG).show();
+                if(id > 0){
+                    chargeDataInDisplay();
+                    Toast.makeText(ProfileConfigure.this, "Update User" , Toast.LENGTH_LONG).show();
 
-                    }else{
-                        Toast.makeText(ProfileConfigure.this, "Dont'save" , Toast.LENGTH_LONG).show();
-                    }
-
+                }else{
+                    Toast.makeText(ProfileConfigure.this, "Dont'save" , Toast.LENGTH_LONG).show();
                 }
 
             }
+
         });
     }
 
@@ -107,7 +99,7 @@ public class ProfileConfigure extends AppCompatActivity {
 
         //Put sex
         String [] genders = {getString(R.string.app_gender_male).trim(), getString(R.string.app_gender_female).trim()};
-        ArrayAdapter<String> adapterSex = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, genders);
+        ArrayAdapter<String> adapterSex = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, genders);
         spinnerSex.setAdapter(adapterSex);
 
         //Spinner year
@@ -118,13 +110,13 @@ public class ProfileConfigure extends AppCompatActivity {
             spinerOptionsYear[i] = String.valueOf(k[i]);
         }
 
-        ArrayAdapter<String> adapterYear = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, spinerOptionsYear);
+        ArrayAdapter<String> adapterYear = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, spinerOptionsYear);
         //Put all values
         spinnerYearToBirthDate.setAdapter(adapterYear);
 
         //Put months
         String [] spinerOptionsDays = timeController.getMonths();
-        ArrayAdapter <String> adapterDays = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, spinerOptionsDays);
+        ArrayAdapter <String> adapterDays = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, spinerOptionsDays);
         spinnerMonthToBirthDate.setAdapter(adapterDays);
 
         //Put days in spinner
@@ -161,7 +153,7 @@ public class ProfileConfigure extends AppCompatActivity {
             }
         }
 
-        ArrayAdapter <String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, spinerOptions);
+        ArrayAdapter <String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, spinerOptions);
         spinnerDayToBirthDate.setAdapter(adapter);
     }
 
@@ -189,7 +181,7 @@ public class ProfileConfigure extends AppCompatActivity {
 
     //Valitate if the text is rigth
     public boolean validateText(String txt){
-        return txt != "" && txt.trim() != "" && txt.trim().length() > 0;
+        return !txt.equals("") && !txt.trim().equals("") && txt.trim().length() > 0;
     }
 
 

@@ -60,12 +60,12 @@
             android:text="@string/btnSave"/>
     </LinearLayout>
 
-    <GraphicsProcessors.graphicsProccesorBox
+    <graphicsprocessors.GraphicsProccesorBox
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
-    </GraphicsProcessors.graphicsProccesorBox>
+    </graphicsprocessors.GraphicsProccesorBox>
 
 
 

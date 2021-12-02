@@ -17,11 +17,11 @@
 
     </LinearLayout>
 
-    <GraphicsProcessors.graphicsProccesorTimeDistribution
+    <graphicsprocessors.GraphicsProccesorTimeDistribution
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
-    </GraphicsProcessors.graphicsProccesorTimeDistribution>
+    </graphicsprocessors.GraphicsProccesorTimeDistribution>
 
 </LinearLayout>

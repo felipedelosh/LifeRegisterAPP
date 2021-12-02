@@ -54,19 +54,19 @@
             android:name=".ProfileConfigure"
             android:exported="false" />
         <activity
-            android:name=".Drug_Diary_Counter"
+            android:name=".DrugDiaryCounter"
             android:exported="false" />
         <activity
-            android:name=".Gratirude_Diary"
+            android:name=".GratirudeDiary"
             android:exported="false" />
         <activity
             android:name=".Register"
             android:exported="false" />
         <activity
-            android:name=".Dream_diary"
+            android:name=".DreamDiary"
             android:exported="false" />
         <activity
-            android:name=".Personal_diary"
+            android:name=".Personaldiary"
             android:exported="false" />
         <activity
             android:name=".Settings"
@@ -75,7 +75,7 @@
             android:name=".Graphics"
             android:exported="false" />
         <activity
-            android:name=".Drug_Diary"
+            android:name=".DrugDiary"
             android:exported="false" />
         <activity
             android:name=".Feelings"

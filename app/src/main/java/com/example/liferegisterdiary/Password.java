@@ -14,7 +14,6 @@ import db.PASSWORD;
 
 public class Password extends AppCompatActivity {
 
-    private Button btnPassword;
     private EditText txtPassword;
     private TextView txtInfoPassword;
     private Context context;
@@ -37,15 +36,12 @@ public class Password extends AppCompatActivity {
 
     private void setupView() {
 
-        btnPassword = findViewById(R.id.btnPassword);
-        btnPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String password = txtPassword.getText().toString();
-                if(validatePassword(password)){
-                    txtPassword.setText("");
-                    enablePasswords(password);
-                }
+        Button btnPassword = findViewById(R.id.btnPassword);
+        btnPassword.setOnClickListener(v -> {
+            String tempPassword = txtPassword.getText().toString();
+            if(validatePassword(tempPassword)){
+                txtPassword.setText("");
+                enablePasswords(tempPassword);
             }
         });
 
@@ -103,7 +99,7 @@ public class Password extends AppCompatActivity {
 
 
     private boolean validatePassword(String txt){
-        return txt != "" && txt.trim() != "" && txt.trim().length() > 0;
+        return !txt.equals("") && !txt.trim().equals("") && txt.trim().length() > 0;
     }
 
 }

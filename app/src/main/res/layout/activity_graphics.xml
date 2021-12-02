@@ -25,7 +25,7 @@
 
             <ImageButton
                 android:background="@null"
-                android:id="@+id/btn_graphic_taccoutns"
+                android:id="@+id/btnGraphicTAccoutns"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -34,7 +34,7 @@
 
             <ImageButton
                 android:background="@null"
-                android:id="@+id/btn_graphic_box"
+                android:id="@+id/btnGraphicBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -43,7 +43,7 @@
 
             <ImageButton
                 android:background="@null"
-                android:id="@+id/btn_graphic_feelings"
+                android:id="@+id/btnGraphicFeelings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -52,7 +52,7 @@
 
             <ImageButton
                 android:background="@null"
-                android:id="@+id/btn_graphic_time_inversion"
+                android:id="@+id/btnGraphicTimeInversion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -62,7 +62,7 @@
 
             <ImageButton
                 android:background="@null"
-                android:id="@+id/btn_graphic_timeline"
+                android:id="@+id/btnGraphicTimeline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"

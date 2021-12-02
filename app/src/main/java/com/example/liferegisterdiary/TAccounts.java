@@ -10,75 +10,21 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.util.List;
 
-import Adapters.EconomyAdapter;
-import Models.ItemTaccont;
 import db.DbTAccount;
 
 public class TAccounts extends AppCompatActivity {
 
-    private Spinner spinner_days;
-    private Spinner spinner_mounth;
-    //private ListView listViewEconomy;
+    private Spinner spinnerDays;
+    private Spinner spinnerMonth;
     private ArrayList<EditText> allConcepts;
     private ArrayList<EditText> allDebit;
     private ArrayList<EditText> allCredit;
-
-
-    private EditText listViewEconomyConcept1;
-    private EditText listViewEconomyDebit1;
-    private EditText listViewEconomyCredit1;
-
-    private EditText listViewEconomyConcept2;
-    private EditText listViewEconomyDebit2;
-    private EditText listViewEconomyCredit2;
-
-    private EditText listViewEconomyConcept3;
-    private EditText listViewEconomyDebit3;
-    private EditText listViewEconomyCredit3;
-
-    private EditText listViewEconomyConcept4;
-    private EditText listViewEconomyDebit4;
-    private EditText listViewEconomyCredit4;
-
-    private EditText listViewEconomyConcept5;
-    private EditText listViewEconomyDebit5;
-    private EditText listViewEconomyCredit5;
-
-    private EditText listViewEconomyConcept6;
-    private EditText listViewEconomyDebit6;
-    private EditText listViewEconomyCredit6;
-
-    private EditText listViewEconomyConcept7;
-    private EditText listViewEconomyDebit7;
-    private EditText listViewEconomyCredit7;
-
-    private EditText listViewEconomyConcept8;
-    private EditText listViewEconomyDebit8;
-    private EditText listViewEconomyCredit8;
-
-    private EditText listViewEconomyConcept9;
-    private EditText listViewEconomyDebit9;
-    private EditText listViewEconomyCredit9;
-
-    private EditText listViewEconomyConcept10;
-    private EditText listViewEconomyDebit10;
-    private EditText listViewEconomyCredit10;
-
-    private Button btn_load_taccount;
-    private Button btn_save_taccount;
-
-
-    //private EconomyAdapter economyAdapter;
-    //private ArrayList <ItemTaccont> arrayTaccounts;
-    private Context context;
 
     private TimeController timeController;
     private DbTAccount dbTAccount;
@@ -89,7 +35,7 @@ public class TAccounts extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_taccounts);
 
-        context = this;
+        Context context = this;
         timeController = new TimeController();
         dbTAccount = new DbTAccount(context);
 
@@ -99,27 +45,17 @@ public class TAccounts extends AppCompatActivity {
         allCredit = new ArrayList<>();
         initAllEdittext();
 
-        spinner_days = findViewById(R.id.spinner_days);
-        spinner_mounth = findViewById(R.id.spinner_mounth);
+        spinnerDays = findViewById(R.id.spinnerDays);
+        spinnerMonth = findViewById(R.id.spinnerMonth);
 
-        //listViewEconomy = findViewById(R.id.listViewEconomy);
 
         putAMonthsInSpinner();
         //Put all days of current mounth
         refreshDaysOfSpinner();
         //Put currently mont in spinner
-        spinner_mounth.setSelection(timeController.getNumberOfCurrentMounth());
+        spinnerMonth.setSelection(timeController.getNumberOfCurrentMounth());
 
-
-        //Generate Taccount items
-        //arrayTaccounts = new ArrayList<>();
-        //economyAdapter = new EconomyAdapter(arrayTaccounts, context);
-        //listViewEconomy.setAdapter(economyAdapter);
-        //for(int i=0;i<10;i++){
-        //    createNewTAccountsItem();
-        //}
-
-        spinner_mounth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -127,7 +63,7 @@ public class TAccounts extends AppCompatActivity {
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                //Do nothing
             }
         });
 
@@ -136,20 +72,12 @@ public class TAccounts extends AppCompatActivity {
 
     private void setupView() {
 
-        btn_load_taccount = findViewById(R.id.btn_load_taccount);
-        btn_load_taccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadTaacountReport();
-            }
-        });
-        btn_save_taccount = findViewById(R.id.btn_save_taccount);
-        btn_save_taccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(validateFliendsOdEconomyReport()){
-                    saveEconomyRegisterInDatabase();
-                }
+        Button btnLoadTAccount = findViewById(R.id.btnLoadTAccount);
+        btnLoadTAccount.setOnClickListener(v -> loadTaacountReport());
+        Button btnSaveTAccount = findViewById(R.id.btnSaveTAccount);
+        btnSaveTAccount.setOnClickListener(v -> {
+            if(validateFliendsOdEconomyReport()){
+                saveEconomyRegisterInDatabase();
             }
         });
 
@@ -157,98 +85,92 @@ public class TAccounts extends AppCompatActivity {
     }
 
     public void initAllEdittext(){
-        listViewEconomyConcept1 = findViewById(R.id.listViewEconomyConcept1);
+        EditText listViewEconomyConcept1 = findViewById(R.id.listViewEconomyConcept1);
         allConcepts.add(listViewEconomyConcept1);
-        listViewEconomyDebit1 = findViewById(R.id.listViewEconomyDebit1);
+        EditText listViewEconomyDebit1 = findViewById(R.id.listViewEconomyDebit1);
         allDebit.add(listViewEconomyDebit1);
-        listViewEconomyCredit1 = findViewById(R.id.listViewEconomyCredit1);
+        EditText listViewEconomyCredit1 = findViewById(R.id.listViewEconomyCredit1);
         allCredit.add(listViewEconomyCredit1);
 
 
-        listViewEconomyConcept2 = findViewById(R.id.listViewEconomyConcept2);
+        EditText listViewEconomyConcept2 = findViewById(R.id.listViewEconomyConcept2);
         allConcepts.add(listViewEconomyConcept2);
-        listViewEconomyDebit2 = findViewById(R.id.listViewEconomyDebit2);
+        EditText listViewEconomyDebit2 = findViewById(R.id.listViewEconomyDebit2);
         allDebit.add(listViewEconomyDebit2);
-        listViewEconomyCredit2 = findViewById(R.id.listViewEconomyCredit2);
+        EditText listViewEconomyCredit2 = findViewById(R.id.listViewEconomyCredit2);
         allCredit.add(listViewEconomyCredit2);
 
-        listViewEconomyConcept3 = findViewById(R.id.listViewEconomyConcept3);
+        EditText listViewEconomyConcept3 = findViewById(R.id.listViewEconomyConcept3);
         allConcepts.add(listViewEconomyConcept3);
-        listViewEconomyDebit3 = findViewById(R.id.listViewEconomyDebit3);
+        EditText listViewEconomyDebit3 = findViewById(R.id.listViewEconomyDebit3);
         allDebit.add(listViewEconomyDebit3);
-        listViewEconomyCredit3 = findViewById(R.id.listViewEconomyCredit3);
+        EditText listViewEconomyCredit3 = findViewById(R.id.listViewEconomyCredit3);
         allCredit.add(listViewEconomyCredit3);
 
-        listViewEconomyConcept4 = findViewById(R.id.listViewEconomyConcept4);
+        EditText listViewEconomyConcept4 = findViewById(R.id.listViewEconomyConcept4);
         allConcepts.add(listViewEconomyConcept4);
-        listViewEconomyDebit4 = findViewById(R.id.listViewEconomyDebit4);
+        EditText listViewEconomyDebit4 = findViewById(R.id.listViewEconomyDebit4);
         allDebit.add(listViewEconomyDebit4);
-        listViewEconomyCredit4 = findViewById(R.id.listViewEconomyCredit4);
+        EditText listViewEconomyCredit4 = findViewById(R.id.listViewEconomyCredit4);
         allCredit.add(listViewEconomyCredit4);
 
-        listViewEconomyConcept5 = findViewById(R.id.listViewEconomyConcept5);
+        EditText listViewEconomyConcept5 = findViewById(R.id.listViewEconomyConcept5);
         allConcepts.add(listViewEconomyConcept5);
-        listViewEconomyDebit5 = findViewById(R.id.listViewEconomyDebit5);
+        EditText listViewEconomyDebit5 = findViewById(R.id.listViewEconomyDebit5);
         allDebit.add(listViewEconomyDebit5);
-        listViewEconomyCredit5 = findViewById(R.id.listViewEconomyCredit5);
+        EditText listViewEconomyCredit5 = findViewById(R.id.listViewEconomyCredit5);
         allCredit.add(listViewEconomyCredit5);
 
-        listViewEconomyConcept6 = findViewById(R.id.listViewEconomyConcept6);
+        EditText listViewEconomyConcept6 = findViewById(R.id.listViewEconomyConcept6);
         allConcepts.add(listViewEconomyConcept6);
-        listViewEconomyDebit6 = findViewById(R.id.listViewEconomyDebit6);
+        EditText listViewEconomyDebit6 = findViewById(R.id.listViewEconomyDebit6);
         allDebit.add(listViewEconomyDebit6);
-        listViewEconomyCredit6 = findViewById(R.id.listViewEconomyCredit6);
+        EditText listViewEconomyCredit6 = findViewById(R.id.listViewEconomyCredit6);
         allCredit.add(listViewEconomyCredit6);
 
-        listViewEconomyConcept7 = findViewById(R.id.listViewEconomyConcept7);
+        EditText listViewEconomyConcept7 = findViewById(R.id.listViewEconomyConcept7);
         allConcepts.add(listViewEconomyConcept7);
-        listViewEconomyDebit7 = findViewById(R.id.listViewEconomyDebit7);
+        EditText listViewEconomyDebit7 = findViewById(R.id.listViewEconomyDebit7);
         allDebit.add(listViewEconomyDebit7);
-        listViewEconomyCredit7 = findViewById(R.id.listViewEconomyCredit7);
+        EditText listViewEconomyCredit7 = findViewById(R.id.listViewEconomyCredit7);
         allCredit.add(listViewEconomyCredit7);
 
-        listViewEconomyConcept8 = findViewById(R.id.listViewEconomyConcept8);
+        EditText listViewEconomyConcept8 = findViewById(R.id.listViewEconomyConcept8);
         allConcepts.add(listViewEconomyConcept8);
-        listViewEconomyDebit8 = findViewById(R.id.listViewEconomyDebit8);
+        EditText listViewEconomyDebit8 = findViewById(R.id.listViewEconomyDebit8);
         allDebit.add(listViewEconomyDebit8);
-        listViewEconomyCredit8 = findViewById(R.id.listViewEconomyCredit8);
+        EditText listViewEconomyCredit8 = findViewById(R.id.listViewEconomyCredit8);
         allCredit.add(listViewEconomyCredit8);
 
-        listViewEconomyConcept9 = findViewById(R.id.listViewEconomyConcept9);
+        EditText listViewEconomyConcept9 = findViewById(R.id.listViewEconomyConcept9);
         allConcepts.add(listViewEconomyConcept9);
-        listViewEconomyDebit9 = findViewById(R.id.listViewEconomyDebit9);
+        EditText listViewEconomyDebit9 = findViewById(R.id.listViewEconomyDebit9);
         allDebit.add(listViewEconomyDebit9);
-        listViewEconomyCredit9 = findViewById(R.id.listViewEconomyCredit9);
+        EditText listViewEconomyCredit9 = findViewById(R.id.listViewEconomyCredit9);
         allCredit.add(listViewEconomyCredit9);
 
-        listViewEconomyConcept10 = findViewById(R.id.listViewEconomyConcept10);
+        EditText listViewEconomyConcept10 = findViewById(R.id.listViewEconomyConcept10);
         allConcepts.add(listViewEconomyConcept10);
-        listViewEconomyDebit10 = findViewById(R.id.listViewEconomyDebit10);
+        EditText listViewEconomyDebit10 = findViewById(R.id.listViewEconomyDebit10);
         allDebit.add(listViewEconomyDebit10);
-        listViewEconomyCredit10 = findViewById(R.id.listViewEconomyCredit10);
+        EditText listViewEconomyCredit10 = findViewById(R.id.listViewEconomyCredit10);
         allCredit.add(listViewEconomyCredit10);
 
     }
 
 
-    //public void createNewTAccountsItem(){
-    //    ItemTaccont itemTaccont = new ItemTaccont(0, "", 0, 0);
-    //    arrayTaccounts.add(itemTaccont);
-    //}
-
-
     public void putAMonthsInSpinner(){
-        spinner_mounth = findViewById(R.id.spinner_mounth);
+        spinnerMonth = findViewById(R.id.spinnerMonth);
         List<String> months = timeController.getCurrentMonths();
-        ArrayAdapter <String> adapterSpinnerMounth = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, months);
-        spinner_mounth.setAdapter(adapterSpinnerMounth);
+        ArrayAdapter <String> adapterSpinnerMounth = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, months);
+        spinnerMonth.setAdapter(adapterSpinnerMounth);
         //Put a Mounth in spinner
-        spinner_mounth.setSelection(timeController.getNumberOfCurrentMounth());
+        spinnerMonth.setSelection(timeController.getNumberOfCurrentMounth());
     }
 
     public void refreshDaysOfSpinner(){
 
-        String nameMonth = spinner_mounth.getSelectedItem().toString().trim();
+        String nameMonth = spinnerMonth.getSelectedItem().toString().trim();
         int days = timeController.getNumberDaysOfMounthX(nameMonth);
 
         String [] spnerDays = new String[days];
@@ -256,18 +178,18 @@ public class TAccounts extends AppCompatActivity {
             spnerDays[i] = String.valueOf(i+1);
         }
 
-        ArrayAdapter <String> adapterSpinnerDays = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, spnerDays);
-        spinner_days.setAdapter(adapterSpinnerDays);
+        ArrayAdapter <String> adapterSpinnerDays = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, spnerDays);
+        spinnerDays.setAdapter(adapterSpinnerDays);
 
         //If currentle month put currentle day
-        if(nameMonth == timeController.getCurrentMonth()){
-            spinner_days.setSelection(timeController.getCurrentDayNumberOfMount()-1);
+        if(nameMonth.equals(timeController.getCurrentMonth())){
+            spinnerDays.setSelection(timeController.getCurrentDayNumberOfMount()-1);
         }
     }
 
     //Valitate if the text is rigth
     public boolean validateText(String txt){
-        return txt != "" && txt.trim() != "" && txt.trim().length() > 0;
+        return !txt.equals("") && !txt.trim().equals("") && txt.trim().length() > 0;
     }
 
     //Valitate if the value is rigth
@@ -304,9 +226,9 @@ public class TAccounts extends AppCompatActivity {
             if(validateText(concep)){
 
                 //You need some value
-                if(!moneyIsEmpty(debit)|!moneyIsEmpty(credit)){
+                if(!moneyIsEmpty(debit)||!moneyIsEmpty(credit)){
                     //Not write both debit and credit
-                    if(!moneyIsEmpty(debit)&!moneyIsEmpty(credit)){
+                    if(!moneyIsEmpty(debit)&&!moneyIsEmpty(credit)){
                         allDebit.get(i).setBackgroundColor(Color.RED);
                         allCredit.get(i).setBackgroundColor(Color.RED);
                         errors =  errors + 1;
@@ -360,8 +282,8 @@ public class TAccounts extends AppCompatActivity {
         int inserted = 0; //The ID register
         int rowsProceced = 0; // Counter a rows inserted
         String timeStampYYYY = timeController.getCurrentYear();
-        String timeStampMM = spinner_mounth.getSelectedItem().toString().trim();
-        String timeStampDD = spinner_days.getSelectedItem().toString().trim();
+        String timeStampMM = spinnerMonth.getSelectedItem().toString().trim();
+        String timeStampDD = spinnerDays.getSelectedItem().toString().trim();
         String timeStamp = timeStampYYYY+":"+timeStampMM+":"+timeStampDD;
         for(int i=0;i<allConcepts.size();i++){
 
@@ -399,8 +321,8 @@ public class TAccounts extends AppCompatActivity {
     public void loadTaacountReport(){
 
         String timeStampYYYY = timeController.getCurrentYear();
-        String timeStampMM = spinner_mounth.getSelectedItem().toString().trim();
-        String timeStampDD = spinner_days.getSelectedItem().toString().trim();
+        String timeStampMM = spinnerMonth.getSelectedItem().toString().trim();
+        String timeStampDD = spinnerDays.getSelectedItem().toString().trim();
         String timeStamp = timeStampYYYY+":"+timeStampMM+":"+timeStampDD;
 
         List<String> information = dbTAccount.getTAccountByTimeStamp(timeStamp);
@@ -412,7 +334,7 @@ public class TAccounts extends AppCompatActivity {
             }
             //Put info in screem
             for(int i=0;i<information.size();i++){
-                String [] values = information.get(i).toString().split(";");
+                String [] values = information.get(i).split(";");
                 allConcepts.get(i).setText(values[0]);
                 if(values[2].equals("0")){
                     allDebit.get(i).setText(values[1]);

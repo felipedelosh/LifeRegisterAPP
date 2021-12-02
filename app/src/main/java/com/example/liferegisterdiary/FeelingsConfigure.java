@@ -9,33 +9,27 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import Adapters.FeelingsConfigureAdapter;
-import Models.ItemFeeling;
+import adapters.FeelingsConfigureAdapter;
+import models.ItemFeeling;
 import db.DbFeeling;
 
 
 public class FeelingsConfigure extends AppCompatActivity {
 
-
-    private FeelingsConfigureAdapter feelingsConfigureAdapter;
     private ArrayList<ItemFeeling> arrayListItemFeelings;
-    private Context context;
-    private DbFeeling dbFeeling;
-
-    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feelings_configure);
 
-        context = this;
-        dbFeeling = new DbFeeling(context);
+        Context context = this;
+        DbFeeling dbFeeling = new DbFeeling(context);
 
         //Generate a list of feelings
-        listView = findViewById(R.id.listViewFeelings);
+        ListView listView = findViewById(R.id.listViewFeelings);
         arrayListItemFeelings = new ArrayList<>();
-        feelingsConfigureAdapter = new FeelingsConfigureAdapter(arrayListItemFeelings, context);
+        FeelingsConfigureAdapter feelingsConfigureAdapter = new FeelingsConfigureAdapter(arrayListItemFeelings, context);
         listView.setAdapter(feelingsConfigureAdapter);
 
         List<String> allFeelings = dbFeeling.getFeelingsList();

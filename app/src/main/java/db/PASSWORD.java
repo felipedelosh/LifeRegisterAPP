@@ -3,7 +3,6 @@ package db;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
@@ -13,12 +12,11 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class PASSWORD extends DatabaseController {
 
-    Context context;
+    private Context context;
 
     public PASSWORD(@Nullable Context context) {
         super(context);
@@ -124,9 +122,9 @@ public class PASSWORD extends DatabaseController {
 
     public String backupDatabase(){
         String info = "Building DB\n";
-        List<String> listOfTables = new ArrayList<>();
-        String BACKUP = "";
-        int counterTables = 0;
+        List<String> listOfTables = getAllTableNames();
+        String sqlBACKUP = "";
+        int counterTables = listOfTables.size();
         int counterRows = 0;
 
         try{
@@ -137,41 +135,21 @@ public class PASSWORD extends DatabaseController {
             DatabaseController databaseController = new DatabaseController(context);
             SQLiteDatabase db = databaseController.getWritableDatabase();
 
-            Cursor c = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
+            int nroTables = listOfTables.size();
 
-            if(c.moveToFirst()){
-                while (!c.isAfterLast()){
-                    counterTables = counterTables + 1;
-                    String tableName = c.getString(0);
-
-                    //Save only database tables
-                    if(tableName.split("_")[0].equals("t")){
-                        listOfTables.add(tableName);
-                    }
-
-                    c.moveToNext();
-                }
-
-            }
-
-
-            int NroTables = listOfTables.size();
-
-            if(NroTables>0){
+            if(nroTables>0){
                 //Extract info of all tables
 
-
-                for(int i=0;i<NroTables;i++){
+                for(int i=0;i<nroTables;i++){
 
                     //Only a tables with information
-
                     List<String> information = getTableTYPEandData(listOfTables.get(i));
                     if(information.size()>0){
 
-                        String BACKUPHEAD = "INSERT INTO " + listOfTables.get(i) + " (";
+                        String sqlBACKUPHEAD = "INSERT INTO " + listOfTables.get(i) + " (";
 
                         //Get table column names
-                        c = db.rawQuery("SELECT name FROM PRAGMA_TABLE_INFO("+"\'"+listOfTables.get(i)+"\')", null);
+                        Cursor c = db.rawQuery("SELECT name FROM PRAGMA_TABLE_INFO("+"\'"+listOfTables.get(i)+"\')", null);
                         List<String> columnNames = new ArrayList<>();
                         if(c.moveToFirst()){
                             while (!c.isAfterLast()){
@@ -179,23 +157,21 @@ public class PASSWORD extends DatabaseController {
                                 c.moveToNext();
                             }
                         }
-                        String BACKUPVALUES = BACKUPHEAD + columnNames.toString().replace("[", "").replace("]", "") + ") VALUES (";
+                        String sqlBACKUPVALUES = sqlBACKUPHEAD + columnNames.toString().replace("[", "").replace("]", "") + ") VALUES (";
 
                         //Put Values
                         String values = "";
                         for(int j=0;j<information.size();j++){
                             counterRows = counterRows + 1;
                             values = information.get(j);
-                            BACKUP = BACKUP + BACKUPVALUES + values + ");\n";
+                            sqlBACKUP = sqlBACKUP + sqlBACKUPVALUES + values + ");\n";
                         }
                     }
 
 
                 }
 
-                c.close();
-
-                newFile.write(BACKUP);
+                newFile.write(sqlBACKUP);
                 newFile.flush();
                 newFile.close();
                 info = info + "create BACKUP.sql\n";
@@ -231,7 +207,6 @@ public class PASSWORD extends DatabaseController {
 
 
             while (getValues.moveToNext()) {
-                String data = "";
                 List<String> temp = new ArrayList<>();
                 for(int i=0;i<getValues.getColumnCount();i++){
 
@@ -253,14 +228,17 @@ public class PASSWORD extends DatabaseController {
 
 
         }catch (Exception e){
-
+            //Do nothing
         }
 
 
         return info;
     }
 
-
+    /****
+     * Erase all rows in all tables of database
+     * @return
+     */
     public String eraseDatabase(){
         String info = "Erase database... \n";
 
@@ -281,170 +259,19 @@ public class PASSWORD extends DatabaseController {
 
         if(createConect){
 
-            try {
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                db.execSQL("DELETE FROM " + TABLE_PROFILE);
-                info = info + "FORMAT: " + TABLE_PROFILE + "\n";
+            List<String> allTables = getAllTableNames();
 
-            }catch (Exception e){
-                info = info + "Error 404: " + TABLE_PROFILE + "\n";
+            for(int i=0;i<allTables.size();i++){
+                try {
+                    databaseController = new DatabaseController(context);
+                    db = databaseController.getWritableDatabase();
+                    db.execSQL("DELETE FROM " + allTables.get(i));
+                    info = info + "FORMAT: " + allTables.get(i) + "\n";
+
+                }catch (Exception e){
+                    info = info + "Error 404: " + allTables.get(i) + "\n";
+                }
             }
-
-
-
-            try {
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                db.execSQL("DELETE FROM " + TABLE_DRUGS);
-                info = info + "FORMAT: " + TABLE_DRUGS + "\n";
-
-            }catch (Exception e){
-                info = info + "Error 404: " + TABLE_DRUGS + "\n";
-            }
-
-
-
-            try {
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                db.execSQL("DELETE FROM " + TABLE_FEELINGS);
-                info = info + "FORMAT: " + TABLE_FEELINGS + "\n";
-
-            }catch (Exception e){
-                info = info + "Error 404: " + TABLE_FEELINGS + "\n";
-            }
-
-            try {
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                db.execSQL("DELETE FROM " + TABLE_ACTIVITIES);
-                info = info + "FORMAT: " + TABLE_ACTIVITIES + "\n";
-
-            }catch (Exception e){
-                info = info + "Error 404: " + TABLE_ACTIVITIES + "\n";
-            }
-
-
-            try {
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                db.execSQL("DELETE FROM " + TABLE_ACTIVITIES);
-                info = info + "FORMAT: " + TABLE_ACTIVITIES + "\n";
-
-            }catch (Exception e){
-                info = info + "Error 404: " + TABLE_ACTIVITIES + "\n";
-            }
-
-
-            try {
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                db.execSQL("DELETE FROM " + TABLE_PERSONAL_PAGE_DIARY);
-                info = info + "FORMAT: " + TABLE_PERSONAL_PAGE_DIARY + "\n";
-
-            }catch (Exception e){
-                info = info + "Error 404: " + TABLE_PERSONAL_PAGE_DIARY + "\n";
-            }
-
-
-            try {
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                db.execSQL("DELETE FROM " + TABLE_PERSONAL_DREAM_DIARY);
-                info = info + "FORMAT: " + TABLE_PERSONAL_DREAM_DIARY + "\n";
-
-            }catch (Exception e){
-                info = info + "Error 404: " + TABLE_PERSONAL_DREAM_DIARY + "\n";
-            }
-
-
-            try {
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                db.execSQL("DELETE FROM " + TABLE_PERSONAL_GRATITUDE_DIARY);
-                info = info + "FORMAT: " + TABLE_PERSONAL_GRATITUDE_DIARY + "\n";
-
-            }catch (Exception e){
-                info = info + "Error 404: " + TABLE_PERSONAL_GRATITUDE_DIARY + "\n";
-            }
-
-
-            try {
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                db.execSQL("DELETE FROM " + TABLE_PERSONAL_DRUGS_COUNTER);
-                info = info + "FORMAT: " + TABLE_PERSONAL_DRUGS_COUNTER + "\n";
-
-            }catch (Exception e){
-                info = info + "Error 404: " + TABLE_PERSONAL_DRUGS_COUNTER + "\n";
-            }
-
-
-            try {
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                db.execSQL("DELETE FROM " + TABLE_DRUGS_DIARY);
-                info = info + "FORMAT: " + TABLE_DRUGS_DIARY + "\n";
-
-            }catch (Exception e){
-                info = info + "Error 404: " + TABLE_DRUGS_DIARY + "\n";
-            }
-
-
-            try {
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                db.execSQL("DELETE FROM " + TABLE_DAY_TIME_DISTRIBUTION);
-                info = info + "FORMAT: " + TABLE_DAY_TIME_DISTRIBUTION + "\n";
-
-            }catch (Exception e){
-                info = info + "Error 404: " + TABLE_DAY_TIME_DISTRIBUTION + "\n";
-            }
-
-
-            try {
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                db.execSQL("DELETE FROM " + TABLE_PERSONAL_FEELING_COUNTER);
-                info = info + "FORMAT: " + TABLE_PERSONAL_FEELING_COUNTER + "\n";
-
-            }catch (Exception e){
-                info = info + "Error 404: " + TABLE_PERSONAL_FEELING_COUNTER + "\n";
-            }
-
-
-            try {
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                db.execSQL("DELETE FROM " + TABLE_PERSONAL_BOX_LITLE);
-                info = info + "FORMAT: " + TABLE_PERSONAL_BOX_LITLE + "\n";
-
-            }catch (Exception e){
-                info = info + "Error 404: " + TABLE_PERSONAL_BOX_LITLE + "\n";
-            }
-
-
-            try {
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                db.execSQL("DELETE FROM " + TABLE_PERSONAL_BOX_BIG);
-                info = info + "FORMAT: " + TABLE_PERSONAL_BOX_BIG + "\n";
-
-            }catch (Exception e){
-                info = info + "Error 404: " + TABLE_PERSONAL_BOX_BIG + "\n";
-            }
-
-            try {
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                db.execSQL("DELETE FROM " + TABLE_PERSONAL_ECONOMY_TACCOUNTS);
-                info = info + "FORMAT: " + TABLE_PERSONAL_ECONOMY_TACCOUNTS + "\n";
-
-            }catch (Exception e){
-                info = info + "Error 404: " + TABLE_PERSONAL_ECONOMY_TACCOUNTS + "\n";
-            }
-
         }
 
         return info;
@@ -469,221 +296,61 @@ public class PASSWORD extends DatabaseController {
         }
 
         if(createConect){
-            try{
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                String sql = "SELECT COUNT(*) FROM " + TABLE_PROFILE;
-                Cursor getValues = db.rawQuery( sql, null);
-                int value = 0;
-                while(getValues.moveToNext()){
-                    value = getValues.getInt(0);
+
+            List<String> allTables = getAllTableNames();
+
+            for(int i=0;i<allTables.size();i++){
+                try{
+                    databaseController = new DatabaseController(context);
+                    db = databaseController.getWritableDatabase();
+                    String sql = "SELECT COUNT(*) FROM " + allTables.get(i);
+                    Cursor getValues = db.rawQuery( sql, null);
+                    int value = 0;
+                    while(getValues.moveToNext()){
+                        value = getValues.getInt(0);
+                    }
+                    info = info + allTables.get(i) + ">>" + Integer.toString(value)+"\n";
+                    getValues.close();
+                }catch (Exception e){
+                    info = info + allTables.get(i) + ">>Error\n";
                 }
-                info = info + TABLE_PROFILE + ">>" + Integer.toString(value)+"\n";
-                getValues.close();
-            }catch (Exception e){
-                info = info + TABLE_PROFILE + ">>Error\n";
-            }
-
-            try{
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                String sql = "SELECT COUNT(*) FROM " + TABLE_DRUGS;
-                Cursor getValues = db.rawQuery( sql, null);
-                int value = 0;
-                while(getValues.moveToNext()){
-                    value = getValues.getInt(0);
-                }
-                info = info + TABLE_DRUGS + ">>" + Integer.toString(value)+"\n";
-                getValues.close();
-            }catch (Exception e){
-                info = info + TABLE_DRUGS + ">>Error\n";
-            }
-
-            try{
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                String sql = "SELECT COUNT(*) FROM " + TABLE_FEELINGS;
-                Cursor getValues = db.rawQuery( sql, null);
-                int value = 0;
-                while(getValues.moveToNext()){
-                    value = getValues.getInt(0);
-                }
-                info = info + TABLE_FEELINGS + ">>" + Integer.toString(value)+"\n";
-                getValues.close();
-            }catch (Exception e){
-                info = info + TABLE_FEELINGS + ">>Error\n";
-            }
-
-            try{
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                String sql = "SELECT COUNT(*) FROM " + TABLE_ACTIVITIES;
-                Cursor getValues = db.rawQuery( sql, null);
-                int value = 0;
-                while(getValues.moveToNext()){
-                    value = getValues.getInt(0);
-                }
-                info = info + TABLE_ACTIVITIES + ">>" + Integer.toString(value)+"\n";
-                getValues.close();
-            }catch (Exception e){
-                info = info + TABLE_ACTIVITIES + ">>Error\n";
-            }
-
-            try{
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                String sql = "SELECT COUNT(*) FROM " + TABLE_PERSONAL_PAGE_DIARY;
-                Cursor getValues = db.rawQuery( sql, null);
-                int value = 0;
-                while(getValues.moveToNext()){
-                    value = getValues.getInt(0);
-                }
-                info = info + TABLE_PERSONAL_PAGE_DIARY + ">>" + Integer.toString(value)+"\n";
-                getValues.close();
-            }catch (Exception e){
-                info = info + TABLE_PERSONAL_PAGE_DIARY + ">>Error\n";
-            }
-
-            try{
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                String sql = "SELECT COUNT(*) FROM " + TABLE_PERSONAL_DREAM_DIARY;
-                Cursor getValues = db.rawQuery( sql, null);
-                int value = 0;
-                while(getValues.moveToNext()){
-                    value = getValues.getInt(0);
-                }
-                info = info + TABLE_PERSONAL_DREAM_DIARY + ">>" + Integer.toString(value)+"\n";
-                getValues.close();
-            }catch (Exception e){
-                info = info + TABLE_PERSONAL_DREAM_DIARY + ">>Error\n";
-            }
-
-            try{
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                String sql = "SELECT COUNT(*) FROM " + TABLE_PERSONAL_GRATITUDE_DIARY;
-                Cursor getValues = db.rawQuery( sql, null);
-                int value = 0;
-                while(getValues.moveToNext()){
-                    value = getValues.getInt(0);
-                }
-                info = info + TABLE_PERSONAL_GRATITUDE_DIARY + ">>" + Integer.toString(value)+"\n";
-                getValues.close();
-            }catch (Exception e){
-                info = info + TABLE_PERSONAL_GRATITUDE_DIARY + ">>Error\n";
-            }
-
-            try{
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                String sql = "SELECT COUNT(*) FROM " + TABLE_PERSONAL_DRUGS_COUNTER;
-                Cursor getValues = db.rawQuery( sql, null);
-                int value = 0;
-                while(getValues.moveToNext()){
-                    value = getValues.getInt(0);
-                }
-                info = info + TABLE_PERSONAL_DRUGS_COUNTER + ">>" + Integer.toString(value)+"\n";
-                getValues.close();
-            }catch (Exception e){
-                info = info + TABLE_PERSONAL_DRUGS_COUNTER + ">>Error\n";
-            }
-
-
-            try{
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                String sql = "SELECT COUNT(*) FROM " + TABLE_DRUGS_DIARY;
-                Cursor getValues = db.rawQuery( sql, null);
-                int value = 0;
-                while(getValues.moveToNext()){
-                    value = getValues.getInt(0);
-                }
-                info = info + TABLE_DRUGS_DIARY + ">>" + Integer.toString(value)+"\n";
-                getValues.close();
-            }catch (Exception e){
-                info = info + TABLE_DRUGS_DIARY + ">>Error\n";
-            }
-
-
-            try{
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                String sql = "SELECT COUNT(*) FROM " + TABLE_DAY_TIME_DISTRIBUTION;
-                Cursor getValues = db.rawQuery( sql, null);
-                int value = 0;
-                while(getValues.moveToNext()){
-                    value = getValues.getInt(0);
-                }
-                info = info + TABLE_DAY_TIME_DISTRIBUTION + ">>" + Integer.toString(value)+"\n";
-                getValues.close();
-            }catch (Exception e){
-                info = info + TABLE_DAY_TIME_DISTRIBUTION + ">>Error\n";
-            }
-
-
-            try{
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                String sql = "SELECT COUNT(*) FROM " + TABLE_PERSONAL_FEELING_COUNTER;
-                Cursor getValues = db.rawQuery( sql, null);
-                int value = 0;
-                while(getValues.moveToNext()){
-                    value = getValues.getInt(0);
-                }
-                info = info + TABLE_PERSONAL_FEELING_COUNTER + ">>" + Integer.toString(value)+"\n";
-                getValues.close();
-            }catch (Exception e){
-                info = info + TABLE_PERSONAL_FEELING_COUNTER + ">>Error\n";
-            }
-
-            try{
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                String sql = "SELECT COUNT(*) FROM " + TABLE_PERSONAL_BOX_LITLE;
-                Cursor getValues = db.rawQuery( sql, null);
-                int value = 0;
-                while(getValues.moveToNext()){
-                    value = getValues.getInt(0);
-                }
-                info = info + TABLE_PERSONAL_BOX_LITLE + ">>" + Integer.toString(value)+"\n";
-                getValues.close();
-            }catch (Exception e){
-                info = info + TABLE_PERSONAL_BOX_LITLE + ">>Error\n";
-            }
-
-            try{
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                String sql = "SELECT COUNT(*) FROM " + TABLE_PERSONAL_BOX_BIG;
-                Cursor getValues = db.rawQuery( sql, null);
-                int value = 0;
-                while(getValues.moveToNext()){
-                    value = getValues.getInt(0);
-                }
-                info = info + TABLE_PERSONAL_BOX_BIG + ">>" + Integer.toString(value)+"\n";
-                getValues.close();
-            }catch (Exception e){
-                info = info + TABLE_PERSONAL_BOX_BIG + ">>Error\n";
-            }
-
-            try{
-                databaseController = new DatabaseController(context);
-                db = databaseController.getWritableDatabase();
-                String sql = "SELECT COUNT(*) FROM " + TABLE_PERSONAL_ECONOMY_TACCOUNTS;
-                Cursor getValues = db.rawQuery( sql, null);
-                int value = 0;
-                while(getValues.moveToNext()){
-                    value = getValues.getInt(0);
-                }
-                info = info + TABLE_PERSONAL_ECONOMY_TACCOUNTS + ">>" + Integer.toString(value)+"\n";
-                getValues.close();
-            }catch (Exception e){
-                info = info + TABLE_PERSONAL_ECONOMY_TACCOUNTS + ">>Error\n";
             }
 
         }
 
         return info;
+    }
+
+    /****
+     * return all tables of database
+     *
+     * @return {"t_name, t_name, t_name..."}
+     */
+    public List<String> getAllTableNames(){
+        List<String> tablesNames = new ArrayList<>();
+
+        try{
+            //Create a consult to extract table names
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            Cursor c = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
+
+            if(c.moveToFirst()){
+                while (!c.isAfterLast()){
+                    String tableName = c.getString(0);
+
+
+                    if(tableName.split("_")[0].equals("t")){
+                        tablesNames.add(tableName);
+                    }
+                    c.moveToNext();
+                }
+            }
+        }catch (Exception e){
+            //Do nothing
+        }
+
+        return tablesNames;
     }
 }

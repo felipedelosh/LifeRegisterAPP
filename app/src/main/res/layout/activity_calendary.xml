@@ -29,52 +29,52 @@
 
 
         <Button
-            android:id="@+id/btn_mounth_01"
+            android:id="@+id/btnMonth01"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:text="#"/>
 
         <Button
-            android:id="@+id/btn_mounth_02"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="#"/>
-
-
-        <Button
-            android:id="@+id/btn_mounth_03"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="#"/>
-
-        <Button
-            android:id="@+id/btn_mounth_04"
+            android:id="@+id/btnMonth02"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:text="#"/>
 
 
         <Button
-            android:id="@+id/btn_mounth_05"
+            android:id="@+id/btnMonth03"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:text="#"/>
 
         <Button
-            android:id="@+id/btn_mounth_06"
+            android:id="@+id/btnMonth04"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:text="#"/>
 
 
         <Button
-            android:id="@+id/btn_mounth_07"
+            android:id="@+id/btnMonth05"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:text="#"/>
 
         <Button
-            android:id="@+id/btn_mounth_08"
+            android:id="@+id/btnMonth06"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="#"/>
+
+
+        <Button
+            android:id="@+id/btnMonth07"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="#"/>
+
+        <Button
+            android:id="@+id/btnMonth08"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:text="#"/>
@@ -89,113 +89,52 @@
 
 
             <Button
-                android:id="@+id/btn_mounth_09"
+                android:id="@+id/btnMonth09"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text="#"/>
 
             <Button
-                android:id="@+id/btn_mounth_10"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:text="#"/>
-
-
-            <Button
-                android:id="@+id/btn_mounth_11"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:text="#"/>
-
-            <Button
-                android:id="@+id/btn_mounth_12"
+                android:id="@+id/btnMonth10"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text="#"/>
 
 
             <Button
-                android:id="@+id/btn_mounth_13"
+                android:id="@+id/btnMonth11"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text="#"/>
 
             <Button
-                android:id="@+id/btn_mounth_14"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:text="#"/>
-
-
-            <Button
-                android:id="@+id/btn_mounth_15"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:text="#"/>
-
-            <Button
-                android:id="@+id/btn_mounth_16"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:text="#"/>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-
-            <Button
-                android:id="@+id/btn_mounth_17"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:text="#"/>
-
-            <Button
-                android:id="@+id/btn_mounth_18"
+                android:id="@+id/btnMonth12"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text="#"/>
 
 
             <Button
-                android:id="@+id/btn_mounth_19"
+                android:id="@+id/btnMonth13"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text="#"/>
 
             <Button
-                android:id="@+id/btn_mounth_20"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:text="#"/>
-
-
-            <Button
-                android:id="@+id/btn_mounth_21"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:text="#"/>
-
-            <Button
-                android:id="@+id/btn_mounth_22"
+                android:id="@+id/btnMonth14"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text="#"/>
 
 
             <Button
-                android:id="@+id/btn_mounth_23"
+                android:id="@+id/btnMonth15"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text="#"/>
 
             <Button
-                android:id="@+id/btn_mounth_24"
+                android:id="@+id/btnMonth16"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text="#"/>
@@ -211,46 +150,107 @@
 
 
             <Button
-                android:id="@+id/btn_mounth_25"
+                android:id="@+id/btnMonth17"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text="#"/>
 
             <Button
-                android:id="@+id/btn_mounth_26"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:text="#"/>
-
-
-            <Button
-                android:id="@+id/btn_mounth_27"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:text="#"/>
-
-            <Button
-                android:id="@+id/btn_mounth_28"
+                android:id="@+id/btnMonth18"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text="#"/>
 
 
             <Button
-                android:id="@+id/btn_mounth_29"
+                android:id="@+id/btnMonth19"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text="#"/>
 
             <Button
-                android:id="@+id/btn_mounth_30"
+                android:id="@+id/btnMonth20"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text="#"/>
 
 
             <Button
-                android:id="@+id/btn_mounth_31"
+                android:id="@+id/btnMonth21"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+            <Button
+                android:id="@+id/btnMonth22"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+
+            <Button
+                android:id="@+id/btnMonth23"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+            <Button
+                android:id="@+id/btnMonth24"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btnMonth25"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+            <Button
+                android:id="@+id/btnMonth26"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+
+            <Button
+                android:id="@+id/btnMonth27"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+            <Button
+                android:id="@+id/btnMonth28"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+
+            <Button
+                android:id="@+id/btnMonth29"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+            <Button
+                android:id="@+id/btnMonth30"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="#"/>
+
+
+            <Button
+                android:id="@+id/btnMonth31"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text="#"/>

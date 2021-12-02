@@ -21,14 +21,14 @@
             android:orientation="horizontal">
 
             <Spinner
-                android:id="@+id/spinner_days"
+                android:id="@+id/spinnerDays"
                 android:layout_width="match_parent"
                 android:layout_marginTop="15dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content" />
 
             <Spinner
-                android:id="@+id/spinner_mounth"
+                android:id="@+id/spinnerMonth"
                 android:layout_width="match_parent"
                 android:layout_marginTop="15dp"
                 android:layout_weight="1"
@@ -41,14 +41,14 @@
             android:layout_weight="1"
             android:orientation="horizontal">
             <Button
-                android:id="@+id/btn_load_taccount"
+                android:id="@+id/btnLoadTAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/btnLoad" />
 
             <Button
-                android:id="@+id/btn_save_taccount"
+                android:id="@+id/btnSaveTAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

@@ -1,7 +1,6 @@
 package com.example.liferegisterdiary;
 
 
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -9,12 +8,12 @@ import java.util.List;
 public class TimeController{
 
 
-    public String [] daysOfWeek = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"};
-    public String [] months = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
-    public int [] numberOfDaysMonths = {31,28,31,30,31,30,31,31,30,31,30,31};
+    private static final String [] daysOfWeek = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"};
+    private static final String [] months = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+    private static final int [] numberOfDaysMonths = {31,28,31,30,31,30,31,31,30,31,30,31};
 
     public TimeController(){
-
+        //Do nothing
     }
 
     /*
@@ -23,7 +22,7 @@ public class TimeController{
     * */
     public int getNumberDaysOfMounthX(String monthname){
         int k = 0;
-        while(monthname != months[k]){
+        while(!monthname.equals(months[k])){
             k = k + 1;
         }
 
@@ -37,7 +36,7 @@ public class TimeController{
     * */
     public int getNomberOfMountX(String monthname){
         int k = 0;
-        while(monthname != months[k]){
+        while(!monthname.equals(months[k])){
             k = k + 1;
         }
         return k;
@@ -61,7 +60,7 @@ public class TimeController{
      */
     public List<String> getCurrentMonths(){
 
-        List<String> currentM = new ArrayList<String>();
+        List<String> currentM = new ArrayList<>();
 
         int nroCurrentM = Calendar.getInstance().get(Calendar.MONTH);
 
@@ -100,7 +99,7 @@ public class TimeController{
     public String getCurrentHour24(){
         int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
         int minut = Calendar.getInstance().get(Calendar.MINUTE);
-        return String.valueOf(hour)+":"+String.valueOf(minut);
+        return hour+":"+minut;
     }
 
     public int howManyYearsHavPassed(int day, int mounth, int year){
@@ -133,7 +132,7 @@ public class TimeController{
 
         minut = 5*(minut/5);
 
-        return String.valueOf(hour)+":"+String.valueOf(minut);
+        return hour+":"+minut;
     }
 
     public int howManyDayHavMonht(){
@@ -168,18 +167,6 @@ public class TimeController{
 
     public int getDaysOfMounthX(int m){
         return numberOfDaysMonths[m];
-    }
-
-    public void setDaysOfWeek(String[] daysOfWeek) {
-        this.daysOfWeek = daysOfWeek;
-    }
-
-    public void setMonths(String[] months) {
-        this.months = months;
-    }
-
-    public void setNumberOfDaysMonths(int[] numberOfDaysMonths) {
-        this.numberOfDaysMonths = numberOfDaysMonths;
     }
 
     public String health(){

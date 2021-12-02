@@ -15,7 +15,7 @@ import java.util.List;
 
 public class DbTimeDistribution extends DatabaseController {
 
-    Context context;
+    private transient Context context;
 
     public DbTimeDistribution(@Nullable Context context) {
         super(context);
@@ -39,7 +39,7 @@ public class DbTimeDistribution extends DatabaseController {
             id = db.insert(TABLE_ACTIVITIES, null, values);
 
         }catch (Exception e){
-
+            //Do nothing
         }
 
         return id;
@@ -63,7 +63,7 @@ public class DbTimeDistribution extends DatabaseController {
             id = db.insert(TABLE_DAY_TIME_DISTRIBUTION, null, values);
 
         }catch (Exception e){
-
+            //Do nothing
         }
 
         return id;
@@ -72,14 +72,13 @@ public class DbTimeDistribution extends DatabaseController {
 
     public List<String> getActivitiesList() {
 
-        List<String> information = new ArrayList<String>();
+        List<String> information = new ArrayList<>();
 
         try {
             DatabaseController databaseController = new DatabaseController(context);
             SQLiteDatabase db = databaseController.getWritableDatabase();
 
             String sql = "SELECT * FROM " + TABLE_ACTIVITIES;
-            //information.add(sql);
             Cursor getActivities = db.rawQuery(sql, null);
 
             while (getActivities.moveToNext()) {

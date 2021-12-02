@@ -22,7 +22,7 @@ import db.DbUser;
 * MVC
 * All controllers invoke here
 * */
-public class Controller implements Parcelable {
+public class Controller{
 
     Context context;
 
@@ -43,7 +43,6 @@ public class Controller implements Parcelable {
         this.imgBG = imgBG;
 
         timeController = new TimeController();
-        fileFolderController = new FileFolderController(context, timeController);
         databaseController = new DatabaseController(context);
         database = databaseController.getWritableDatabase();
         user = new DbUser(context);
@@ -62,27 +61,6 @@ public class Controller implements Parcelable {
     protected Controller(Parcel in) {
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public static final Creator<Controller> CREATOR = new Creator<Controller>() {
-        @Override
-        public Controller createFromParcel(Parcel in) {
-            return new Controller(in);
-        }
-
-        @Override
-        public Controller[] newArray(int size) {
-            return new Controller[size];
-        }
-    };
-
     public TimeController getTimeController(){
         return timeController;
     }
@@ -99,102 +77,119 @@ public class Controller implements Parcelable {
     }
 
     public void insertDrugsList(){
-        DbDrugsDiary dbDrugsDiary = new DbDrugsDiary(context);
+        try {
+            DbDrugsDiary dbDrugsDiary = new DbDrugsDiary(context);
 
-        if (dbDrugsDiary.getDrugsList().size() == 0){
+            if (dbDrugsDiary.getDrugsList().isEmpty()){
 
-            String [] drugsList = {"Alcohol",
-                    "Cannabis",
-                    "Cocaína",
-                    "Éxtasis",
-                    "Juego",
-                    "Nicotina",
-                    "Pornografia"
-            };
+                String [] drugsList = {
+                        "Alcohol",
+                        "Cannabis",
+                        "Cocaína",
+                        "Éxtasis",
+                        "Juego",
+                        "Nicotina",
+                        "Pornografia"
+                };
 
 
-            for(int i = 0; i < drugsList.length; i++){
-                Long id = dbDrugsDiary.insertDrug(drugsList[i]);
+                for(int i = 0; i < drugsList.length; i++){
+                    dbDrugsDiary.insertDrug(drugsList[i]);
+                }
             }
+        }catch (Exception e){
+            //Nothing
         }
     }
 
     public void insertActivitiesList(){
-        DbTimeDistribution dbTimeDistribution = new DbTimeDistribution(context);
 
-        if (dbTimeDistribution.getActivitiesList().size() == 0){
+        try{
 
-            String [] ActitivitiesList = {
-                    "alimentación",
-                    "bicicleta",
-                    "cansado",
-                    "compras",
-                    "construir",
-                    "dormir",
-                    "deporte",
-                    "estudiar",
-                    "FAPTIME",
-                    "higiene personal",
-                    "internet",
-                    "ocio",
-                    "leer",
-                    "que haceres domesticos",
-                    "peliculas",
-                    "programar",
-                    "redes sociales",
-                    "sexo",
-                    "trabajar",
-                    "viajar",
-                    "video juegos",
-                    "vida social"
-            };
+            DbTimeDistribution dbTimeDistribution = new DbTimeDistribution(context);
+
+            if (dbTimeDistribution.getActivitiesList().isEmpty()){
+
+                String [] actitivitiesList = {
+                        "alimentación",
+                        "bicicleta",
+                        "compras",
+                        "construir",
+                        "dormir",
+                        "deporte",
+                        "estudiar",
+                        "FAPTIME",
+                        "higiene personal",
+                        "internet",
+                        "ocio",
+                        "leer",
+                        "que haceres domesticos",
+                        "peliculas",
+                        "programar",
+                        "redes sociales",
+                        "sexo",
+                        "trabajar",
+                        "viajar",
+                        "video juegos",
+                        "vida social"
+                };
 
 
-            for(int i = 0; i < ActitivitiesList.length; i++){
-                Long id = dbTimeDistribution.insertActivity(ActitivitiesList[i]);
+                for(int i = 0; i < actitivitiesList.length; i++){
+                    dbTimeDistribution.insertActivity(actitivitiesList[i]);
+                }
             }
-        }
 
+        }catch (Exception e){
+            //Do nothing
+        }
 
     }
 
 
     public void insertFeelingsList(){
-        DbFeeling dbFeeling = new DbFeeling(context);
 
-        if(dbFeeling.getFeelingsList().size() == 0) {
+        try{
 
-            String[] ActitivitiesList = {
-                    "alegría",
-                    "amor",
-                    "tristeza",
-                    "tranquilidad",
-                    "ira",
-                    "miedo",
-                    "hostilidad",
-                    "frustración",
-                    "odio",
-                    "culpa",
-                    "celos",
-                    "felicidad",
-                    "esperanza",
-                    "asco",
-                    "motivado",
-                    "suicida",
-                    "orgullozo",
-                    "vergüenza",
-                    "drogado",
-                    "trabado",
-                    "alcoholizado",
-                    "satisfecho"
-            };
+            DbFeeling dbFeeling = new DbFeeling(context);
 
-            for(int i = 0; i < ActitivitiesList.length; i++){
-                Long id = dbFeeling.insertFeeling(ActitivitiesList[i]);
+            if(dbFeeling.getFeelingsList().isEmpty()) {
+
+                String[] feelingsList = {
+                        "alegría",
+                        "amor",
+                        "tristeza",
+                        "tranquilidad",
+                        "ira",
+                        "miedo",
+                        "hostilidad",
+                        "frustración",
+                        "odio",
+                        "culpa",
+                        "celos",
+                        "cansado",
+                        "felicidad",
+                        "esperanza",
+                        "asco",
+                        "motivado",
+                        "suicida",
+                        "orgullozo",
+                        "vergüenza",
+                        "drogado",
+                        "trabado",
+                        "alcoholizado",
+                        "satisfecho"
+                };
+
+                for(int i = 0; i < feelingsList.length; i++){
+                    dbFeeling.insertFeeling(feelingsList[i]);
+                }
+
             }
 
+        } catch (Exception e){
+            //Do nothing
         }
-
     }
 
 

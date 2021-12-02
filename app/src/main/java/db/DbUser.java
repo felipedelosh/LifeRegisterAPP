@@ -10,14 +10,14 @@ import androidx.annotation.Nullable;
 
 import com.example.liferegisterdiary.DatabaseController;
 
-import Models.User;
+import models.User;
 
 /*
 * This is create top inser a user information
 * */
 public class DbUser extends DatabaseController {
 
-    Context context;
+    private transient Context context;
 
     public DbUser(@Nullable Context context){
         super(context);
@@ -114,7 +114,7 @@ public class DbUser extends DatabaseController {
             id = db.insert(TABLE_PROFILE, null, values);
 
         }catch (Exception e){
-
+            //Do nothing
         }
 
         return id;
@@ -139,7 +139,7 @@ public class DbUser extends DatabaseController {
             id = db.insert(TABLE_PROFILE, null, values);
 
         }catch (Exception e){
-
+            //Do nothing
         }
 
         return id;

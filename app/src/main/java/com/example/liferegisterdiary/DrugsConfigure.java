@@ -9,18 +9,13 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import Adapters.DrugsConfigureAdapter;
-import Models.ItemDrug;
+import adapters.DrugsConfigureAdapter;
+import models.ItemDrug;
 import db.DbDrugsDiary;
 
 public class DrugsConfigure extends AppCompatActivity {
 
-    private DrugsConfigureAdapter drugsConfigureAdapter;
     private ArrayList<ItemDrug> arrayListDrugs;
-    private Context context;
-    private DbDrugsDiary dbDrugsDiary;
-
-    private ListView listView;
 
 
     @Override
@@ -28,13 +23,13 @@ public class DrugsConfigure extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drugs_configure);
 
-        context = this;
-        dbDrugsDiary = new DbDrugsDiary(context);
+        Context context = this;
+        DbDrugsDiary dbDrugsDiary = new DbDrugsDiary(context);
 
         //Generate a list of drugs
-        listView = findViewById(R.id.listViewDrugs);
+        ListView listView = findViewById(R.id.listViewDrugs);
         arrayListDrugs = new ArrayList<>();
-        drugsConfigureAdapter = new DrugsConfigureAdapter(arrayListDrugs, context);
+        DrugsConfigureAdapter drugsConfigureAdapter = new DrugsConfigureAdapter(arrayListDrugs, context);
         listView.setAdapter(drugsConfigureAdapter);
 
         List<String> allDrugs = dbDrugsDiary.getDrugsList();
