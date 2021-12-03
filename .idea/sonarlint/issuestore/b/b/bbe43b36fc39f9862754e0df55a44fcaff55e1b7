@@ -1,0 +1,9 @@
+
+r
+java:S1450"\Remove the "loadDiaryPage" field and declare it as a local variable in the relevant methods.(¶À“ù
+r
+java:S1450"\Remove the "saveDiaryPage" field and declare it as a local variable in the relevant methods.(ºÔÄú
+h
+java:S3776*"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(°æ«ì
+>
+java:S1643W"Use a StringBuilder instead.(Œ–îúÿÿÿÿ8¼ú†Â×/

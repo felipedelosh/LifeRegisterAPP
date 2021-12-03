@@ -1,0 +1,13 @@
+
+A
+java:S2185;"&Remove this silly call to "Math.round"(¥ø€øÿÿÿÿ
+Y
+java:S11552">Use isEmpty() to check whether the collection is empty or not.(İÒ‚Øøÿÿÿÿ
+T
+java:S1155[">Use isEmpty() to check whether the collection is empty or not.(Ÿí®Ï
+\
+java:S2184;"ACast one of the operands of this division operation to a "float".(¥ø€øÿÿÿÿ
+^
+java:S3518r"CMake sure this expression can't be zero before doing this division.(æÈ©Ãıÿÿÿÿ
+Y
+java:S3518I"CMake sure this expression can't be zero before doing this division.(…®Æø

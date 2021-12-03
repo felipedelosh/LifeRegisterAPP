@@ -201,7 +201,7 @@ public class PASSWORD extends DatabaseController {
             SQLiteDatabase db = databaseController.getWritableDatabase();
 
             String sql = "SELECT * FROM " + tableName;
-            //information.add(sql);
+
             Cursor getValues = db.rawQuery(sql, null);
 
 

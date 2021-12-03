@@ -1,0 +1,11 @@
+
+F
+java:S3010"$Remove this assignment of "context".(ÕÜŽ–ýÿÿÿÿ8’¸÷À×/
+W
+java:S2209"5Change this instance-reference to a static reference.(ÕÜŽ–ýÿÿÿÿ8’¸÷À×/
+‰
+java:S1319"mThe type of "spinnerValues" should be an interface such as "List" rather than the implementation "ArrayList".(ã‘ö^8ýœöÀ×/
+Š
+java:S1319"mThe type of "spinnerValues" should be an interface such as "List" rather than the implementation "ArrayList".(Ù»¬Á8ýœöÀ×/
+u
+java:S1104"YMake spinnerValues a static final constant or non-public and provide accessors if needed.(ã‘ö^8ÿœöÀ×/

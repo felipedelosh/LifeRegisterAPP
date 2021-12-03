@@ -1,0 +1,11 @@
+
+ˆ
+java:S1319g"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(¼Øßûÿÿÿÿ
+f
+java:S2095!"PUse try-with-resources or close this "DatabaseController" in a "finally" clause.(ÿ³Œ›
+f
+java:S2095l"PUse try-with-resources or close this "DatabaseController" in a "finally" clause.(ÿ³Œ›
+f
+java:S20957"PUse try-with-resources or close this "DatabaseController" in a "finally" clause.(ÿ³Œ›
+f
+java:S2095N"PUse try-with-resources or close this "DatabaseController" in a "finally" clause.(ÿ³Œ›

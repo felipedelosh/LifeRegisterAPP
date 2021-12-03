@@ -1,0 +1,11 @@
+
+W
+java:S2130Æ"9Use "Integer.parseInt" for this string-to-int conversion.(êŸ”¿8¶êŠÂ×/
+u
+java:S3776Ô"RRefactor this method to reduce its Cognitive Complexity from 43 to the 15 allowed.(Ê…Õªøÿÿÿÿ8·êŠÂ×/
+R
+java:S1066ï"/Merge this if statement with the enclosing one.(áĞ×óûÿÿÿÿ8ÇêŠÂ×/
+R
+java:S1066ø"/Merge this if statement with the enclosing one.(Êòâ†ûÿÿÿÿ8ÇêŠÂ×/
+a
+java:S1155Ê">Use isEmpty() to check whether the collection is empty or not.(îí§·üÿÿÿÿ8ÈêŠÂ×/

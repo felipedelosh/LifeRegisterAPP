@@ -1,0 +1,17 @@
+
+=
+java:S1905\"(Remove this unnecessary cast to "float".(¿Ó–
+>
+java:S1905m"(Remove this unnecessary cast to "float".(Þ¿–±
+C
+java:S1905w"(Remove this unnecessary cast to "float".(¹Ö‹»úÿÿÿÿ
+>
+java:S1905}"(Remove this unnecessary cast to "float".(àÑÛÌ
+P
+java:S2864‘"4Iterate over the "entrySet" instead of the "keySet".(Õˆ‘‡úÿÿÿÿ
+P
+java:S2864 "4Iterate over the "entrySet" instead of the "keySet".(Õˆ‘‡úÿÿÿÿ
+„
+java:S1319Ž"hThe type of "information" should be an interface such as "Map" rather than the implementation "HashMap".(´¶‘Ðúÿÿÿÿ
+„
+java:S1319œ"hThe type of "information" should be an interface such as "Map" rather than the implementation "HashMap".(ÝÞÎÒúÿÿÿÿ

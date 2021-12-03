@@ -1,0 +1,19 @@
+
+A
+java:S3010)"+Remove this assignment of "timeController".(íÃá³
+K
+java:S2209)"5Change this instance-reference to a static reference.(íÃá³
+J
+java:S1172".Remove this unused method parameter "rootapp".(‡­È£ùÿÿÿÿ
+3
+java:S1643 "Use a StringBuilder instead.(æÏ˜û
+u
+java:S1104"ZMake timeController a static final constant or non-public and provide accessors if needed.(»Ñšîøÿÿÿÿ
+O
+java:S1444"4Make this "public static timeController" field final(»Ñšîøÿÿÿÿ
+h
+java:S2095œ"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(¾î¹–ûÿÿÿÿ
+g
+java:S2095"PUse try-with-resources or close this "OutputStreamWriter" in a "finally" clause.(¬éÿË
+k
+java:S2095›"OUse try-with-resources or close this "InputStreamReader" in a "finally" clause.(à¦»ôúÿÿÿÿ

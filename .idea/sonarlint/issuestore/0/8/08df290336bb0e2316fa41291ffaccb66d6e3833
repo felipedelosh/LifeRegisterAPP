@@ -1,0 +1,7 @@
+
+Œ
+java:S1319e"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÒŒ•I8ìÏÅÄ×/
+W
+java:S1141C"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ñÊ‹Â×/
+r
+java:S2095k"PUse try-with-resources or close this "DbTimeDistribution" in a "finally" clause.(Úê‰âüÿÿÿÿ8Ä¥ÏÄ×/

@@ -1,0 +1,25 @@
+
+C
+java:S1905B"(Remove this unnecessary cast to "float".(‡­øÿÿÿÿ
+7
+java:S1110N"!Remove these useless parentheses.(Ôšˆ„
+7
+java:S1110X"!Remove these useless parentheses.(‚¾¶€
+>
+java:S1905X"(Remove this unnecessary cast to "float".(‚¾¶€
+C
+java:S1905f"(Remove this unnecessary cast to "float".(Òğ«½ÿÿÿÿÿ
+h
+java:S3776o"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(…µñÛ
+O
+java:S2864z"4Iterate over the "entrySet" instead of the "keySet".(Õˆ‘‡úÿÿÿÿ
+K
+java:S2864"4Iterate over the "entrySet" instead of the "keySet".(µÁĞŒ
+K
+java:S2864­"4Iterate over the "entrySet" instead of the "keySet".(Èš
+P
+java:S2864Ã"4Iterate over the "entrySet" instead of the "keySet".(µñÊÄùÿÿÿÿ
+H
+java:S1068"2Remove this unused "timeController" private field.(Û˜½î
+~
+java:S1319o"hThe type of "information" should be an interface such as "Map" rather than the implementation "HashMap".(…µñÛ
