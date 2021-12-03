@@ -18,7 +18,7 @@ public class DreamDiary extends AppCompatActivity {
 
     TimeController timeController;
 
-    //Control not inser duplicated information
+    //Control not insert duplicated information
     String oldInformation;
 
     @Override
