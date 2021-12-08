@@ -30,6 +30,7 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
     public static final String TABLE_PERSONAL_BOX_LITLE = "t_box_litle";
     public static final String TABLE_PERSONAL_BOX_BIG = "t_box_big";
     public static final String TABLE_PERSONAL_ECONOMY_TACCOUNTS = "t_economy_t_account";
+    public static final String TABLE_NOTIFICATIONS = "t_notifications";
 
 
 
@@ -133,6 +134,12 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
                 "debit INTEGER NOT NULL," +
                 "credit INTEGER NOT NULL," +
                 "PRIMARY KEY (timeStamp, id) " +
+                ")");
+
+        db.execSQL("create table if not exists " + TABLE_NOTIFICATIONS + "(" +
+                "name TEXT NOT NULL," +
+                "lasttime NOT NULL," +
+                "PRIMARY KEY (name) " +
                 ")");
     }
 

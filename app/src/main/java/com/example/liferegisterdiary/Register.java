@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import db.DbUser;
@@ -119,7 +118,7 @@ public class Register extends AppCompatActivity{
 
                     DbUser user = new DbUser(Register.this);
                     int yearBirthDate = Integer.parseInt(spinnerRegisterYear.getSelectedItem().toString().trim());
-                    int mountBirthDate = timeController.getNomberOfMountX(spinnerRegisterMouhtns.getSelectedItem().toString().trim());
+                    int mountBirthDate = timeController.getNumberOfMountX(spinnerRegisterMouhtns.getSelectedItem().toString().trim());
                     int dayBirthDate = Integer.parseInt(spinnerRegisterDays.getSelectedItem().toString().trim());
                     Long id = user.insertUser(username, sex, yearBirthDate, mountBirthDate, dayBirthDate);
 

@@ -1,8 +1,11 @@
 package com.example.liferegisterdiary;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class TimeController{
@@ -34,7 +37,7 @@ public class TimeController{
     * En = 0
     * Feb = 1
     * */
-    public int getNomberOfMountX(String monthname){
+    public int getNumberOfMountX(String monthname){
         int k = 0;
         while(!monthname.equals(months[k])){
             k = k + 1;
@@ -164,6 +167,40 @@ public class TimeController{
 
         return list;
     }
+
+
+    /***
+     * Retrun a hours to pased
+     * Enter a Date
+     * YYYY:NameMont:DD:24H:Minut
+     * Compare with current date and return
+     * @param date String >> YYYY:NameMont:DD:24H:Minut
+     * @return The hours is containt in
+     */
+    public Long howManyHoursPased(String date){
+        try {
+            String [] dateToCompareInfo = date.split(":");
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy:MM:dd:HH:mm");
+            String strCurrentDate = getCurrentYear()+":"+getNumberOfCurrentMounth()+":"+getCurrentDayNumberOfMount()+":"+getCurrentHour24();
+            Date currentDATE = sdf.parse(strCurrentDate);
+            String strAnotherDate = dateToCompareInfo[0]+":"+getNumberOfMountX(dateToCompareInfo[1])+":"+dateToCompareInfo[2]+":"+dateToCompareInfo[3]+":"+dateToCompareInfo[4];
+            Date anotherDATE = sdf.parse(strAnotherDate);
+
+            //Return date
+            Long diff = currentDATE.getTime() - anotherDATE.getTime();
+
+            long seg = diff / 1000;
+            long min = seg / 60;
+            long hours = min / 60;
+
+            return  hours;
+        } catch (ParseException e) {
+            return 0L;
+        }
+    }
+
+
 
     public int getDaysOfMounthX(int m){
         return numberOfDaysMonths[m];

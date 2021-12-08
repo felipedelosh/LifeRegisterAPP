@@ -99,9 +99,6 @@ public class GraphicsProccesorEconomy extends View {
             }
 
 
-
-
-
             //Credit is red
             brush.setARGB(255,255,0,0);
             float cx0 = 0;

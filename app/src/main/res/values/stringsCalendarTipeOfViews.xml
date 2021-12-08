@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array
+        name="spinnerCalendarViewOptions">
+        <item>Entradas de dario</item>
+        <item>Consumo de psicoactivos</item>
+        <item>Estado emocional</item>
+    </string-array>
+</resources>

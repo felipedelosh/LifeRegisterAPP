@@ -1,5 +1,12 @@
 package com.example.liferegisterdiary;
 
+/***
+ * This is a main
+ *
+ * Contain an agent
+ *
+ */
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
     //text
     private TextView mainOutputMessage;
 
+
+    //Vars
+    private int counter = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,15 +35,20 @@ public class MainActivity extends AppCompatActivity {
         ImageView imgBG = findViewById(R.id.mainMenuImgBG);
         controller = new Controller(context, imgBG);
 
+        //Vars
+        counter = 0;
+
+        //Cacth screem elements
+        mainOutputMessage = findViewById(R.id.mainOutputMessage);
+        showOutputMesagge(controller.getOutPutMessage());
+
         //User is register?
         if(!controller.userIsRegister()){
             Intent launchResgisterView = new Intent(getApplicationContext(), Register.class);
             startActivity(launchResgisterView);
+        }else{
+            startAgent();
         }
-
-        //Cacth screem elements
-        mainOutputMessage = findViewById(R.id.mainOutputMessage);
-        showOutputMesagge("");
 
         setUpView();
     }
@@ -91,6 +107,29 @@ public class MainActivity extends AppCompatActivity {
 
     public void showOutputMesagge(String txt){
         mainOutputMessage.setText(txt);
+    }
+
+
+    //Agent
+    public void startAgent(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true){
+                    counter = counter + 1;
+                    showOutputMesagge(">>"+counter);
+
+
+
+                    //Wait
+                    try {
+                        Thread.sleep(9000);
+                    }catch (Exception e){
+                        //Do nothing
+                    }
+                }
+            }
+        }).start();
     }
 
 

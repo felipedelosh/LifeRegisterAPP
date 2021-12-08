@@ -51,6 +51,7 @@ public class DreamDiary extends AppCompatActivity {
                 if(id>0){
                     Toast.makeText(DreamDiary.this, "Save page", Toast.LENGTH_LONG).show();
                     txtInsertTitleDreamDiary.setText("");
+                    txtInsertHistoryDreamDiary.setText("");
                 }else{
                     Toast.makeText(DreamDiary.this, "NOT save", Toast.LENGTH_LONG).show();
                 }

@@ -18,6 +18,7 @@ public class Calendary extends AppCompatActivity {
 
 
     private Spinner spinnerMount;
+    private Spinner spnViewOptions;
     private TimeController timeController;
     private ArrayList<Button> btnsDays;
 
@@ -30,6 +31,9 @@ public class Calendary extends AppCompatActivity {
         timeController = new TimeController();
         spinnerMount = findViewById(R.id.spinnerMount);
         setSpinnerMonthsOptions();
+        spnViewOptions = findViewById(R.id.spnViewOptions);
+        setSpinnerViewOPtions();
+
 
         btnsDays = new ArrayList<>();
 
@@ -53,6 +57,12 @@ public class Calendary extends AppCompatActivity {
         List<String> months = timeController.getCurrentMonths();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, months);
         spinnerMount.setAdapter(adapter);
+    }
+
+    public void setSpinnerViewOPtions(){
+        String [] snpOptions = getResources().getStringArray(R.array.spinnerCalendarViewOptions);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, snpOptions);
+        spnViewOptions.setAdapter(adapter);
     }
 
 

@@ -4,38 +4,37 @@ package com.example.liferegisterdiary;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Parcel;
-import android.os.Parcelable;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.util.List;
-
-import db.DbBox;
-import db.DbDreamDiaryPage;
 import db.DbDrugsDiary;
 import db.DbFeeling;
+import db.DbNotifications;
 import db.DbTimeDistribution;
 import db.DbUser;
 
 /*
 * This is a main controller of aplication.
+* This is a AGENT thread
 * MVC
 * All controllers invoke here
 * */
 public class Controller{
 
-    Context context;
+    private Context context;
 
     //Images
-    ImageView imgBG;
+    private ImageView imgBG;
 
-    TimeController timeController;
-    FileFolderController fileFolderController;
-    DatabaseController databaseController;
-    SQLiteDatabase database;
+    private TimeController timeController;
+    private DatabaseController databaseController;
+    private SQLiteDatabase database;
 
     //Database Objects
-    DbUser user;
+    private DbUser user;
+
+    //Local variables
+    private String outPutMessage; //To show a MAIN message
 
     public Controller(Context context, ImageView imgBG){
 
@@ -47,6 +46,9 @@ public class Controller{
         database = databaseController.getWritableDatabase();
         user = new DbUser(context);
 
+        //init vars
+        outPutMessage = "";
+
 
         //Generate a backgroung image
         paintBgImage();
@@ -56,6 +58,16 @@ public class Controller{
         insertActivitiesList();
         //Charge a list of feelings
         insertFeelingsList();
+        //Generate Notifications
+        insertNotifications();
+    }
+
+    public String getOutPutMessage() {
+        return outPutMessage;
+    }
+
+    public void setOutPutMessage(String outPutMessage) {
+        this.outPutMessage = outPutMessage;
     }
 
     protected Controller(Parcel in) {
@@ -74,6 +86,32 @@ public class Controller{
 
     public void paintBgImage(){
         imgBG.setImageResource(R.drawable.bg_random_01);
+    }
+
+    public void insertNotifications(){
+
+        try{
+            DbNotifications dbNotifications = new DbNotifications(context);
+
+            if(dbNotifications.getNotificationList().isEmpty()){
+
+                String lasttime = timeController.timeStamp() + ":" + timeController.getCurrentHour24();
+
+                String [] notifications = {
+                        "chatbot"
+                };
+
+                for(int i=0;i<notifications.length;i++){
+                    dbNotifications.insertNotification(notifications[i], lasttime);
+                }
+            }
+
+
+        }catch (Exception e){
+            //Nothing
+        }
+
+
     }
 
     public void insertDrugsList(){
@@ -194,10 +232,11 @@ public class Controller{
 
 
     public String health(){
-        return timeController.timeStampH()+"\n"+timeController.timeStamp();
+        return "Estoy en el main controller";
     }
 
     public void popPupMesage(Context context,String txt){
         Toast.makeText(context,txt,Toast.LENGTH_SHORT).show();
     }
+
 }
