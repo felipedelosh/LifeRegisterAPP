@@ -2,8 +2,6 @@ package com.example.liferegisterdiary;
 
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Parcel;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -27,11 +25,10 @@ public class Controller{
     private ImageView imgBG;
 
     private TimeController timeController;
-    private DatabaseController databaseController;
-    private SQLiteDatabase database;
 
     //Database Objects
     private DbUser user;
+    private DbNotifications dbNotifications;
 
     //Local variables
     private String outPutMessage; //To show a MAIN message
@@ -42,9 +39,8 @@ public class Controller{
         this.imgBG = imgBG;
 
         timeController = new TimeController();
-        databaseController = new DatabaseController(context);
-        database = databaseController.getWritableDatabase();
         user = new DbUser(context);
+        dbNotifications = new DbNotifications(context);
 
         //init vars
         outPutMessage = "";
@@ -70,9 +66,6 @@ public class Controller{
         this.outPutMessage = outPutMessage;
     }
 
-    protected Controller(Parcel in) {
-    }
-
     public TimeController getTimeController(){
         return timeController;
     }
@@ -91,8 +84,6 @@ public class Controller{
     public void insertNotifications(){
 
         try{
-            DbNotifications dbNotifications = new DbNotifications(context);
-
             if(dbNotifications.getNotificationList().isEmpty()){
 
                 String lasttime = timeController.timeStamp() + ":" + timeController.getCurrentHour24();
@@ -106,12 +97,9 @@ public class Controller{
                 }
             }
 
-
         }catch (Exception e){
             //Nothing
         }
-
-
     }
 
     public void insertDrugsList(){
@@ -237,6 +225,26 @@ public class Controller{
 
     public void popPupMesage(Context context,String txt){
         Toast.makeText(context,txt,Toast.LENGTH_SHORT).show();
+    }
+
+    /***
+     * This methos is called x Seconds
+     * and launch a activity if needed
+     */
+    public String verifyLaunchers(){
+        //Get chatbot
+        String lastTime = dbNotifications.getLastTimeOfNotification("chatbot");
+        if(timeController.howManyHoursPased(lastTime)>2){
+            //Refresh time
+            String newlasttime = timeController.timeStamp() + ":" + timeController.getCurrentHour24();
+            if(dbNotifications.editNotification("chatbot", newlasttime)){
+
+
+                return "lanzando... Chat Bot";
+            }
+        }
+
+        return "Nothing TODO";
     }
 
 }

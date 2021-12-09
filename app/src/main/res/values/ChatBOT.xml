@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array
+        name="grettings">
+        <item>hola</item>
+        <item>holi</item>
+        <item>entonces</item>
+        <item>buenas</item>
+    </string-array>
+</resources>

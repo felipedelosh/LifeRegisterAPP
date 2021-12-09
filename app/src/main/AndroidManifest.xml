@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
-            android:name=".chatBOT"
+            android:name=".ChatBOT"
             android:exported="false" />
         <activity
             android:name=".HelpListOfPosibilities"

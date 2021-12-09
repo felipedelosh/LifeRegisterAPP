@@ -3,6 +3,7 @@ package com.example.liferegisterdiary;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -94,9 +95,18 @@ public class Password extends AppCompatActivity {
             txtInfoPassword.setText(status);
         }
 
+        if(command.equals("chatbot")){
+            txtInfoPassword.setText("launch ChatBot");
+            launchChatBot();
+        }
+
 
     }
 
+    private void launchChatBot(){
+        Intent launchChatBotView = new Intent(getApplicationContext(), ChatBOT.class);
+        startActivity(launchChatBotView);
+    }
 
     private boolean validatePassword(String txt){
         return !txt.equals("") && !txt.trim().equals("") && txt.trim().length() > 0;

@@ -89,6 +89,19 @@ public class DbNotifications extends DatabaseController {
         return info;
     }
 
+    public boolean editNotification(String name, String newDate){
+        try {
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            String sql = "UPDATE " + TABLE_NOTIFICATIONS + " SET lasttime = \'" + newDate + "\' WHERE name = \'" + name + "\'";
+            db.execSQL(sql);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
 
 
 }

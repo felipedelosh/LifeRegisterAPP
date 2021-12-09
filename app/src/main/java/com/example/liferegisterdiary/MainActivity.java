@@ -15,15 +15,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import db.DbNotifications;
+
 public class MainActivity extends AppCompatActivity {
 
     public Controller controller;
     //text
     private TextView mainOutputMessage;
-
-
-    //Vars
-    private int counter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +32,6 @@ public class MainActivity extends AppCompatActivity {
         //Capture a imagen background
         ImageView imgBG = findViewById(R.id.mainMenuImgBG);
         controller = new Controller(context, imgBG);
-
-        //Vars
-        counter = 0;
 
         //Cacth screem elements
         mainOutputMessage = findViewById(R.id.mainOutputMessage);
@@ -116,14 +111,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 while (true){
-                    counter = counter + 1;
-                    showOutputMesagge(">>"+counter);
-
-
-
+                    showOutputMesagge(controller.verifyLaunchers());
                     //Wait
                     try {
-                        Thread.sleep(9000);
+                        Thread.sleep(1000);
                     }catch (Exception e){
                         //Do nothing
                     }

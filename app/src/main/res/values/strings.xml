@@ -19,6 +19,7 @@
     <string name="app_user_description">Descripción del usuario: </string>
     <string name="app_username">Nombre de usuario: </string>
     <string name="app_sex">Genero: </string>
+    <string name="app_enter_message">Mensaje... </string>
     <string name="app_age">Edad: </string>
     <string name="app_enter_password">Ingrese secret password: </string>
     <string name="app_birth_date">Fecha de nacimiento: </string>
