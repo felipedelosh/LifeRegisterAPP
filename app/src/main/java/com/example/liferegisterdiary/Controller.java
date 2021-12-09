@@ -2,6 +2,7 @@ package com.example.liferegisterdiary;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -238,9 +239,9 @@ public class Controller{
             //Refresh time
             String newlasttime = timeController.timeStamp() + ":" + timeController.getCurrentHour24();
             if(dbNotifications.editNotification("chatbot", newlasttime)){
-
-
-                return "lanzando... Chat Bot";
+                Intent launchChatBotView = new Intent(context.getApplicationContext(), ChatBOT.class);
+                context.startActivity(launchChatBotView);
+                return "Launching CHATBOT";
             }
         }
 

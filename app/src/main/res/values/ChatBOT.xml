@@ -7,4 +7,48 @@
         <item>entonces</item>
         <item>buenas</item>
     </string-array>
+    <string-array
+        name="question_01">
+        <item>Comó estás?</item>
+        <item>Comó te sientes?</item>
+        <item>Comó va tu vida?</item>
+        <item>Que me cuetas?</item>
+    </string-array>
+    <string-array
+        name="question_02">
+        <item>Comó te sentiste del 1 al 10?</item>
+        <item>Comó estuvo tu día del 1 al 10?</item>
+        <item>califica tu día del 1 al 10?</item>
+    </string-array>
+    <string-array
+        name="yes">
+        <item>si</item>
+        <item>s</item>
+        <item>yes</item>
+        <item>y</item>
+        <item>ok</item>
+        <item>afirmativo</item>
+    </string-array>
+    <string-array
+        name="not">
+        <item>no</item>
+        <item>n</item>
+        <item>nope</item>
+        <item>nunca</item>
+        <item>not</item>
+    </string-array>
+    <string-array
+        name="happy">
+        <item>super</item>
+        <item>genial</item>
+        <item>felicidad</item>
+        <item>me alegro</item>
+    </string-array>
+    <string-array
+        name="unhappiness">
+        <item>que malo.</item>
+        <item>ojalá algún día mejore la cosa.</item>
+        <item>no puede ser.</item>
+        <item>no digas esas cosas.</item>
+    </string-array>
 </resources>

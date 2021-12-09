@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 import db.DbUser;
 import femputadora.ChatBotAgent;
 import models.User;
@@ -41,6 +43,7 @@ public class ChatBOT extends AppCompatActivity {
         chat = "";
 
         setupView();
+        thinking();
     }
 
     private void setupView() {
@@ -57,24 +60,83 @@ public class ChatBOT extends AppCompatActivity {
             String sms = txtChatBot.getText().toString();
 
             if(validateText(sms)){
-                texting(sms);
+                putUserSMSandSEND(sms);
                 txtChatBot.setText("");
-                lblChatBot.setText(chat);
+                refreshChat();
+                sendMSMtoChatBot(sms.toLowerCase(Locale.ROOT));
+
             }
 
         });
     }
 
-    public void texting(String sms){
-        chat = chat + username + ":\n" + sms + " - " + timeController.getCurrentHour24() + "\n\n";
-        chat = chat + "BOT" + ":\n" + chatBotResponse(sms) + " - " + timeController.getCurrentHour24() + "\n\n";
+    /***
+     * Erase all chat and repaint whit new elements
+     */
+    public void refreshChat(){
+        lblChatBot.setText(chat);
     }
 
-    public String chatBotResponse(String sms){
-        return chatBotAgent.responseSMS(sms);
+
+
+    /***
+     * put user sms in conversation
+     * and then send sms to chatbot
+     * @param sms
+     */
+    public void putUserSMSandSEND(String sms){
+        chat = chat + username + ":\n" + sms + " - " + timeController.getCurrentHour24() + "\n\n";
+    }
+
+    public void sendMSMtoChatBot(String sms){
+        chatBotAgent.enterSMS(sms);
+    }
+
+    /***
+     * if the chat bot response paint
+     */
+    public void putChatBotResponseInChat(){
+
+        if(!chatBotAgent.getResponse().equals("")){
+            chat = chat + "BOT" + ":\n" + chatBotAgent.getResponse() + " - " + timeController.getCurrentHour24() + "\n\n";
+            //Destroy SMS
+            chatBotAgent.eraseSMS();
+        }
     }
 
     public boolean validateText(String txt){
         return !txt.equals("") && !txt.trim().equals("") && txt.trim().length() > 0;
+    }
+
+    /***
+     * This is a Thread the machine take a desition:
+     *
+     * 1 -> Listen you
+     * 2 -> make a question
+     */
+    public void thinking(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true){
+                    //refreshChat();
+                    //Wait
+                    try {
+                        //Need Refresh Main Screem
+                        runOnUiThread(() -> {
+                            putChatBotResponseInChat();
+                            refreshChat();
+                            chatBotAgent.generateBehavior();
+                        });
+
+                        Thread.sleep(chatBotAgent.getTimeResponse());
+                    }catch (Exception e){
+                        //Do nothing
+                    }
+                }
+            }
+
+
+        }).start();
     }
 }
