@@ -21,6 +21,12 @@
         <item>califica tu día del 1 al 10?</item>
     </string-array>
     <string-array
+        name="question_03">
+        <item>Dime si te gusta </item>
+        <item>te gusta </item>
+        <item>es verdad que te gusta </item>
+    </string-array>
+    <string-array
         name="yes">
         <item>si</item>
         <item>s</item>
@@ -43,6 +49,7 @@
         <item>genial</item>
         <item>felicidad</item>
         <item>me alegro</item>
+        <item>eso es bueno.</item>
     </string-array>
     <string-array
         name="unhappiness">
@@ -51,4 +58,13 @@
         <item>no puede ser.</item>
         <item>no digas esas cosas.</item>
     </string-array>
+    <string-array
+        name="fillers">
+        <item>vea pues.</item>
+        <item>no me imagine eso.</item>
+        <item>bueno, nada.</item>
+        <item>que bueno saberlo.</item>
+    </string-array>
+    <string name="yesornot">si ó no?</string>
+    <string name="itemPUT"> %1$s </string>
 </resources>

@@ -123,9 +123,19 @@ public class DbTimeDistribution extends DatabaseController {
             return information;
         }
 
+    }
 
+    public String getRndActiviry(){
 
+        List<String> getActiv = getActivitiesList();
+        String activity = "";
 
+        if(!getActiv.isEmpty()){
+            int nextGretting = (int) (getActiv.size() * Math.random());
+            activity = getActiv.get(nextGretting);
+        }
+
+        return activity;
     }
 
 }

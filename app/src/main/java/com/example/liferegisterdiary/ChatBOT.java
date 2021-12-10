@@ -77,15 +77,13 @@ public class ChatBOT extends AppCompatActivity {
         lblChatBot.setText(chat);
     }
 
-
-
     /***
      * put user sms in conversation
      * and then send sms to chatbot
      * @param sms
      */
     public void putUserSMSandSEND(String sms){
-        chat = chat + username + ":\n" + sms + " - " + timeController.getCurrentHour24() + "\n\n";
+        chat = chat + username + " -> " + timeController.getCurrentHour24() + "\n"  +"\"" + sms + "\"\n\n";
     }
 
     public void sendMSMtoChatBot(String sms){
@@ -98,7 +96,7 @@ public class ChatBOT extends AppCompatActivity {
     public void putChatBotResponseInChat(){
 
         if(!chatBotAgent.getResponse().equals("")){
-            chat = chat + "BOT" + ":\n" + chatBotAgent.getResponse() + " - " + timeController.getCurrentHour24() + "\n\n";
+            chat = chat + "FEMBOT" + ":\n" + chatBotAgent.getResponse() + " - " + timeController.getCurrentHour24() + "\n\n";
             //Destroy SMS
             chatBotAgent.eraseSMS();
         }
