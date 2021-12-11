@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -18,11 +21,37 @@ import db.DbTimeDistribution;
 
 public class TimeDistribution extends AppCompatActivity {
 
-
-    private TimeDistributionAdapter timeDistributionAdapter;
-    private ArrayList<ItemTimeInversion> arrayListItemTimeInversions;
-
     private TimeController timeController;
+
+    private TextView timeInversionHourItem6am;
+
+    private Spinner spinnerTimeInversionSpinnerActivity6am;
+    private Spinner spinnerTimeInversionSpinnerActivity7am;
+    private Spinner spinnerTimeInversionSpinnerActivity8am;
+    private Spinner spinnerTimeInversionSpinnerActivity9am;
+    private Spinner spinnerTimeInversionSpinnerActivity10am;
+    private Spinner spinnerTimeInversionSpinnerActivity11am;
+    private Spinner spinnerTimeInversionSpinnerActivity12am;
+    private Spinner spinnerTimeInversionSpinnerActivity1pm;
+    private Spinner spinnerTimeInversionSpinnerActivity2pm;
+    private Spinner spinnerTimeInversionSpinnerActivity3pm;
+    private Spinner spinnerTimeInversionSpinnerActivity4pm;
+    private Spinner spinnerTimeInversionSpinnerActivity5pm;
+    private Spinner spinnerTimeInversionSpinnerActivity6pm;
+    private Spinner spinnerTimeInversionSpinnerActivity7pm;
+    private Spinner spinnerTimeInversionSpinnerActivity8pm;
+    private Spinner spinnerTimeInversionSpinnerActivity9pm;
+    private Spinner spinnerTimeInversionSpinnerActivity10pm;
+    private Spinner spinnerTimeInversionSpinnerActivity11pm;
+    private Spinner spinnerTimeInversionSpinnerActivity12pm;
+    private Spinner spinnerTimeInversionSpinnerActivity1am;
+    private Spinner spinnerTimeInversionSpinnerActivity2am;
+    private Spinner spinnerTimeInversionSpinnerActivity3am;
+    private Spinner spinnerTimeInversionSpinnerActivity4am;
+    private Spinner spinnerTimeInversionSpinnerActivity5am;
+
+    private ArrayList<Spinner> snprTimeInverSion;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,20 +62,62 @@ public class TimeDistribution extends AppCompatActivity {
 
         Context context = this;
 
-        //Get all Activities
-        ArrayList<String> spinerOptions = getSpinerActivities();
+        snprTimeInverSion = new ArrayList<>();
 
-        //Generate a time distribution items
-        ListView listViewTimeInversion = findViewById(R.id.listViewTimeInversion);
-        arrayListItemTimeInversions = new ArrayList<>();
-        timeDistributionAdapter = new TimeDistributionAdapter(arrayListItemTimeInversions, context, spinerOptions);
-        listViewTimeInversion.setAdapter(timeDistributionAdapter);
-
-        for(int i=0;i<24;i++){
-            createNewItemTimeInversionAdapter(i);
-        }
-
+        initViewElements();
+        setAllSpinerOptions();
         setUpView();
+    }
+
+    private void initViewElements() {
+        spinnerTimeInversionSpinnerActivity6am = findViewById(R.id.spinnerTimeInversionSpinnerActivity6am);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity6am);
+        spinnerTimeInversionSpinnerActivity7am = findViewById(R.id.spinnerTimeInversionSpinnerActivity7am);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity7am);
+        spinnerTimeInversionSpinnerActivity8am = findViewById(R.id.spinnerTimeInversionSpinnerActivity8am);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity8am);
+        spinnerTimeInversionSpinnerActivity9am = findViewById(R.id.spinnerTimeInversionSpinnerActivity9am);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity9am);
+        spinnerTimeInversionSpinnerActivity10am = findViewById(R.id.spinnerTimeInversionSpinnerActivity10am);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity10am);
+        spinnerTimeInversionSpinnerActivity11am = findViewById(R.id.spinnerTimeInversionSpinnerActivity11am);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity11am);
+        spinnerTimeInversionSpinnerActivity12am = findViewById(R.id.spinnerTimeInversionSpinnerActivity12am);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity12am);
+        spinnerTimeInversionSpinnerActivity1pm = findViewById(R.id.spinnerTimeInversionSpinnerActivity1pm);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity1pm);
+        spinnerTimeInversionSpinnerActivity2pm = findViewById(R.id.spinnerTimeInversionSpinnerActivity2pm);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity2pm);
+        spinnerTimeInversionSpinnerActivity3pm = findViewById(R.id.spinnerTimeInversionSpinnerActivity3pm);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity3pm);
+        spinnerTimeInversionSpinnerActivity4pm = findViewById(R.id.spinnerTimeInversionSpinnerActivity4pm);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity4pm);
+        spinnerTimeInversionSpinnerActivity5pm = findViewById(R.id.spinnerTimeInversionSpinnerActivity5pm);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity5pm);
+        spinnerTimeInversionSpinnerActivity6pm = findViewById(R.id.spinnerTimeInversionSpinnerActivity6pm);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity6pm);
+        spinnerTimeInversionSpinnerActivity7pm = findViewById(R.id.spinnerTimeInversionSpinnerActivity7pm);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity7pm);
+        spinnerTimeInversionSpinnerActivity8pm = findViewById(R.id.spinnerTimeInversionSpinnerActivity8pm);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity8pm);
+        spinnerTimeInversionSpinnerActivity9pm = findViewById(R.id.spinnerTimeInversionSpinnerActivity9pm);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity9pm);
+        spinnerTimeInversionSpinnerActivity10pm = findViewById(R.id.spinnerTimeInversionSpinnerActivity10pm);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity10pm);
+        spinnerTimeInversionSpinnerActivity11pm = findViewById(R.id.spinnerTimeInversionSpinnerActivity11pm);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity11pm);
+        spinnerTimeInversionSpinnerActivity12pm = findViewById(R.id.spinnerTimeInversionSpinnerActivity12pm);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity12pm);
+        spinnerTimeInversionSpinnerActivity1am = findViewById(R.id.spinnerTimeInversionSpinnerActivity1am);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity1am);
+        spinnerTimeInversionSpinnerActivity2am = findViewById(R.id.spinnerTimeInversionSpinnerActivity2am);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity2am);
+        spinnerTimeInversionSpinnerActivity3am = findViewById(R.id.spinnerTimeInversionSpinnerActivity3am);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity3am);
+        spinnerTimeInversionSpinnerActivity4am = findViewById(R.id.spinnerTimeInversionSpinnerActivity4am);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity4am);
+        spinnerTimeInversionSpinnerActivity5am = findViewById(R.id.spinnerTimeInversionSpinnerActivity5am);
+        snprTimeInverSion.add(spinnerTimeInversionSpinnerActivity5am);
     }
 
 
@@ -55,47 +126,9 @@ public class TimeDistribution extends AppCompatActivity {
         Button saveDiaryActivities = findViewById(R.id.saveDiaryActivities);
         saveDiaryActivities.setOnClickListener(v -> {
 
-
-            try {
-
-                String timeStamp = timeController.timeStamp();
-                DbTimeDistribution dbTimeDistribution = new DbTimeDistribution(TimeDistribution.this);
-                int count = 1;
-
-                //Only save the renderized
-                for(int i=0;i<arrayListItemTimeInversions.size();i++){
-                    try {
-                        String hour = timeDistributionAdapter.getItemX(i).getHour();
-                        String activity = timeDistributionAdapter.getItemX(i).getSpinner().getSelectedItem().toString().trim();
-
-                        Long id = dbTimeDistribution.insertDiaryActivity(timeStamp, hour, activity);
-
-                        if (id > 0) {
-                            count = count + 1;
-                        }
-
-                    }catch (Exception e){
-                        //Do nothing
-                    }
-
-                }
-
-                Toast.makeText(TimeDistribution.this, "Save: "+count, Toast.LENGTH_LONG).show();
-
-
-            }catch (Exception e){
-                //Do nothing
-            }
-
         });
 
 
-    }
-
-
-    public void createNewItemTimeInversionAdapter(int i){
-        ItemTimeInversion itemTimeInversion = new ItemTimeInversion(getHour(i), "");
-        arrayListItemTimeInversions.add(itemTimeInversion);
     }
 
     public ArrayList<String> getSpinerActivities(){
@@ -142,5 +175,15 @@ public class TimeDistribution extends AppCompatActivity {
         }
 
         return hour12h+formatAMPM;
+    }
+
+    public void setAllSpinerOptions(){
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, getSpinerActivities());
+
+        for(int i=0;i<snprTimeInverSion.size();i++){
+            snprTimeInverSion.get(i).setAdapter(adapter);
+        }
+
     }
 }
