@@ -235,7 +235,7 @@ public class Controller{
     public String verifyLaunchers(){
         //Get chatbot
         String lastTime = dbNotifications.getLastTimeOfNotification("chatbot");
-        if(timeController.howManyHoursPased(lastTime)>2){
+        if(timeController.howManyHoursPased(lastTime)>8){
             //Refresh time
             String newlasttime = timeController.timeStamp() + ":" + timeController.getCurrentHour24();
             if(dbNotifications.editNotification("chatbot", newlasttime)){
@@ -245,7 +245,7 @@ public class Controller{
             }
         }
 
-        return lastTime;
+        return "Nothing To DO";
     }
 
 }

@@ -63,6 +63,15 @@ public class GraphicsProccesorBoxEconomy extends View {
             int maxValueBigBox = maxValueBigBox(getInformation);
             int maxValueLitleBox = maxValueLitleBox(getInformation);
 
+
+            //Puts labels Big Box litle Box
+            brush.setARGB(255,0,0,255);
+            canvas.drawRect((w*(float)0.06), (h*(float)0.02), (w*(float)0.1), (h*(float)0.04), brush);
+            canvas.drawText("Litle Box", (w*(float)0.12), (h*(float)0.04), brush);
+            brush.setARGB(255,0,255,0);
+            canvas.drawRect((w*(float)0.56), (h*(float)0.02), (w*(float)0.6), (h*(float)0.04), brush);
+            canvas.drawText("Big Box", (w*(float)0.62), (h*(float)0.04), brush);
+
             float separation = h / (float) 8;
             for(int i=0;i<getInformation.size();i++){
 
@@ -92,8 +101,6 @@ public class GraphicsProccesorBoxEconomy extends View {
                     float ly1 = ly0 +  15;
                     brush.setARGB(255,0,0,255);
                     canvas.drawRect(lx0, ly0, lx1, ly1, brush);
-
-
                 }
 
             }
