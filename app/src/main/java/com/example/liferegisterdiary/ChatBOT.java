@@ -33,8 +33,14 @@ public class ChatBOT extends AppCompatActivity {
         timeController = new TimeController();
         user = new DbUser(this);
         User u = user.getUser();
-        username = u.getUsername();
-        chatBotAgent = new ChatBotAgent(this, u);
+
+        try {
+            username = u.getUsername();
+            chatBotAgent = new ChatBotAgent(this, u);
+        }catch (Exception e){
+            u = new User("", "", 0, 0, 0);
+            chatBotAgent = new ChatBotAgent(this, u);
+        }
 
         lblChatBot = findViewById(R.id.lblChatBot);
         txtChatBot = findViewById(R.id.txtChatBot);
