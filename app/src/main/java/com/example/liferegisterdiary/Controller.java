@@ -9,6 +9,7 @@ import android.widget.Toast;
 import db.DbDrugsDiary;
 import db.DbFeeling;
 import db.DbNotifications;
+import db.DbQualifyDay;
 import db.DbTimeDistribution;
 import db.DbUser;
 

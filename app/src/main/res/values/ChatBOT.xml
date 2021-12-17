@@ -65,6 +65,11 @@
         <item>bueno, nada.</item>
         <item>que bueno saberlo.</item>
     </string-array>
+    <string-array
+        name="helpers">
+        <item>ayuda</item>
+        <item>que sabes hacer</item>
+    </string-array>
     <string name="yesornot">si ó no?</string>
     <string name="itemPUT"> %1$s </string>
 </resources>

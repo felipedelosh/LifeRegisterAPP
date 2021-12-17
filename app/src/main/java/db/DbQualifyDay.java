@@ -2,11 +2,13 @@ package db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
 import com.example.liferegisterdiary.DatabaseController;
+import com.example.liferegisterdiary.Economy;
 
 public class DbQualifyDay extends DatabaseController {
 
@@ -17,7 +19,7 @@ public class DbQualifyDay extends DatabaseController {
         this.context = context;
     }
 
-    public long insertDayQualify(String timeStampH, int qualify) {
+    public long insertDayQualify(String timeStamp, int qualify) {
 
         long id = 0;
 
@@ -26,7 +28,7 @@ public class DbQualifyDay extends DatabaseController {
             SQLiteDatabase db = databaseController.getWritableDatabase();
 
             ContentValues values = new ContentValues();
-            values.put("timeStamp", timeStampH);
+            values.put("timeStamp", timeStamp);
             values.put("qualify", qualify);
 
             id = db.insert(TABLE_EVALUATEDAY110, null, values);
@@ -36,6 +38,21 @@ public class DbQualifyDay extends DatabaseController {
         }
 
         return id;
+    }
+
+    public boolean todayYouQuestion(String timeStamp){
+
+        try {
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+            String sql = "SELECT * FROM " + TABLE_EVALUATEDAY110 + " WHERE timeStamp = \'"+timeStamp+"\'";
+
+            Cursor getInfo = db.rawQuery(sql, null);
+
+            return getInfo.getCount() > 0;
+        }catch (Exception e){
+            return false;
+        }
     }
 
 

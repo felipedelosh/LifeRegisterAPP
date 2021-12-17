@@ -7,6 +7,7 @@ import com.example.liferegisterdiary.TimeController;
 
 import java.util.Random;
 
+import db.DbEvaluateActivity;
 import db.DbQualifyDay;
 import db.DbTimeDistribution;
 import models.User;
@@ -48,6 +49,7 @@ public class ChatBotAgent {
     //Load database
     private DbTimeDistribution dbTimeDistribution;
     private DbQualifyDay dbQualifyDay;
+    private DbEvaluateActivity dbEvaluateActivity;
 
     //Type of answer
     private boolean yesornot;
@@ -75,6 +77,7 @@ public class ChatBotAgent {
         //Database
         dbTimeDistribution = new DbTimeDistribution(context);
         dbQualifyDay = new DbQualifyDay(context);
+        dbEvaluateActivity = new DbEvaluateActivity(context);
         timeController = new TimeController();
 
         response = "";
@@ -143,6 +146,7 @@ public class ChatBotAgent {
                     //Is a positive answer
                     for(int i=0; i< yes.length; i++){
                         if(sms.equals(yes[i])) {
+                            saveYESORNOTQuestion("yes");
                             sayHappinnes();
                             countSMS++;
                         }
@@ -153,6 +157,7 @@ public class ChatBotAgent {
                         for (int j = 0; j < not.length; j++) {
                             if (sms.equals(not[j])) {
                                 sayFiller();
+                                saveYESORNOTQuestion("no");
                                 countSMS++;
                             }
                         }
@@ -228,7 +233,7 @@ public class ChatBotAgent {
             response = questions01[nextQ];
         }
         //This questions abouts you feel response 1 to 10
-        if(k == 2){
+        if(k == 2  && !dbQualifyDay.todayYouQuestion(timeController.timeStamp())){
             int nextQ = (int) (questions02.length * Math.random());
             onetoten = true;
             response = questions02[nextQ];
@@ -284,10 +289,19 @@ public class ChatBotAgent {
 
     public void save1to10Question(int value){
         try {
-            dbQualifyDay.insertDayQualify(timeController.timeStampH(), value);
+            dbQualifyDay.insertDayQualify(timeController.timeStamp(), value);
         }catch (Exception e){
             //Do nothing
         }
-
     }
+
+    public void saveYESORNOTQuestion(String evaluate){
+        try {
+            dbEvaluateActivity.insertEvaluateActivityYESORNOT(temp, timeController.timeStamp(), evaluate);
+        }catch (Exception e){
+            //Do nothing
+        }
+    }
+
+
 }

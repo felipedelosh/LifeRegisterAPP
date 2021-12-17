@@ -32,6 +32,7 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
     public static final String TABLE_PERSONAL_ECONOMY_TACCOUNTS = "t_economy_t_account";
     public static final String TABLE_NOTIFICATIONS = "t_notifications";
     public static final String TABLE_EVALUATEDAY110 = "t_evaluate_day";
+    public static final String TABLE_EVALUATE_ACTIVITY_YESORNOT = "t_enjoy_activities_yesornot";
 
 
 
@@ -51,17 +52,17 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
 
         db.execSQL("create table if not exists " + TABLE_DRUGS+ "(" +
                 "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "drugName TEXT NOT NULL" +
+                "drugName TEXT NOT NULL UNIQUE" +
                 ")");
 
         db.execSQL("create table if not exists " + TABLE_ACTIVITIES+ "(" +
                 "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "activityName TEXT NOT NULL" +
+                "activityName TEXT NOT NULL UNIQUE" +
                 ")");
 
         db.execSQL("create table if not exists " + TABLE_FEELINGS+ "(" +
                 "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "feelingName TEXT NOT NULL" +
+                "feelingName TEXT NOT NULL UNIQUE" +
                 ")");
 
         db.execSQL("create table if not exists " + TABLE_PERSONAL_PAGE_DIARY + "(" +
@@ -147,6 +148,13 @@ public class DatabaseController extends SQLiteOpenHelper implements Serializable
                 "timeStamp TEXT NOT NULL," +
                 "qualify INTEGER NOT NULL," +
                 "PRIMARY KEY (timeStamp) " +
+                ")");
+
+        db.execSQL("create table if not exists " + TABLE_EVALUATE_ACTIVITY_YESORNOT + "(" +
+                "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "nameActivity TEXT NOT NULL," +
+                "timeStamp TEXT NOT NULL," +
+                "response TEXT NOT NULL" +
                 ")");
     }
 

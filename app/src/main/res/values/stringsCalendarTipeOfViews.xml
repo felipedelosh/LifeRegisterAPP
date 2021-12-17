@@ -2,7 +2,7 @@
 <resources>
     <string-array
         name="spinnerCalendarViewOptions">
-        <item>Entradas de dario</item>
+        <item>Entradas de diario</item>
         <item>Consumo de psicoactivos</item>
         <item>Estado emocional</item>
     </string-array>
