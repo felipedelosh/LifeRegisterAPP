@@ -138,4 +138,17 @@ public class DbTimeDistribution extends DatabaseController {
         return activity;
     }
 
+    public void deleteToday(String timeStamp){
+        try {
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            String sql = "DELETE FROM " + TABLE_DAY_TIME_DISTRIBUTION + " WHERE timeStamp=\'"+timeStamp+"\'";
+            db.execSQL(sql);
+        } catch (Exception e) {
+            //do nothing
+        }
+
+    }
+
 }

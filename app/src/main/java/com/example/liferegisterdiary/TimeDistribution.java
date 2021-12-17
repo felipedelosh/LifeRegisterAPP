@@ -4,27 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import adapters.TimeDistributionAdapter;
-import models.ItemTimeInversion;
 import db.DbTimeDistribution;
 
 public class TimeDistribution extends AppCompatActivity {
 
     private TimeController timeController;
-
-    private TextView timeInversionHourItem6am;
-
+    private Context context;
+    private DbTimeDistribution dbTimeDistribution;
     private Spinner spinnerTimeInversionSpinnerActivity6am;
     private Spinner spinnerTimeInversionSpinnerActivity7am;
     private Spinner spinnerTimeInversionSpinnerActivity8am;
@@ -59,8 +53,8 @@ public class TimeDistribution extends AppCompatActivity {
         setContentView(R.layout.activity_time_distribution);
 
         timeController = new TimeController();
-
-        Context context = this;
+        context = this;
+        dbTimeDistribution = new DbTimeDistribution(context);
 
         snprTimeInverSion = new ArrayList<>();
 
@@ -125,11 +119,52 @@ public class TimeDistribution extends AppCompatActivity {
 
         Button saveDiaryActivities = findViewById(R.id.saveDiaryActivities);
         saveDiaryActivities.setOnClickListener(v -> {
-
+            if(inser24hDayInDatabse()>=23){
+                Toast.makeText(TimeDistribution.this, "SAVE" , Toast.LENGTH_LONG).show();
+            }else{
+                if(refreshDayData()>=23){
+                    Toast.makeText(TimeDistribution.this, "UPDATE" , Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(TimeDistribution.this, "Error" , Toast.LENGTH_LONG).show();
+                }
+            }
         });
-
-
     }
+
+
+    public int inser24hDayInDatabse(){
+
+        int count = 0;
+
+        try {
+            for(int i=0; i<snprTimeInverSion.size();i++){
+                String timeStamp = timeController.timeStamp();
+                String activity = snprTimeInverSion.get(i).getSelectedItem().toString();
+                Long id = dbTimeDistribution.insertDiaryActivity(timeStamp, getHour(i), activity);
+                if(id>0){
+                    count = count + 1;
+                }
+            }
+
+        }catch (Exception e){
+            //Do nothing
+        }
+        return count;
+    }
+
+    public int refreshDayData(){
+        int counter = 0;
+
+        try {
+            dbTimeDistribution.deleteToday(timeController.timeStamp());
+            counter = inser24hDayInDatabse();
+        }catch (Exception e){
+            //Do nothing
+        }
+
+        return counter;
+    }
+
 
     public ArrayList<String> getSpinerActivities(){
 

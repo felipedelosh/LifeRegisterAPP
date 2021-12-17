@@ -3,8 +3,11 @@ package femputadora;
 
 import android.content.Context;
 import com.example.liferegisterdiary.R;
+import com.example.liferegisterdiary.TimeController;
+
 import java.util.Random;
 
+import db.DbQualifyDay;
 import db.DbTimeDistribution;
 import models.User;
 
@@ -16,6 +19,7 @@ import models.User;
 public class ChatBotAgent {
 
     private Context context;
+    private TimeController timeController;
     private User user;
 
     //Here load a response
@@ -43,6 +47,7 @@ public class ChatBotAgent {
 
     //Load database
     private DbTimeDistribution dbTimeDistribution;
+    private DbQualifyDay dbQualifyDay;
 
     //Type of answer
     private boolean yesornot;
@@ -69,6 +74,8 @@ public class ChatBotAgent {
 
         //Database
         dbTimeDistribution = new DbTimeDistribution(context);
+        dbQualifyDay = new DbQualifyDay(context);
+        timeController = new TimeController();
 
         response = "";
         timeResponse = 2000;
@@ -110,12 +117,16 @@ public class ChatBotAgent {
                     try{
                         int k = Integer.parseInt(sms);
 
-                        if(k>5){
+                        if(k>5 && k<=10){
                             sayHappinnes();
                             countSMS++;
                         }else{
                             sayUnHappinnes();
                             countSMS++;
+                        }
+
+                        if (k>=0 && k<=10){
+                            save1to10Question(k);
                         }
 
                     }catch (Exception e){
@@ -269,5 +280,14 @@ public class ChatBotAgent {
     public void sayFiller(){
         int nextTXT = (int) (fillers.length * Math.random());
         response = fillers[nextTXT];
+    }
+
+    public void save1to10Question(int value){
+        try {
+            dbQualifyDay.insertDayQualify(timeController.timeStampH(), value);
+        }catch (Exception e){
+            //Do nothing
+        }
+
     }
 }

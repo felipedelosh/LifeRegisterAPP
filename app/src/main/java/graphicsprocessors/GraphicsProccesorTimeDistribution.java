@@ -105,7 +105,7 @@ public class GraphicsProccesorTimeDistribution extends View {
                 if(counter<12) {
                     //Put some labels
                     canvas.drawText(key, w * (float) 0.1, yLabels + ( counter * yIterator), brush);
-                    canvas.drawText("% " + percent, w * (float) 0.6, yLabels + ( counter * yIterator), brush);
+                    canvas.drawText("% " + percent*(float) 100, w * (float) 0.6, yLabels + ( counter * yIterator), brush);
                 }
 
                 startAngle = endAngle;
