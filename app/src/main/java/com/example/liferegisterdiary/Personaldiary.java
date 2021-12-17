@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import db.DbPersonalDiaryPage;
@@ -53,7 +54,7 @@ public class Personaldiary extends AppCompatActivity {
                     String timeStamp = timeController.timeStamp();
                     String history = txtInsertHistoryPageDiary.getText().toString();
 
-                    Long id = dbPersonalDiaryPage.insertPageDiary(pageName,year,timeStamp,history);
+                    Long id = dbPersonalDiaryPage.insertPageDiary(pageName,year,timeStamp,prepareToSQL(history));
 
                     if(id>0){
                         Toast.makeText(Personaldiary.this, "Save page", Toast.LENGTH_LONG).show();
@@ -84,7 +85,7 @@ public class Personaldiary extends AppCompatActivity {
                     txtInsertHistoryPageDiary.setText("");
                     String txt = "";
                     for(int i = 0; i< information.size(); i++){
-                        txt = txt + information.get(i) + "\n\n";
+                        txt = txt + showFromSQLText(information.get(i)) + "\n\n";
                     }
 
                     txtInsertHistoryPageDiary.setText(txt);
@@ -100,5 +101,34 @@ public class Personaldiary extends AppCompatActivity {
 
     public boolean validateText(String txt){
         return !txt.equals("") && !txt.trim().equals("") && txt.trim().length() > 0;
+    }
+
+    /***
+     * repair a \n \' \? caracters
+     *
+     * @return 'TEXTSIMPLE'
+     */
+    public String prepareToSQL(String txt){
+
+        String output = "";
+
+        String [] parts = txt.split("\n");
+
+        for(int i=0;i<parts.length;i++){
+            output = output + "\\n" + parts[i];
+        }
+
+
+        return output;
+    }
+
+    /****
+     * SQL TEXT enter with \n \' \? caracters
+     * i create bread lines outpu
+     * @param txt
+     * @return
+     */
+    public String showFromSQLText(String txt){
+        return txt.replace("\\n", "\n");
     }
 }
