@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array
+        name="feelingList">
+        <item>alegría</item>
+        <item>amor</item>
+        <item>tristeza</item>
+        <item>tranquilidad</item>
+        <item>ira</item>
+        <item>miedo</item>
+        <item>hostilidad</item>
+        <item>frustración</item>
+        <item>odio</item>
+        <item>culpa</item>
+        <item>celos</item>
+        <item>cansado</item>
+        <item>felicidad</item>
+        <item>esperanza</item>
+        <item>asco</item>
+        <item>motivado</item>
+        <item>orgullozo</item>
+        <item>vergüenza</item>
+        <item>drogado</item>
+        <item>trabado</item>
+        <item>alcoholizado</item>
+        <item>satisfecho</item>
+    </string-array>
+</resources>

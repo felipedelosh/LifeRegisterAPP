@@ -110,16 +110,7 @@ public class Controller{
 
             if (dbDrugsDiary.getDrugsList().isEmpty()){
 
-                String [] drugsList = {
-                        "Alcohol",
-                        "Cannabis",
-                        "Cocaína",
-                        "Éxtasis",
-                        "Juego",
-                        "Nicotina",
-                        "Pornografia"
-                };
-
+                String [] drugsList = context.getResources().getStringArray(R.array.drugList);
 
                 for(int i = 0; i < drugsList.length; i++){
                     dbDrugsDiary.insertDrug(drugsList[i]);
@@ -138,29 +129,7 @@ public class Controller{
 
             if (dbTimeDistribution.getActivitiesList().isEmpty()){
 
-                String [] actitivitiesList = {
-                        "alimentación",
-                        "bicicleta",
-                        "compras",
-                        "construir",
-                        "dormir",
-                        "deporte",
-                        "estudiar",
-                        "FAPTIME",
-                        "higiene personal",
-                        "internet",
-                        "ocio",
-                        "leer",
-                        "que haceres domesticos",
-                        "peliculas",
-                        "programar",
-                        "redes sociales",
-                        "sexo",
-                        "trabajar",
-                        "viajar",
-                        "video juegos",
-                        "vida social"
-                };
+                String [] actitivitiesList = context.getResources().getStringArray(R.array.activitiesList);
 
 
                 for(int i = 0; i < actitivitiesList.length; i++){
@@ -183,31 +152,7 @@ public class Controller{
 
             if(dbFeeling.getFeelingsList().isEmpty()) {
 
-                String[] feelingsList = {
-                        "alegría",
-                        "amor",
-                        "tristeza",
-                        "tranquilidad",
-                        "ira",
-                        "miedo",
-                        "hostilidad",
-                        "frustración",
-                        "odio",
-                        "culpa",
-                        "celos",
-                        "cansado",
-                        "felicidad",
-                        "esperanza",
-                        "asco",
-                        "motivado",
-                        "suicida",
-                        "orgullozo",
-                        "vergüenza",
-                        "drogado",
-                        "trabado",
-                        "alcoholizado",
-                        "satisfecho"
-                };
+                String[] feelingsList = context.getResources().getStringArray(R.array.feelingList);
 
                 for(int i = 0; i < feelingsList.length; i++){
                     dbFeeling.insertFeeling(feelingsList[i]);

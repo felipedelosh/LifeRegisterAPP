@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array
+        name="activitiesList">
+        <item>alimentación</item>
+        <item>bicicleta</item>
+        <item>compras</item>
+        <item>construir</item>
+        <item>dormir</item>
+        <item>deporte</item>
+        <item>estudiar</item>
+        <item>FAPTIME</item>
+        <item>higiene personal</item>
+        <item>internet</item>
+        <item>ocio</item>
+        <item>leer</item>
+        <item>que haceres domesticos</item>
+        <item>peliculas</item>
+        <item>programar</item>
+        <item>redes sociales</item>
+        <item>sexo</item>
+        <item>trabajar</item>
+        <item>viajar</item>
+        <item>video juegos</item>
+        <item>vida social</item>
+    </string-array>
+</resources>
