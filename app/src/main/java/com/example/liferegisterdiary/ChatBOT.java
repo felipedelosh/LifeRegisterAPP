@@ -66,8 +66,8 @@ public class ChatBOT extends AppCompatActivity {
             String sms = txtChatBot.getText().toString();
 
             if(validateText(sms)){
-                putUserSMSandSEND(sms);
-                txtChatBot.setText("");
+                putUserSMSandSEND(sms); //Put SMS in chat
+                txtChatBot.setText(""); //Delete a chat input
                 refreshChat();
                 sendMSMtoChatBot(sms.toLowerCase(Locale.ROOT));
 

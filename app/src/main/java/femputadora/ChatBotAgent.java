@@ -108,24 +108,19 @@ public class ChatBotAgent {
                 }
             }
 
-
-
         }else{
             //The system make a question
             if(behavior == 1){
-
-
+                
                 //Answer 1 to 10
                 if(onetoten){
                     try{
                         int k = Integer.parseInt(sms);
 
                         if(k>5 && k<=10){
-                            sayHappinnes();
-                            countSMS++;
+                            Speak("sayHappinnes");
                         }else{
-                            sayUnHappinnes();
-                            countSMS++;
+                            Speak("sayUnHappinnes");
                         }
 
                         if (k>=0 && k<=10){
@@ -147,8 +142,7 @@ public class ChatBotAgent {
                     for(int i=0; i< yes.length; i++){
                         if(sms.equals(yes[i])) {
                             saveYESORNOTQuestion("yes");
-                            sayHappinnes();
-                            countSMS++;
+                            Speak("sayHappinnes");
                         }
                     }
 
@@ -156,9 +150,8 @@ public class ChatBotAgent {
                         //Is a negative answer
                         for (int j = 0; j < not.length; j++) {
                             if (sms.equals(not[j])) {
-                                sayFiller();
                                 saveYESORNOTQuestion("no");
-                                countSMS++;
+                                Speak("sayFiller");
                             }
                         }
                     }
@@ -199,10 +192,17 @@ public class ChatBotAgent {
             //throw the dice
             int k = getRandonInRange(1, 5);
 
-            if(k==1){
+            //Make a Question
+            if(k==1 & countSMS > 1){
                 behavior = 1;
                 makeAQuestion = true;
-                sayQuestion();
+                Speak("sayQuestion");
+            }
+
+            //
+            if(k == 2  && countSMS < 2){
+                behavior = 2;
+                Speak("sayHello");
             }
 
 
@@ -222,6 +222,44 @@ public class ChatBotAgent {
      */
     public boolean systemIsFree(){
         return !makeAQuestion;
+    }
+
+
+    /***
+     * Here the chatbot speat whit String code
+     *
+     * @param code
+     */
+    public void Speak(String code){
+
+        if(code.equals("sayQuestion"))
+        {
+            sayQuestion();
+        }
+
+        if(code.equals("sayHello"))
+        {
+            sayHello();
+        }
+
+        if(code.equals("sayHappinnes"))
+        {
+            sayHappinnes();
+        }
+
+        if(code.equals("sayUnHappinnes"))
+        {
+            sayUnHappinnes();
+        }
+
+        if(code.equals("sayFiller"))
+        {
+            sayFiller();
+        }
+
+
+
+        countSMS = countSMS + 1;
     }
 
     public void sayQuestion(){
@@ -268,7 +306,6 @@ public class ChatBotAgent {
         }else{
             response = happyAnswers[nextTXT];
         }
-
     }
 
     public void sayUnHappinnes(){
@@ -279,12 +316,13 @@ public class ChatBotAgent {
         }else{
             response = unHapinnesAnswers[nextTXT];
         }
-
     }
 
     public void sayFiller(){
         int nextTXT = (int) (fillers.length * Math.random());
         response = fillers[nextTXT];
+
+        countSMS = countSMS + 1;
     }
 
     public void save1to10Question(int value){
