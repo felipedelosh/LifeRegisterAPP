@@ -67,9 +67,26 @@
     </string-array>
     <string-array
         name="helpers">
+        <item>pregunta?</item>
+        <item>maquina</item>
+        <item>help</item>
         <item>ayuda</item>
         <item>que sabes hacer</item>
+        <item>para que sirves</item>
+        <item>interactua</item>
     </string-array>
     <string name="yesornot">si ó no?</string>
     <string name="itemPUT"> %1$s </string>
+
+    <string name="femputadora">
+        
+        Hola soy FEMPUTADORA\n
+        Soy tu asistente personal.\n
+        Yo te puedo ayudar en lo siguiente:\n
+        - \n
+        - \n
+        - \n
+        *
+
+    </string>
 </resources>

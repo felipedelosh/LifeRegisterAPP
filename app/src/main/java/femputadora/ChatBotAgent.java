@@ -45,6 +45,7 @@ public class ChatBotAgent {
     private String [] happyAnswers;
     private String [] unHapinnesAnswers;
     private String [] fillers;
+    private String [] helpers;
 
     //Load database
     private DbTimeDistribution dbTimeDistribution;
@@ -72,6 +73,7 @@ public class ChatBotAgent {
         yes =  context.getResources().getStringArray(R.array.yes);
         not = context.getResources().getStringArray(R.array.not);
         fillers = context.getResources().getStringArray(R.array.fillers);
+        helpers = context.getResources().getStringArray(R.array.helpers);
         this.user = user;
 
         //Database
@@ -103,15 +105,22 @@ public class ChatBotAgent {
             //If the user is gretting
             for(int i=0;i<grettings.length;i++){
                 if(sms.trim().equals(grettings[i])){
-                    sayHello();
-                    countSMS++;
+                    Speak("sayHello");
+                    break;
+                }
+            }
+            //If the user need help
+            for(int i=0;i<helpers.length;i++){
+                if(sms.trim().equals(helpers[i])){
+                    Speak("sayHelp");
+                    break;
                 }
             }
 
         }else{
             //The system make a question
             if(behavior == 1){
-                
+
                 //Answer 1 to 10
                 if(onetoten){
                     try{
@@ -257,6 +266,10 @@ public class ChatBotAgent {
             sayFiller();
         }
 
+        if(code.equals("sayHelp"))
+        {
+            sayHelp();
+        }
 
 
         countSMS = countSMS + 1;
@@ -321,8 +334,10 @@ public class ChatBotAgent {
     public void sayFiller(){
         int nextTXT = (int) (fillers.length * Math.random());
         response = fillers[nextTXT];
+    }
 
-        countSMS = countSMS + 1;
+    public void sayHelp(){
+        response = context.getResources().getString(R.string.femputadora);
     }
 
     public void save1to10Question(int value){
