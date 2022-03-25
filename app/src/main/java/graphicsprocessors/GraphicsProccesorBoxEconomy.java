@@ -87,11 +87,11 @@ public class GraphicsProccesorBoxEconomy extends View {
                     float by0 = ((separation * (i+1))) - ( 50) ;
                     float bx1 = bx0 + (w * (float) 0.6);
                     int currentlY = Integer.parseInt(getInformation.get(i).split(":")[1]);
-                    if(currentlY>0){
-                        bx1 = bx1 * ((float) currentlY/ (float) maxValueBigBox);
-                    }else{
-                        bx1 = bx0*(float)1.01;
+                    bx1 = bx1 * ((float) currentlY/ (float) maxValueBigBox);
+                    if(bx1<bx0){
+                       bx1 = bx0 * (float) 1.01;
                     }
+
                     float by1 = by0 + 15;
                     brush.setARGB(255,0,255,0);
                     canvas.drawRect(bx0, by0, bx1, by1, brush);
@@ -101,10 +101,10 @@ public class GraphicsProccesorBoxEconomy extends View {
                     float ly0 = ((separation * (float) (i+1)));
                     float lx1 = bx0 + (w * (float) 0.6);
                     currentlY = Integer.valueOf(getInformation.get(i).split(":")[2]);
-                    if(currentlY>0){
-                        lx1 = lx1 * ((float) currentlY/ (float) maxValueLitleBox);
-                    }else{
-                        lx1 = lx0 * (float)1.01;
+                    lx1 = lx1 * ((float) currentlY/ (float) maxValueLitleBox);
+
+                    if(lx1<lx0 ){
+                        lx1 = lx0 * (float) 1.01;
                     }
                     float ly1 = ly0 +  15;
                     brush.setARGB(255,0,0,255);
