@@ -79,14 +79,14 @@
     <string name="itemPUT"> %1$s </string>
 
     <string name="femputadora">
-        
+
         Hola soy FEMPUTADORA\n
         Soy tu asistente personal.\n
         Yo te puedo ayudar en lo siguiente:\n
-        - \n
-        - \n
-        - \n
-        *
+        - diario\n
+        - finanzas\n
+        - graficas\n
+        *\n
 
     </string>
 </resources>

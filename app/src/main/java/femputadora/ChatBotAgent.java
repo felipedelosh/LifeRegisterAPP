@@ -57,11 +57,6 @@ public class ChatBotAgent {
     private boolean onetoten;
     private String temp;
 
-
-
-
-
-
     public ChatBotAgent(Context context, User user) {
         this.context = context;
         grettings = context.getResources().getStringArray(R.array.grettings);
@@ -167,7 +162,6 @@ public class ChatBotAgent {
                     yesornot = false;
                 }
 
-
                 makeAQuestion = false;
             }
         }
@@ -208,7 +202,7 @@ public class ChatBotAgent {
                 Speak("sayQuestion");
             }
 
-            //
+            //Say hello
             if(k == 2  && countSMS < 2){
                 behavior = 2;
                 Speak("sayHello");
