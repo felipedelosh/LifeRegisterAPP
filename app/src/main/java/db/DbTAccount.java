@@ -116,8 +116,77 @@ public class DbTAccount extends DatabaseController {
         }catch (Exception e){
             return information;
         }
+    }
+
+
+    /***
+     * Casify all information into debit or credit via detail
+     * Example: travels, food ... movies...
+     * @param deatil This is a concept to know
+     * @return
+     *      * debit
+     *      * {"concep", +#}
+     *      * credit
+     *      * {"concep", -#}
+     */
+    public HashMap<String, Integer> getTAccountsByDetail(String deatil){
+
+        HashMap<String, Integer> information = new HashMap<>();
+        try{
+
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            String sql = "SELECT concept, debit, credit, timeStamp  FROM " + TABLE_PERSONAL_ECONOMY_TACCOUNTS + " WHERE concept LIKE \'%" + deatil + "%\'";
+
+            Cursor getValues = db.rawQuery( sql, null);
+            String concept = "";
+            int money = 0;
+            while(getValues.moveToNext()){
+
+                concept = getValues.getString(0) + ":" + getValues.getString(3);
+
+                int temp = getValues.getInt(1);
+
+                if(temp == 0){
+                    money = - getValues.getInt(2);
+                }else{
+                    money = getValues.getInt(1);
+                }
+
+                information.put(concept, money);
+            }
+
+            return information;
+        }catch (Exception e){
+            return information;
+        }
 
     }
+
+
+    /***
+     * Return count of Taccounts registers
+     * @return int
+     */
+    public int getTaccountReguistersCounter(){
+        try {
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            String sql = "select count(*) from " + TABLE_PERSONAL_ECONOMY_TACCOUNTS;
+            Cursor getValues = db.rawQuery( sql, null);
+            getValues.moveToFirst();
+
+            return getValues.getInt(0);
+
+
+        }catch (Exception e){
+            return 0;
+        }
+
+    }
+
 
 
 

@@ -49,6 +49,7 @@
     <string name="lbl_feelings_list">Lista de sentimientos: </string>
     <string name="lbl_feelinfs_report">Reporte de sentimientos: </string>
     <string name="lbl_economy_report">Reporte economico: \nIngresos vs Egresos</string>
+    <string name="lbl_economy_search_money">Ingrese el concepto monetario a buscar:</string>
     <string name="lbl_time_distribution_report">Reporte inversión de tiempo: </string>
     <string name="lbl_drugs_list">Lista de drogas: </string>
     <string name="lbl_help_insert_title">Ingrese Nombre psicoactivo</string>
@@ -66,6 +67,7 @@
     <string name="output">This is a system message: ....</string>
     <string name="btnLoad">Cargar</string>
     <string name="btnSave">Guardar</string>
+    <string name="btnSearch">Buscar</string>
     <string name="btnCancel">Cancelar</string>
     <string name="btnContinue">Continuar</string>
     <string name="btnEditProfile">Perfil</string>

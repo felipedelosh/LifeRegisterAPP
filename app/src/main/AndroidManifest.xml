@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
+            android:name=".SearchMoney"
+            android:exported="false" />
+        <activity
             android:name=".ChatBOT"
             android:exported="false" />
         <activity
