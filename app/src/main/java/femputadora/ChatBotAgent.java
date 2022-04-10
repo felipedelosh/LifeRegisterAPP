@@ -5,11 +5,13 @@ import android.content.Context;
 import com.example.liferegisterdiary.R;
 import com.example.liferegisterdiary.TimeController;
 
+import java.util.Locale;
 import java.util.Random;
 
 import db.DbEvaluateActivity;
 import db.DbQualifyDay;
 import db.DbTimeDistribution;
+import db.DbUser;
 import models.User;
 
 /****
@@ -40,6 +42,7 @@ public class ChatBotAgent {
     private String [] questions01;
     private String [] questions02;
     private String [] questions03;
+    private String [] questionWhoIM;
     private String [] yes;
     private String [] not;
     private String [] happyAnswers;
@@ -48,6 +51,7 @@ public class ChatBotAgent {
     private String [] helpers;
 
     //Load database
+    private DbUser dbUser;
     private DbTimeDistribution dbTimeDistribution;
     private DbQualifyDay dbQualifyDay;
     private DbEvaluateActivity dbEvaluateActivity;
@@ -63,6 +67,7 @@ public class ChatBotAgent {
         questions01 = context.getResources().getStringArray(R.array.question_01);
         questions02 = context.getResources().getStringArray(R.array.question_02);
         questions03 = context.getResources().getStringArray(R.array.question_03);
+        questionWhoIM = context.getResources().getStringArray(R.array.questionWhoIM);
         happyAnswers = context.getResources().getStringArray(R.array.happy);
         unHapinnesAnswers = context.getResources().getStringArray(R.array.unhappiness);
         yes =  context.getResources().getStringArray(R.array.yes);
@@ -72,6 +77,7 @@ public class ChatBotAgent {
         this.user = user;
 
         //Database
+        dbUser = new DbUser(context);
         dbTimeDistribution = new DbTimeDistribution(context);
         dbQualifyDay = new DbQualifyDay(context);
         dbEvaluateActivity = new DbEvaluateActivity(context);
@@ -111,6 +117,13 @@ public class ChatBotAgent {
                     break;
                 }
             }
+            //If the user make a question
+            if(sms.charAt(sms.length()-1) == '?'){
+                if(searchInsideSYSQuestion(sms).equals("whoIM")){
+                    Speak("whoIM");
+                }
+            }
+
 
         }else{
             //The system make a question
@@ -208,6 +221,11 @@ public class ChatBotAgent {
                 Speak("sayHello");
             }
 
+            //change a behavior ... if the machine stop to talk... maybe say another think
+            if(k == 5){
+                behavior = 0;
+            }
+
 
         }
         //Change a sleep time to response
@@ -263,6 +281,11 @@ public class ChatBotAgent {
         if(code.equals("sayHelp"))
         {
             sayHelp();
+        }
+
+        if(code.equals("whoIM"))
+        {
+            saWhoIM();
         }
 
 
@@ -334,6 +357,24 @@ public class ChatBotAgent {
         response = context.getResources().getString(R.string.femputadora);
     }
 
+    public void saWhoIM(){
+        String userInfo = "";
+        String username = context.getString(R.string.userProfile_name, dbUser.getUser().getUsername());
+        userInfo = username;
+        String user_most_aproved_activities = dbEvaluateActivity.getMostAprovedActivity();
+        if(!user_most_aproved_activities.equals("???")&&!user_most_aproved_activities.equals("")){
+            String user_most_activity_aproved = context.getString(R.string.user_main_life_love, user_most_aproved_activities);
+            userInfo = userInfo + user_most_activity_aproved;
+        }
+        String user_most_realized_activity = dbTimeDistribution.most_realized_activity();
+        if(!user_most_realized_activity.equals("???")&&!user_most_realized_activity.equals("")){
+            user_most_realized_activity =  context.getString(R.string.user_most_realized_activity, user_most_realized_activity);
+            userInfo = userInfo + user_most_realized_activity;
+        }
+
+        response = userInfo;
+    }
+
     public void save1to10Question(int value){
         try {
             dbQualifyDay.insertDayQualify(timeController.timeStamp(), value);
@@ -350,5 +391,26 @@ public class ChatBotAgent {
         }
     }
 
+
+    /***
+     * If the user make a question
+     * Search a tipe of question
+     */
+    public String searchInsideSYSQuestion(String sms){
+        String question = "";
+
+        sms = sms.toLowerCase(Locale.ROOT);
+        //Is a positive answer
+        for(int i=0; i< questionWhoIM.length; i++){
+            if(sms.equals(questionWhoIM[i])) {
+                question = "whoIM";
+                break;
+            }
+        }
+
+
+
+        return question;
+    }
 
 }

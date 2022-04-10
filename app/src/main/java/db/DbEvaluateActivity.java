@@ -2,6 +2,7 @@ package db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
@@ -38,6 +39,29 @@ public class DbEvaluateActivity  extends DatabaseController {
         }
 
         return id;
+    }
+
+
+    public String getMostAprovedActivity(){
+        String activity = "";
+
+        try {
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            String sql = "select nameActivity, count(response) from " + TABLE_EVALUATE_ACTIVITY_YESORNOT + " where response = 'yes' group by nameActivity order by count(response) DESC limit 3";
+            Cursor getValues = db.rawQuery( sql, null);
+
+            while(getValues.moveToNext()){
+                activity = activity + "-" + getValues.getString(0) + " ";
+            }
+
+        } catch (Exception e){
+            activity = "???";
+        }
+
+
+        return activity;
     }
 
 

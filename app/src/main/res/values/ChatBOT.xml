@@ -27,6 +27,15 @@
         <item>es verdad que te gusta </item>
     </string-array>
     <string-array
+        name="questionWhoIM">
+         <item>quien soy yo?</item>
+         <item>quien soy?</item>
+         <item>que conoces de mi?</item>
+         <item>que sabes sobre mi?</item>
+         <item>me conoces?</item>
+         <item>tu me conoces?</item>
+    </string-array>
+    <string-array
         name="yes">
         <item>si</item>
         <item>s</item>
@@ -73,7 +82,7 @@
         <item>ayuda</item>
         <item>que sabes hacer</item>
         <item>para que sirves</item>
-        <item>interactua</item>
+        <item>quien eres tu?</item>
     </string-array>
     <string name="yesornot">si ó no?</string>
     <string name="itemPUT"> %1$s </string>

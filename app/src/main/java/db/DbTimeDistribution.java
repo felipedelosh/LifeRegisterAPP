@@ -151,4 +151,27 @@ public class DbTimeDistribution extends DatabaseController {
 
     }
 
+    public String most_realized_activity(){
+        String most_realized_activity = "";
+
+        try{
+
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            String sql = "Select activity, count(*) from " + TABLE_DAY_TIME_DISTRIBUTION + " group by activity order by count(*) DESC limit 5";
+            Cursor getValues = db.rawQuery( sql, null);
+
+            while(getValues.moveToNext()){
+                most_realized_activity =  most_realized_activity + "-" + getValues.getString(0);
+            }
+
+        }catch (Exception e){
+            most_realized_activity = "???";
+        }
+
+
+        return most_realized_activity;
+    }
+
 }

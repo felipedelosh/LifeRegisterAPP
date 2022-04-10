@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="userProfile_name">
+        Claro que te conozco, eres: %1$s .\n
+    </string>
+    <string name="user_main_life_love">
+        Lo que más te gusta hacer en el mundo es: %1$s .\n
+    </string>
+    <string name="user_most_realized_activity">
+        Inviertes tu tiempo de vida en: %1$s .\n
+    </string>
+</resources>
