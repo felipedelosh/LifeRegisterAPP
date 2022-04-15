@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import com.example.liferegisterdiary.DatabaseController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 public class DbDrugsDiary extends DatabaseController {
@@ -113,6 +115,42 @@ public class DbDrugsDiary extends DatabaseController {
 
         return id;
     }
+
+    /***
+     * Return a array with drug counter info:
+     * Example <cannabis, date>, <porn, date>...
+     * @param year
+     * @param month
+     * @return
+     */
+    public LinkedList<String> getDayOfDrugsCounters(String year, String month){
+        LinkedList<String> information = new LinkedList<>();
+
+        try{
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            String sql = "select * from " + TABLE_PERSONAL_DRUGS_COUNTER + " where timeStampH like '" + year + "%' and timeStampH like '%" + month + "%'";
+            Cursor getValues = db.rawQuery( sql, null);
+
+            String nameDrug = "";
+            String timeStampH = "";
+
+            while(getValues.moveToNext()){
+                nameDrug = getValues.getString(1);
+                timeStampH = getValues.getString(0);
+                information.add(nameDrug+":"+timeStampH);
+            }
+
+
+        }catch (Exception e){
+            //Do nothing
+        }
+
+        return  information;
+    }
+
+
 
 
 }

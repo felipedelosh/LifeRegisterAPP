@@ -2,16 +2,18 @@ package com.example.liferegisterdiary;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
-
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+
+import db.DbDrugsDiary;
 
 public class Calendary extends AppCompatActivity {
 
@@ -20,6 +22,8 @@ public class Calendary extends AppCompatActivity {
     private Spinner spnViewOptions;
     private TimeController timeController;
     private ArrayList<Button> btnsDays;
+    private DbDrugsDiary dbDrugsDiary;
+
 
 
     @Override
@@ -28,6 +32,7 @@ public class Calendary extends AppCompatActivity {
         setContentView(R.layout.activity_calendary);
 
         timeController = new TimeController();
+        dbDrugsDiary = new DbDrugsDiary(this);
         spinnerMount = findViewById(R.id.spinnerMount);
         setSpinnerMonthsOptions();
         spnViewOptions = findViewById(R.id.spnViewOptions);
@@ -45,6 +50,7 @@ public class Calendary extends AppCompatActivity {
 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                refeshDays();
+               eraseColorToAllButtons();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -189,23 +195,45 @@ public class Calendary extends AppCompatActivity {
      * @param tipeOfView
      */
     public void showQuerySelection(int tipeOfView){
-        if(tipeOfView == 1){
 
+        if(tipeOfView == 0){
+
+        }
+
+        if(tipeOfView == 1){
+            String getCurrentYear = timeController.getCurrentYear();
+            String getCurrentMonth = spinnerMount.getSelectedItem().toString();
+
+            LinkedList<String> information = dbDrugsDiary.getDayOfDrugsCounters(getCurrentYear, getCurrentMonth);
+            eraseColorToAllButtons();
+
+            if(information.size() > 0){
+                for(int i=0; i<information.size();i++){
+                    paintButton(information.get(i));
+                }
+
+            }
         }
     }
 
+
     /***
-     *
-     * @return
+     * Enter a date tipe DrugName:YYYY:NameMM:DD
+     * Cacth a DD and change a color in button array
      */
-    public int [] colors(){
-
-        int [] color = {0,0,0};
-
-
-
-        return color;
+    public void paintButton(String data){
+        try{
+            int day = Integer.valueOf(data.split(":")[3]);
+            btnsDays.get(day-1).setBackgroundColor(Color.RED);
+        }catch (Exception e){
+            //Do nothing
+        }
     }
 
+    public void eraseColorToAllButtons(){
+        for(int i=0; i < btnsDays.size(); i++){
+            btnsDays.get(i).setBackgroundColor(Color.BLACK);
+        }
+    }
 
 }
