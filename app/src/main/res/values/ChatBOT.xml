@@ -36,6 +36,15 @@
          <item>tu me conoces?</item>
     </string-array>
     <string-array
+        name="questionWhoIsMyLastDream">
+        <item>cual es mi último sueño?</item>
+        <item>recordar mi último sueño?</item>
+        <item>último sueño?</item>
+        <item>que soñé la última vez?</item>
+        <item>que soñe la última vez?</item>
+        <item>cual fué mi último sueño?</item>
+    </string-array>
+    <string-array
         name="yes">
         <item>si</item>
         <item>s</item>

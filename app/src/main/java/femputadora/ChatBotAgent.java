@@ -8,6 +8,7 @@ import com.example.liferegisterdiary.TimeController;
 import java.util.Locale;
 import java.util.Random;
 
+import db.DbDreamDiaryPage;
 import db.DbEvaluateActivity;
 import db.DbQualifyDay;
 import db.DbTimeDistribution;
@@ -43,6 +44,7 @@ public class ChatBotAgent {
     private String [] questions02;
     private String [] questions03;
     private String [] questionWhoIM;
+    private String [] questionWhoIsMyLastDream;
     private String [] yes;
     private String [] not;
     private String [] happyAnswers;
@@ -55,6 +57,7 @@ public class ChatBotAgent {
     private DbTimeDistribution dbTimeDistribution;
     private DbQualifyDay dbQualifyDay;
     private DbEvaluateActivity dbEvaluateActivity;
+    private DbDreamDiaryPage dbDreamDiaryPage;
 
     //Type of answer
     private boolean yesornot;
@@ -68,6 +71,7 @@ public class ChatBotAgent {
         questions02 = context.getResources().getStringArray(R.array.question_02);
         questions03 = context.getResources().getStringArray(R.array.question_03);
         questionWhoIM = context.getResources().getStringArray(R.array.questionWhoIM);
+        questionWhoIsMyLastDream = context.getResources().getStringArray(R.array.questionWhoIsMyLastDream);
         happyAnswers = context.getResources().getStringArray(R.array.happy);
         unHapinnesAnswers = context.getResources().getStringArray(R.array.unhappiness);
         yes =  context.getResources().getStringArray(R.array.yes);
@@ -81,6 +85,7 @@ public class ChatBotAgent {
         dbTimeDistribution = new DbTimeDistribution(context);
         dbQualifyDay = new DbQualifyDay(context);
         dbEvaluateActivity = new DbEvaluateActivity(context);
+        dbDreamDiaryPage = new DbDreamDiaryPage(context);
         timeController = new TimeController();
 
         response = "";
@@ -122,6 +127,14 @@ public class ChatBotAgent {
                 if(searchInsideSYSQuestion(sms).equals("whoIM")){
                     Speak("whoIM");
                 }
+
+                if(searchInsideSYSQuestion(sms).equals("questionWhoIsMyLastDream")){
+                    Speak("questionWhoIsMyLastDream");
+                }
+
+
+
+
             }
 
 
@@ -285,7 +298,12 @@ public class ChatBotAgent {
 
         if(code.equals("whoIM"))
         {
-            saWhoIM();
+            sayWhoIM();
+        }
+
+        if(code.equals("questionWhoIsMyLastDream"))
+        {
+            saylastDream();
         }
 
 
@@ -357,7 +375,7 @@ public class ChatBotAgent {
         response = context.getResources().getString(R.string.femputadora);
     }
 
-    public void saWhoIM(){
+    public void sayWhoIM(){
         String userInfo = "";
         String username = context.getString(R.string.userProfile_name, dbUser.getUser().getUsername());
         userInfo = username;
@@ -373,6 +391,10 @@ public class ChatBotAgent {
         }
 
         response = userInfo;
+    }
+
+    public void saylastDream(){
+        response = "Tu ultimo sueño... fue: >> " + dbDreamDiaryPage.getLastDream() + " <<";
     }
 
     public void save1to10Question(int value){
@@ -400,13 +422,22 @@ public class ChatBotAgent {
         String question = "";
 
         sms = sms.toLowerCase(Locale.ROOT);
-        //Is a positive answer
-        for(int i=0; i< questionWhoIM.length; i++){
+        //The user make a question >> Who I AM?
+        for(int i=0; i < questionWhoIM.length; i++){
             if(sms.equals(questionWhoIM[i])) {
                 question = "whoIM";
                 break;
             }
         }
+        //The user make a question >> Who is my last dream?
+        for(int i=0; i < questionWhoIsMyLastDream.length; i++){
+            if(sms.equals(questionWhoIsMyLastDream[i])){
+                question = "questionWhoIsMyLastDream";
+                break;
+            }
+        }
+
+
 
 
 

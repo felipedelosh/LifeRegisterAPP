@@ -9,4 +9,7 @@
     <string name="user_most_realized_activity">
         Inviertes tu tiempo de vida en: %1$s .\n
     </string>
+    <string name="user_most_adictions">
+        Me preocupa que eres adicto a: %1$s .\n
+    </string>
 </resources>

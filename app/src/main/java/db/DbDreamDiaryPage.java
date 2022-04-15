@@ -68,4 +68,30 @@ public class DbDreamDiaryPage extends DatabaseController {
         }
 
     }
+
+    /***
+     * Return a last dream title register in database
+     * @return
+     */
+    public String getLastDream(){
+        String information = "";
+
+        try{
+
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            String sql = "SELECT dreamName FROM " + TABLE_PERSONAL_DREAM_DIARY + " Order by ID DESC  LIMIT 1";
+            Cursor getPageDiary = db.rawQuery( sql, null);
+
+            getPageDiary.moveToFirst();
+
+            information = getPageDiary.getString(0);
+
+        } catch (Exception e){
+            information = "Error 404 :/";
+        }
+
+        return information;
+    }
 }
