@@ -150,7 +150,29 @@ public class DbDrugsDiary extends DatabaseController {
         return  information;
     }
 
+    public HashMap<String, Integer> getAllCountOfDrugs(){
+        HashMap<String, Integer> information = new HashMap<>();
 
+        try{
+            DatabaseController databaseController = new DatabaseController(context);
+            SQLiteDatabase db = databaseController.getWritableDatabase();
+
+            String sql = "select drugName, count(drugName) from " + TABLE_PERSONAL_DRUGS_COUNTER + " group by drugName order by count(drugName) DESC";
+
+            Cursor getValues = db.rawQuery( sql, null);
+
+            while(getValues.moveToNext()){
+                String drugName = getValues.getString(0);
+                int total = getValues.getInt(1);
+                information.put(drugName, total);
+            }
+
+        }catch (Exception e){
+            //Do nothing
+        }
+
+        return  information;
+    }
 
 
 }

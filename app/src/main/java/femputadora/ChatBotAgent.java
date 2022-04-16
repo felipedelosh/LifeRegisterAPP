@@ -5,10 +5,12 @@ import android.content.Context;
 import com.example.liferegisterdiary.R;
 import com.example.liferegisterdiary.TimeController;
 
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Random;
 
 import db.DbDreamDiaryPage;
+import db.DbDrugsDiary;
 import db.DbEvaluateActivity;
 import db.DbQualifyDay;
 import db.DbTimeDistribution;
@@ -45,6 +47,7 @@ public class ChatBotAgent {
     private String [] questions03;
     private String [] questionWhoIM;
     private String [] questionWhoIsMyLastDream;
+    private String [] questionWhoAreMyAdictions;
     private String [] yes;
     private String [] not;
     private String [] happyAnswers;
@@ -58,6 +61,7 @@ public class ChatBotAgent {
     private DbQualifyDay dbQualifyDay;
     private DbEvaluateActivity dbEvaluateActivity;
     private DbDreamDiaryPage dbDreamDiaryPage;
+    private DbDrugsDiary dbDrugsDiary;
 
     //Type of answer
     private boolean yesornot;
@@ -72,6 +76,7 @@ public class ChatBotAgent {
         questions03 = context.getResources().getStringArray(R.array.question_03);
         questionWhoIM = context.getResources().getStringArray(R.array.questionWhoIM);
         questionWhoIsMyLastDream = context.getResources().getStringArray(R.array.questionWhoIsMyLastDream);
+        questionWhoAreMyAdictions = context.getResources().getStringArray(R.array.questionWhoAreMyAdictions);
         happyAnswers = context.getResources().getStringArray(R.array.happy);
         unHapinnesAnswers = context.getResources().getStringArray(R.array.unhappiness);
         yes =  context.getResources().getStringArray(R.array.yes);
@@ -86,6 +91,7 @@ public class ChatBotAgent {
         dbQualifyDay = new DbQualifyDay(context);
         dbEvaluateActivity = new DbEvaluateActivity(context);
         dbDreamDiaryPage = new DbDreamDiaryPage(context);
+        dbDrugsDiary = new DbDrugsDiary(context);
         timeController = new TimeController();
 
         response = "";
@@ -130,6 +136,10 @@ public class ChatBotAgent {
 
                 if(searchInsideSYSQuestion(sms).equals("questionWhoIsMyLastDream")){
                     Speak("questionWhoIsMyLastDream");
+                }
+
+                if(searchInsideSYSQuestion(sms).equals("questionWhoAreMyAdictions")){
+                    Speak("questionWhoAreMyAdictions");
                 }
 
 
@@ -306,6 +316,10 @@ public class ChatBotAgent {
             saylastDream();
         }
 
+        if(code.equals("questionWhoAreMyAdictions")){
+            sayMyAdictions();
+        }
+
 
         countSMS = countSMS + 1;
     }
@@ -397,6 +411,23 @@ public class ChatBotAgent {
         response = "Tu ultimo sueño... fue: >> " + dbDreamDiaryPage.getLastDream() + " <<";
     }
 
+    public void sayMyAdictions(){
+        HashMap<String, Integer> information = dbDrugsDiary.getAllCountOfDrugs();
+
+        if(information.size() > 0){
+
+            String data = "";
+
+            for(String key: information.keySet()){
+                data = data + "Sobre : " + key + ">> van>>" + information.get(key) + " veces.\n";
+            }
+
+            response = data;
+        }else{
+            response = "Aún no lo sé :/";
+        }
+    }
+
     public void save1to10Question(int value){
         try {
             dbQualifyDay.insertDayQualify(timeController.timeStamp(), value);
@@ -425,20 +456,22 @@ public class ChatBotAgent {
         //The user make a question >> Who I AM?
         for(int i=0; i < questionWhoIM.length; i++){
             if(sms.equals(questionWhoIM[i])) {
-                question = "whoIM";
-                break;
+                return "whoIM";
             }
         }
         //The user make a question >> Who is my last dream?
         for(int i=0; i < questionWhoIsMyLastDream.length; i++){
             if(sms.equals(questionWhoIsMyLastDream[i])){
-                question = "questionWhoIsMyLastDream";
-                break;
+                return "questionWhoIsMyLastDream";
             }
         }
 
-
-
+        //The user make a questio >> drugs?
+        for(int i=0; i < questionWhoAreMyAdictions.length; i++){
+            if(sms.equals(questionWhoAreMyAdictions[i])){
+                return  "questionWhoAreMyAdictions";
+            }
+        }
 
 
         return question;

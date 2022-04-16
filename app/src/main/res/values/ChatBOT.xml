@@ -45,6 +45,15 @@
         <item>cual fué mi último sueño?</item>
     </string-array>
     <string-array
+        name="questionWhoAreMyAdictions">
+        <item>cuales son mis adicciones?</item>
+        <item>hablame de drogas?</item>
+        <item>mis drogas?</item>
+        <item>historial de consumo?</item>
+        <item>que consumo?</item>
+        <item>drogadicción?</item>
+    </string-array>
+    <string-array
         name="yes">
         <item>si</item>
         <item>s</item>
@@ -92,6 +101,7 @@
         <item>que sabes hacer</item>
         <item>para que sirves</item>
         <item>quien eres tu?</item>
+        <item>SOS</item>
     </string-array>
     <string name="yesornot">si ó no?</string>
     <string name="itemPUT"> %1$s </string>
@@ -101,9 +111,9 @@
         Hola soy FEMPUTADORA\n
         Soy tu asistente personal.\n
         Yo te puedo ayudar en lo siguiente:\n
-        - diario\n
-        - finanzas\n
-        - graficas\n
+        - quien eres.\n
+        - consumo de sustacias\n
+        - tus sueños.\n
         *\n
 
     </string>
