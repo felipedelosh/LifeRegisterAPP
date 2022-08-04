@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array
+        name="questionHelpPasswords">
+        <item>password?</item>
+        <item>passwords?</item>
+        <item>cuales son los password?</item>
+        <item>comando?</item>
+        <item>ayuda comando?</item>
+        <item>necesito ayuda?</item>
+        <item>palabras magicas?</item>
+    </string-array>
+    <string-array
+        name="helpPasswords">
+        <item>Estos son los passworks:</item>
+        <item>backup: genera un backup.sql en: com.example.liferegisterdiary\files\BACKUP.sql </item>
+        <item>chatbot: lanza el chatbot.</item>
+        <item>formatWXP: borra toda la base de datos.</item>
+        <item>roboto: Genera un backup en: com.example.liferegisterdiary\files\roboto.txt</item>
+        <item>restore: hace un rollback de la base de datos al ultimo punto de guardado BACKUP.sql</item>
+        <item>felipedelosh: com.example.liferegisterdiary\files\felipedelosh.txt</item>
+        <item>database: Devuelve el nombre de todas las tablas y cuantos registros tiene.</item>
+    </string-array>
+</resources>

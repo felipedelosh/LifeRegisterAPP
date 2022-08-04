@@ -48,12 +48,14 @@ public class ChatBotAgent {
     private String [] questionWhoIM;
     private String [] questionWhoIsMyLastDream;
     private String [] questionWhoAreMyAdictions;
+    private String [] questionHelpPasswords;
     private String [] yes;
     private String [] not;
     private String [] happyAnswers;
     private String [] unHapinnesAnswers;
     private String [] fillers;
     private String [] helpers;
+    private String [] helpPasswords;
 
     //Load database
     private DbUser dbUser;
@@ -79,6 +81,8 @@ public class ChatBotAgent {
         questionWhoAreMyAdictions = context.getResources().getStringArray(R.array.questionWhoAreMyAdictions);
         happyAnswers = context.getResources().getStringArray(R.array.happy);
         unHapinnesAnswers = context.getResources().getStringArray(R.array.unhappiness);
+        questionHelpPasswords = context.getResources().getStringArray(R.array.questionHelpPasswords);
+        helpPasswords = context.getResources().getStringArray(R.array.helpPasswords);
         yes =  context.getResources().getStringArray(R.array.yes);
         not = context.getResources().getStringArray(R.array.not);
         fillers = context.getResources().getStringArray(R.array.fillers);
@@ -128,6 +132,15 @@ public class ChatBotAgent {
                     break;
                 }
             }
+            //If the user need help to passwords
+            for(int i=0;i<questionHelpPasswords.length;i++){
+                if(sms.trim().equals(questionHelpPasswords[i])){
+                    Speak("sayPasswords");
+                    break;
+                }
+            }
+
+
             //If the user make a question
             if(sms.charAt(sms.length()-1) == '?'){
                 if(searchInsideSYSQuestion(sms).equals("whoIM")){
@@ -306,6 +319,12 @@ public class ChatBotAgent {
             sayHelp();
         }
 
+        if(code.equals("sayPasswords"))
+        {
+            sayPasswords();
+        }
+
+
         if(code.equals("whoIM"))
         {
             sayWhoIM();
@@ -322,6 +341,12 @@ public class ChatBotAgent {
 
 
         countSMS = countSMS + 1;
+    }
+
+    public void sayPasswords(){
+        for(int i=0;i<helpPasswords.length;i++){
+            response = response + helpPasswords[i] + "\n";
+        }
     }
 
     public void sayQuestion(){
@@ -450,7 +475,6 @@ public class ChatBotAgent {
      * Search a tipe of question
      */
     public String searchInsideSYSQuestion(String sms){
-        String question = "";
 
         sms = sms.toLowerCase(Locale.ROOT);
         //The user make a question >> Who I AM?
@@ -474,7 +498,8 @@ public class ChatBotAgent {
         }
 
 
-        return question;
+
+        return "";
     }
 
 }
