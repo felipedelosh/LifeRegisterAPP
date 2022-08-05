@@ -55,6 +55,8 @@ public class ChatBotAgent {
     private String [] unHapinnesAnswers;
     private String [] fillers;
     private String [] helpers;
+    private String [] femputadoraTips;
+    private String [] femputadoraDummieResponse;
     private String [] helpPasswords;
 
     //Load database
@@ -83,9 +85,11 @@ public class ChatBotAgent {
         unHapinnesAnswers = context.getResources().getStringArray(R.array.unhappiness);
         questionHelpPasswords = context.getResources().getStringArray(R.array.questionHelpPasswords);
         helpPasswords = context.getResources().getStringArray(R.array.helpPasswords);
+        femputadoraDummieResponse = context.getResources().getStringArray(R.array.femputadoraDummieResponse);
         yes =  context.getResources().getStringArray(R.array.yes);
         not = context.getResources().getStringArray(R.array.not);
         fillers = context.getResources().getStringArray(R.array.fillers);
+        femputadoraTips = context.getResources().getStringArray(R.array.femputadoraTips);
         helpers = context.getResources().getStringArray(R.array.helpers);
         this.user = user;
 
@@ -153,6 +157,10 @@ public class ChatBotAgent {
 
                 if(searchInsideSYSQuestion(sms).equals("questionWhoAreMyAdictions")){
                     Speak("questionWhoAreMyAdictions");
+                }
+
+                if(searchInsideSYSQuestion(sms).equals("")){
+                    Speak("whatItThis");
                 }
 
 
@@ -242,7 +250,7 @@ public class ChatBotAgent {
 
         if(systemIsFree()){
             //throw the dice
-            int k = getRandonInRange(1, 5);
+            int k = getRandonInRange(1, 10);
 
             //Make a Question
             if(k==1 & countSMS > 1){
@@ -257,8 +265,17 @@ public class ChatBotAgent {
                 Speak("sayHello");
             }
 
+            //Get a tip
+            if(k == 3){
+                behavior = 3;
+                Speak("sayTip");
+            }
+
+
+
+
             //change a behavior ... if the machine stop to talk... maybe say another think
-            if(k == 5){
+            if(k == 9){
                 behavior = 0;
             }
 
@@ -299,6 +316,11 @@ public class ChatBotAgent {
             sayHello();
         }
 
+        if(code.equals("sayTip"))
+        {
+            sayTip();
+        }
+
         if(code.equals("sayHappinnes"))
         {
             sayHappinnes();
@@ -337,6 +359,11 @@ public class ChatBotAgent {
 
         if(code.equals("questionWhoAreMyAdictions")){
             sayMyAdictions();
+        }
+
+
+        if(code.equals("whatItThis")){
+            sayDummieResponse();
         }
 
 
@@ -382,6 +409,13 @@ public class ChatBotAgent {
         }else{
             response = grettings[nextGretting];
         }
+    }
+
+    public void sayTip(){
+        int rndTipMax = femputadoraTips.length-1;
+        int tipX = getRandonInRange(0, rndTipMax);
+
+        response = femputadoraTips[tipX];
     }
 
     public void sayHappinnes(){
@@ -430,6 +464,12 @@ public class ChatBotAgent {
         }
 
         response = userInfo;
+    }
+
+    public void sayDummieResponse(){
+        int maxDuR = femputadoraDummieResponse.length-1;
+        int  resp = getRandonInRange(0, maxDuR);
+        response = femputadoraDummieResponse[resp];
     }
 
     public void saylastDream(){

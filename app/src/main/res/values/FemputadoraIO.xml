@@ -3,16 +3,18 @@
     <string-array
         name="questionHelpPasswords">
         <item>password?</item>
+        <item>cuales password?</item>
         <item>passwords?</item>
         <item>cuales son los password?</item>
         <item>comando?</item>
+        <item>comandos?</item>
         <item>ayuda comando?</item>
         <item>necesito ayuda?</item>
         <item>palabras magicas?</item>
     </string-array>
     <string-array
         name="helpPasswords">
-        <item>Estos son los passworks:</item>
+        <item>Estos son los passwords:</item>
         <item>backup: genera un backup.sql en: com.example.liferegisterdiary\files\BACKUP.sql </item>
         <item>chatbot: lanza el chatbot.</item>
         <item>formatWXP: borra toda la base de datos.</item>
@@ -20,5 +22,23 @@
         <item>restore: hace un rollback de la base de datos al ultimo punto de guardado BACKUP.sql</item>
         <item>felipedelosh: com.example.liferegisterdiary\files\felipedelosh.txt</item>
         <item>database: Devuelve el nombre de todas las tablas y cuantos registros tiene.</item>
+    </string-array>
+    <string-array
+        name="femputadoraTips">
+        <item>Si quieres puedes preguntarme cosas :)</item>
+        <item>Preguntame por tus sueños.</item>
+        <item>Preguntame por los passwords.</item>
+        <item>Preguntame por los comandos.</item>
+        <item>Preguntame por tus adicciones.</item>
+        <item>Quieres saber quien eres tu?.</item>
+        <item>Preguntame por tu ultimo sueño.</item>
+        <item>Sabias que mi creador se llama felipedelosh.</item>
+    </string-array>
+    <string-array
+        name="femputadoraDummieResponse">
+        <item>Que es eso?</item>
+        <item>No se de lo que estás hablando.</item>
+        <item>lo más seguro es que quiens sabe.</item>
+        <item>a?</item>
     </string-array>
 </resources>
